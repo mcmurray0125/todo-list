@@ -1,2 +1,3 @@
-    // This is my first Javascript code!
-console.log("Hello World");
+const interestRate = 0.3;
+interestRate = 1;
+console.log(interestRate)
