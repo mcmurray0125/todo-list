@@ -1,4 +1,4 @@
-Git Test
-My first Git Hub Repo.
+Javascript practice
 
-On 11/8/2022, I cloned the js-basics repo onto my laptop. Testing to see if the repos sync properly.
+Practice 1 followed a Traversy Media Crash Course:
+https://www.youtube.com/watch?v=hdI2bqOjy3c
