@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael's Todo App</title>
+  </head>
+
+  <body>
+    <script>
+      let todos = ["Get groceries", "Wash car", "Make dinner"];
+      todos.push("another todo");
+
+      todos.forEach(function (todoTitle) {
+        let element = document.createElement("div");
+        element.innerText = todoTitle;
+        document.body.appendChild(element);
+      });
+
+      function arraySum(numArr) {
+        let total = 0;
+
+        numArr.forEach(function (num) {
+          total = total + num;
+        });
+
+        console.log(total);
+      }
+      arraySum([1, 2, 3]);
+    </script>
+  </body>
+</html>
