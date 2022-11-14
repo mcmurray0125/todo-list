@@ -73,6 +73,28 @@
         saveTodos();
       };
 
+      function setEditing(todoId) {
+        todos.forEach(function (todo) {
+          if (todo.id === todoId) {
+            todo.isEditing = true;
+          }
+        });
+
+        saveTodos();
+      }
+
+      function updateTodo(todoId, newTitle, newDate) {
+        todos.forEach(function (todo) {
+          if (todo.id === todoId) {
+            todo.title = newTitle;
+            todo.date = newDate;
+            todo.isEditing = false;
+          }
+        });
+
+        saveTodos();
+      }
+
       const saveTodos = () => {
         localStorage.setItem("todos", JSON.stringify(todos));
       };
@@ -96,19 +118,68 @@
         };
       };
 
+      function onEdit(event) {
+        const editButton = event.target;
+        const todoId = editButton.dataset.todoId;
+
+        setEditing(todoId);
+        render();
+      }
+
+      function onUpdate(event) {
+        const updateButton = event.target;
+        const todoId = updateButton.dataset.todoId;
+
+        const textbox = document.getElementById("edit-title-" + todoId);
+        const newTitle = textbox.value;
+
+        const datePicker = document.getElementById("edit-date-" + todoId);
+        const newDate = datePicker.value;
+
+        updateTodo(todoId, newTitle, newDate);
+        render();
+      }
+
       //View
       const render = () => {
         //reset our list
         document.getElementById("todo-list").innerHTML = "";
 
-        todos.forEach((todo) => {
+        todos.forEach(function (todo) {
           const element = document.createElement("div");
-          element.innerText = todo.title + " " + todo.dueDate;
-          const deleteButton = document.createElement("button");
-          deleteButton.innerText = "Delete";
-          deleteButton.style = "margin-left: 12px";
-          deleteButton.onclick = onDelete(todo);
-          element.appendChild(deleteButton);
+
+          if (todo.isEditing === true) {
+            const textbox = document.createElement("input");
+            textbox.type = "text";
+            textbox.id = "edit-title-" + todo.id;
+            element.appendChild(textbox);
+
+            const datePicker = document.createElement("input");
+            datePicker.type = "date";
+            datePicker.id = "edit-date-" + todo.id;
+            element.appendChild(datePicker);
+
+            const updateButton = document.createElement("button");
+            updateButton.innerText = "Update";
+            updateButton.dataset.todoId = todo.id;
+            updateButton.onclick = onUpdate;
+            element.appendChild(updateButton);
+          } else {
+            element.innerText = todo.title + " " + todo.dueDate;
+
+            const editButton = document.createElement("button");
+            editButton.innerText = "Edit";
+            editButton.style = "margin-left: 12px";
+            editButton.onclick = onEdit;
+            editButton.dataset.todoId = todo.id;
+            element.appendChild(editButton);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.style = "margin-left: 12px";
+            deleteButton.onclick = onDelete(todo);
+            element.appendChild(deleteButton);
+          }
 
           const todoList = document.getElementById("todo-list");
           todoList.appendChild(element);

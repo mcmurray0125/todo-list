@@ -9,5 +9,3 @@ Practice 2 Followed Super Simple Dev JavaScript tutorial:
 <p>
 https://www.youtube.com/watch?v=DqaTKBU9TZk
 </p>
-
-Testing pushing to remote from MacBook.
