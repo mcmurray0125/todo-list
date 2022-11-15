@@ -7,12 +7,16 @@
     <title>Michael's Todo App</title>
   </head>
 
-  <body>
-    <input id="todo-title" type="text" />
-    <input id="date-picker" type="date" />
-    <button onclick="addTodo()">Add Todo</button>
+  <link rel="stylesheet" href="styles.css" />
 
-    <div id="todo-list"></div>
+  <body>
+    <section class="add-todo-bar">
+      <input id="todo-title" type="text" />
+      <input id="date-picker" type="date" />
+      <button onclick="addTodo()">Add Todo</button>
+    </section>
+
+    <div id="todo-list" class="container"></div>
 
     <script>
       //Model
