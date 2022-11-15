@@ -1,19 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+p {
+  margin: 0;
 }
 
 .container {
   width: 100%;
   height: 500px;
   margin-top: 10px;
-  display: flex;
+  font-size: 20px;
+  /*   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
 }
 /* Header Add Todo*/
 .add-todo-bar {
   display: flex;
-  height: 30px;
+  height: 35px;
   border: 2px solid blue;
   border-radius: 4px;
   background-color: rgb(180, 224, 225);
@@ -29,27 +41,42 @@ body {
   background-color: rgb(27, 40, 46);
 }
 
-#todo-list {
-  font-size: 20px;
-}
-#todo-list div {
+.todo-item {
   border-bottom: 2px solid grey;
   margin: 4px 0px;
-  align-self: center;
+  flex-direction: row;
+  justify-content: center;
   display: flex;
 }
 
-#todo-list div button {
+.todo-item .todo-title {
+  margin-right: 5px;
+  flex: 2;
+}
+
+.todo-item .todo-due-date {
+  font-size: 14px;
+  font-weight: 200;
+  font-style: italic;
+  order: -1;
+  flex: 1;
+}
+
+.todo-item button {
+  font-family: "Nanub Gothic", sans-serif;
+  font-weight: 200;
+  font-size: 14px;
   color: white;
   height: 25px;
+  width: 62px;
   border: none;
-  border-radius: 12.5px;
+  border-radius: 16px;
   background-color: rgb(25, 84, 112);
   margin-bottom: 4px;
   align-self: center;
 }
 
-#todo-list div:hover {
+.todo-item:hover {
   border-bottom: 2px solid rgb(73, 64, 163);
   margin: 4px 0px;
 }

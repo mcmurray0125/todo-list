@@ -9,5 +9,8 @@ Practice 2 Followed Super Simple Dev JavaScript tutorial:
 <p>
 https://www.youtube.com/watch?v=DqaTKBU9TZk
 </p>
+<p>
+https://supersimple.dev/courses/javascript-beginner-course-20201
+</p>
 
-Need to space out the flex box elements and make uniform. Test.
+Basic todo list without checkboxes.
