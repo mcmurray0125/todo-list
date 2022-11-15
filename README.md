@@ -10,4 +10,4 @@ Practice 2 Followed Super Simple Dev JavaScript tutorial:
 https://www.youtube.com/watch?v=DqaTKBU9TZk
 </p>
 
-trying to add a class name to the created div on line 153
+Need to space out the flex box elements and make uniform.

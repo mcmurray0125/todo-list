@@ -9,7 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
 }
 /* Header Add Todo*/
 .add-todo-bar {
@@ -35,9 +34,9 @@ body {
 }
 #todo-list div {
   border-bottom: 2px solid grey;
-  height: 30px;
   margin: 4px 0px;
   align-self: center;
+  display: flex;
 }
 
 #todo-list div button {
