@@ -150,7 +150,7 @@
         document.getElementById("todo-list").innerHTML = "";
 
         todos.forEach(function (todo) {
-          const element = document.createElement("div");
+          const element = document.createElement("div"); //try to add class name to this div?
 
           if (todo.isEditing === true) {
             const textbox = document.createElement("input");
@@ -169,7 +169,8 @@
             updateButton.onclick = onUpdate;
             element.appendChild(updateButton);
           } else {
-            element.innerText = todo.title + " " + todo.dueDate;
+            // element.innerText = todo.title + " " + todo.dueDate;
+            element.innerHTML = `<div class= 'todo-title'>${todo.title}</div>`+`<div class = 'todo-due-date'>${todo.dueDate}</div>`
 
             const editButton = document.createElement("button");
             editButton.innerText = "Edit";
