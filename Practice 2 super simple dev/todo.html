@@ -9,14 +9,21 @@
 
   <link rel="stylesheet" href="styles.css" />
 
+  <header>
+    <h1>Michael's Shopping List</h1>
+  </header>
+
   <body>
     <section class="add-todo-bar">
-      <input id="todo-title" type="text" />
-      <input id="date-picker" type="date" />
-      <button onclick="addTodo()">Add Todo</button>
+      <input id="date-picker" type="date" class="add-bar-item" />
+      <input id="todo-title" type="text" class="add-bar-item" />
+      <button onclick="addTodo()" class="add-bar-item">Add Todo</button>
     </section>
 
-    <div id="todo-list" class="container"></div>
+    <div class="container">
+      <section class="sidebar">Sidebar</section>
+      <div id="todo-list" class="todo-list"></div>
+    </div>
 
     <script>
       //Model
@@ -99,6 +106,16 @@
         saveTodos();
       }
 
+      function toggleTodo(todoId, checked) {
+        todos.forEach(function (todo) {
+          if (todo.id === todoId) {
+            todo.isDone = checked;
+          }
+        });
+
+        saveTodos();
+      }
+
       const saveTodos = () => {
         localStorage.setItem("todos", JSON.stringify(todos));
       };
@@ -144,6 +161,16 @@
         render();
       }
 
+      function checkTodo(event) {
+        const checkbox = event.target;
+
+        const todoId = checkbox.dataset.todoId;
+        const checked = checkbox.checked;
+
+        toggleTodo(todoId, checked);
+        render();
+      }
+
       //View
       const render = () => {
         //reset our list
@@ -177,14 +204,23 @@
 
             const editButton = document.createElement("button");
             editButton.innerText = "Edit";
-            editButton.style = "margin-left: 12px";
             editButton.onclick = onEdit;
             editButton.dataset.todoId = todo.id;
             element.appendChild(editButton);
 
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.onchange = checkTodo;
+            checkbox.dataset.todoId = todo.id;
+            if (todo.isDone === true) {
+              checkbox.checked = true;
+            } else {
+              checkbox.checked = false;
+            }
+            element.prepend(checkbox);
+
             const deleteButton = document.createElement("button");
             deleteButton.innerText = "Delete";
-            deleteButton.style = "margin-left: 12px";
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
           }

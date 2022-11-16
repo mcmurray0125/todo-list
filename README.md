@@ -13,4 +13,4 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-Basic todo list without checkboxes.
+Need to add add-todo-bar inside container. Need to place add-todo-bar to the right of sidebar and ontop of todolist.
