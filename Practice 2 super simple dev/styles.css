@@ -9,6 +9,7 @@
 body {
   font-family: "Nanum Gothic", sans-serif;
   height: 100%;
+  background-color: rgb(159, 151, 136);
 }
 
 p {
@@ -27,6 +28,7 @@ header {
   align-items: center;
 }
 .header-container h1 {
+  font-size: 28px;
   font-weight: 500;
 }
 .header-icon {
@@ -55,20 +57,27 @@ header {
 .list-container {
   width: 100%;
   height: 500px;
-  margin-top: 10px;
-  margin-right: 12px;
   padding: 16px 24px;
   font-size: 20px;
-  /*   display: flex;
-  flex-direction: column;
-  align-items: center; */
 }
+/* Sidebar */
 .sidebar {
   height: 800px;
   width: 200px;
   z-index: 100;
   padding: 16px 0px;
+  transition: 0.2s;
 }
+
+/* List title */
+.list-title {
+  font-size: 35px;
+  font-weight: 600;
+}
+.list-title-container {
+  padding-left: 16px;
+}
+
 /* Add Todo Bar */
 
 .add-bar {
@@ -77,11 +86,10 @@ header {
   height: 50px;
   border: none;
   border-radius: 20px;
-  background-color: rgb(239, 239, 239);
-  margin-bottom: 4px;
+  background-color: rgba(239, 239, 239, 0.3);
   margin-right: 12px;
-  padding-right: 25px;
-  padding-left: 25px;
+  margin-left: 16px;
+  padding-left: 24px;
   justify-content: center;
   align-items: center;
   z-index: 1;
@@ -90,37 +98,25 @@ header {
   font-size: 20px;
   border: none;
   padding-left: 14px;
-  flex: 4;
   height: 40px;
   margin: auto;
-  margin-left: 15px;
+  margin-left: 37px;
+  width: 100%;
 }
 
 .add-bar #todo-title:focus {
   outline: none;
 }
 
-/* May not need this property */
-.add-bar-item {
-  margin: 20px;
-}
-
 .add-bar #date-picker {
-  flex: 0.3;
-  max-width: 50px;
-}
-
-.add-bar button {
-  color: white;
-  flex: 0.25;
-  height: 25px;
-  border: none;
-  border-radius: 12.5px;
-  background-color: rgb(27, 40, 46);
-  white-space: nowrap;
+  min-width: 90px;
 }
 
 /* Main Todo List */
+
+.todo-list {
+  padding-left: 16px;
+}
 .todo-item {
   height: 50px;
   margin-right: 14px;
@@ -129,6 +125,7 @@ header {
   justify-content: center;
   display: flex;
   transition: 0.15s;
+  padding-left: 24px;
 }
 
 .todo-item:hover {
@@ -138,49 +135,46 @@ header {
 
 .todo-item .todo-title {
   margin: auto;
-  flex: 2;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 100%;
+  margin-left: 13px;
 }
 
 .todo-item .todo-due-date {
   font-size: 14px;
   font-weight: 200;
   font-style: italic;
-  margin-left: 38px;
   order: -1;
-  flex: 0.18;
   line-height: 52px;
+  white-space: nowrap;
 }
 .todo-item input {
-  margin-right: 12.5px;
-  margin-left: 25px;
+  margin-left: 38px;
 }
 
 /* Editing + Updating Todos */
 .todo-item input[type="date"] {
   order: -1;
   height: 25px;
+  margin-left: 0px;
   align-self: center;
 }
 .todo-item input[type="text"] {
   font-size: 20px;
   border: none;
-  border-bottom: 1px solid green;
   padding-left: 14px;
-  flex: 2;
   height: 40px;
   margin: auto;
-  margin-right: 30px;
+  margin-right: 0px;
+  margin-left: 39px;
+  width: 100%;
 }
 .todo-item input[type="text"]:focus {
   outline: none;
 }
 
-.todo-item .update-button {
-  margin-right: 55px;
-}
 /* Buttons */
 .todo-item button,
 .add-bar button {
@@ -190,7 +184,7 @@ header {
   color: white;
   height: 25px;
   margin: 0px 12px 0px 12px;
-  width: 62px;
+  min-width: 62px;
   border: none;
   border-radius: 16px;
   background-color: rgb(25, 84, 112);
@@ -199,6 +193,13 @@ header {
   transition: 0.15s;
 }
 
+.todo-item .update-button,
+.add-bar button {
+  min-width: 62px;
+  width: 174px;
+  margin-right: 12px;
+  margin-left: 18px;
+}
 .todo-item button:hover,
 .add-bar button:hover {
   transform: scale(95%);
@@ -208,3 +209,10 @@ input[type="date"]:hover,
 .add-bar button:hover {
   cursor: pointer;
 }
+
+/* .add-bar button {
+  border: none;
+  white-space: nowrap;
+  min-width: 80px;
+  margin-right: -17px;
+} */
