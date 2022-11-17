@@ -13,4 +13,8 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-Need to add add-todo-bar inside container. Need to place add-todo-bar to the right of sidebar and ontop of todolist.
+Need to add items to sidebar.
+
+When editing a todo, the background color of that row should be grey to signify that it is being focused on.
+
+Need to fix the spacing on todo list items when resizing the window. Figure out flex properties, margin, and padding...
