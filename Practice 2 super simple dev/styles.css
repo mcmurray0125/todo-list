@@ -100,14 +100,17 @@ header {
   padding-left: 14px;
   height: 40px;
   margin: auto;
-  margin-left: 37px;
   width: 100%;
+  background: transparent;
 }
 
 .add-bar #todo-title:focus {
   outline: none;
 }
 
+.add-bar i {
+  margin-left: 20px;
+}
 .add-bar #date-picker {
   min-width: 90px;
 }
