@@ -13,8 +13,8 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-Need to add items to sidebar.
+Adding elements to sidebar.
 
-When editing a todo, the background color of that row should be grey to signify that it is being focused on.
+Need to create JS functions to create to-do list Title
 
-Need to re-style text input fields.
+Need to create JS function that creates new sidebar elements to switch between todo-lists.
