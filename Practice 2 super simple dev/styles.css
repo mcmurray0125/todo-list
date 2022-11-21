@@ -84,6 +84,7 @@ header {
   padding: 16px 0px;
   transition: 0.2s;
   box-sizing: border-box;
+  margin-left: 0px; /* -175px ot animate out of screen */
 }
 
 .new-list {
@@ -107,12 +108,52 @@ header {
   flex: auto;
   flex-direction: column;
 }
+.title-button-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.tooltip {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -22px;
+  pointer-events: none;
+  display: block;
+  z-index: 3000;
+  margin: 0;
+  font-weight: 400;
+  line-height: 0.5;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  white-space: normal;
+  line-break: auto;
+  font-size: 11px;
+  word-wrap: break-word;
+  opacity: 0%;
+  transform: scale(0%);
+  transform: skewX(-30px);
+  transition: 0.15s;
+}
+.title-button-wrapper:hover .tooltip {
+  opacity: 1;
+  transform: scale(100%);
+  transform: skewX(0px);
+  transition-delay: 0.1s;
+}
 
 .list-title-buttons {
   margin-right: 12px;
   height: 100%;
   display: flex;
-  align-self: center;
 }
 .list-title-buttons button {
   color: rgb(58, 58, 58);
@@ -121,7 +162,7 @@ header {
   border: none;
   border-radius: 24px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   background-color: transparent;
 }
 .list-title-buttons button:hover {

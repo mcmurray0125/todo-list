@@ -13,4 +13,6 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-Adding a sort function to give user the ability to sort the todo list alphabetically.
+Need to make option to toggle alphabetic sorting on and off. Need to make sub menu for sort button.
+
+Need to add functionality for collapsing the sidebar.

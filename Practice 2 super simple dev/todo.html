@@ -40,15 +40,28 @@
             <div class="list-title-caption">items in list</div>
           </div>
           <div class="list-title-buttons">
-            <button class="title-button">
-              <i class="fa-solid fa-user-plus"></i>
-            </button>
-            <button class="title-button" id="sort-button">
-              <i class="fa-solid fa-sort"></i>
-            </button>
-            <button class="title-button">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-            </button>
+            <div class="title-button-wrapper">
+              <button class="title-button" id="share-button">
+                <i class="fa-solid fa-user-plus"></i>
+              </button>
+              <div class="tooltip">Share</div>
+            </div>
+            <div class="title-button-wrapper">
+              <button
+                class="title-button"
+                id="sort-button"
+                onclick="alphabetSort();"
+              >
+                <i class="fa-solid fa-sort"></i>
+              </button>
+              <div class="tooltip">Sort</div>
+            </div>
+            <div class="title-button-wrapper">
+              <button class="title-button">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+              <div class="tooltip">More</div>
+            </div>
           </div>
         </div>
         <section class="add-bar">
@@ -235,6 +248,24 @@
         render();
       }
 
+      function alphabetSort() {
+        var mylist = document.getElementById("todo-list");
+        var divs = mylist.getElementsByTagName("div");
+        var listitems = [];
+        for (i = 0; i < divs.length; i++) {
+          listitems.push(divs.item(i));
+        }
+        listitems.sort(function (a, b) {
+          var compA = a.getAttribute("id").toUpperCase();
+          var compB = b.getAttribute("id").toUpperCase();
+          return compA < compB ? -1 : compA > compB ? 1 : 0;
+        });
+        for (i = 0; i < listitems.length; i++) {
+          mylist.appendChild(listitems[i]);
+        }
+        saveTodos();
+      }
+
       //View
       const render = () => {
         //reset our list
@@ -243,6 +274,7 @@
         todos.forEach(function (todo) {
           const element = document.createElement("div");
           element.className = "todo-item";
+          element.id = todo.title.toUpperCase().slice(0, 5);
 
           if (todo.isEditing === true) {
             const textbox = document.createElement("input");
