@@ -15,6 +15,6 @@ https://supersimple.dev/courses/javascript-beginner-course-20201
 
 Adding elements to sidebar.
 
-Need to create JS functions to create to-do list Title
+Need to create JS functions to create and add to-do list Title
 
 Need to create JS function that creates new sidebar elements to switch between todo-lists.

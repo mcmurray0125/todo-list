@@ -99,7 +99,25 @@ header {
   font-weight: 600;
 }
 .list-title-container {
+  display: flex;
   padding-left: 16px;
+}
+.list-title-text {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
+
+.list-title-buttons {
+  margin-right: 12px;
+  display: flex;
+}
+.list-title-buttons button {
+  padding: 0px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  background: transparent;
 }
 
 /* Add Todo Bar */
