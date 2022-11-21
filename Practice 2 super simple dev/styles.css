@@ -55,7 +55,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 5px;
+  margin-right: 6px;
 }
 .profile-picture img {
   border-radius: 25px;
@@ -110,14 +110,22 @@ header {
 
 .list-title-buttons {
   margin-right: 12px;
+  height: 100%;
   display: flex;
+  align-self: center;
 }
 .list-title-buttons button {
-  padding: 0px 20px;
+  color: rgb(58, 58, 58);
+  width: 48px;
+  height: 48px;
   border: none;
+  border-radius: 24px;
   cursor: pointer;
   font-size: 20px;
-  background: transparent;
+  background-color: transparent;
+}
+.list-title-buttons button:hover {
+  background-color: rgb(241, 241, 241);
 }
 
 /* Add Todo Bar */
