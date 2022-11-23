@@ -35,6 +35,7 @@ header {
   font-weight: 500;
 }
 .header-icon {
+  cursor: pointer;
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -87,6 +88,10 @@ header {
   margin-left: 0px; /* -175px ot animate out of screen */
 }
 
+.sidebar-collapsed {
+  margin-left: -175px;
+}
+
 .new-list {
   width: 100%;
   justify-content: center;
@@ -123,7 +128,7 @@ header {
   bottom: -22px;
   pointer-events: none;
   display: block;
-  z-index: 3000;
+  z-index: 2100;
   margin: 0;
   font-weight: 400;
   line-height: 0.5;
@@ -167,6 +172,34 @@ header {
 }
 .list-title-buttons button:hover {
   background-color: rgb(241, 241, 241);
+}
+
+/* Dropdown Menus */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 147px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2231;
+  bottom: -80px;
+  right: 0px;
+}
+.dropdown-content a {
+  font-size: 14px;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.dd-display {
+  display: inline-block;
 }
 
 /* Add Todo Bar */

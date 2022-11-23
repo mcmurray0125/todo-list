@@ -13,6 +13,6 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-Need to make option to toggle alphabetic sorting on and off. Need to make sub menu for sort button.
+✅ Added an option to toggle alphabetic sorting on and off. Added sub menu for sort button.
 
-Need to add functionality for collapsing the sidebar.
+✅ Added functionality for collapsing the sidebar.

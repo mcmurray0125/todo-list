@@ -15,7 +15,7 @@
   <body>
     <header>
       <div class="header-container">
-        <div class="header-icon">
+        <div class="header-icon" role="button" onclick="sidebarCollapse();">
           <i class="fa-solid fa-bars"></i>
         </div>
         <h1>Michael's To-Do List</h1>
@@ -50,17 +50,25 @@
               <button
                 class="title-button"
                 id="sort-button"
-                onclick="alphabetSort();"
+                onclick="dropdownDisplay();"
               >
                 <i class="fa-solid fa-sort"></i>
               </button>
               <div class="tooltip">Sort</div>
+              <div class="dropdown-content">
+                <a href="javascript:alphabetSort(); javascript:dropdownDisplay();">Alphabetical</a>
+                <a href="javascript:render(); javascript:dropdownDisplay();">Default</a>
+              </div>
             </div>
             <div class="title-button-wrapper">
-              <button class="title-button">
+              <button class="title-button" onclick="dropdownDisplay();" id="more-button">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div class="tooltip">More</div>
+              <div class="dropdown-content" tabindex="1">
+                <a href=>Rename List</a>
+                <a href="#">Check All</a>
+              </div>
             </div>
           </div>
         </div>
@@ -216,6 +224,12 @@
         document.querySelector(".add-bar").style.marginBottom = "0px";
       };
 
+      const dropdownDisplay = () => {
+        const dropDownShow = "dd-display";
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.classList.toggle(dropDownShow);
+      }
+
       function onEdit(event) {
         const editButton = event.target;
         const todoId = editButton.dataset.todoId;
@@ -264,6 +278,12 @@
           mylist.appendChild(listitems[i]);
         }
         saveTodos();
+      }
+
+      function sidebarCollapse() {
+        const collapsedClass = "sidebar-collapsed";
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.toggle(collapsedClass);
       }
 
       //View
