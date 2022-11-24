@@ -16,3 +16,5 @@ https://supersimple.dev/courses/javascript-beginner-course-20201
 ✅ Added an option to toggle alphabetic sorting on and off. Added sub menu for sort button.
 
 ✅ Added functionality for collapsing the sidebar.
+
+Focus on: when adding new list, create a new list and add a coresponding sidebar element for i. Also, assign a title to the todo-list. When one todo-list is being viewed, the other one is hidden. Can use a class or id to toggle between display settings.

@@ -27,7 +27,7 @@
     <div class="container">
       <section class="sidebar">
         <div class="new-list">
-          <button class="new-list-button">
+          <button class="new-list-button" onclick="revealPopup();">
             <span id="plus-icon"><i class="fa-solid fa-plus"></i></span>
             <span>&nbsp New List</span>
           </button>
@@ -56,17 +56,26 @@
               </button>
               <div class="tooltip">Sort</div>
               <div class="dropdown-content">
-                <a href="javascript:alphabetSort(); javascript:dropdownDisplay();">Alphabetical</a>
-                <a href="javascript:render(); javascript:dropdownDisplay();">Default</a>
+                <a
+                  href="javascript:alphabetSort(); javascript:dropdownDisplay();"
+                  >Alphabetical</a
+                >
+                <a href="javascript:render(); javascript:dropdownDisplay();"
+                  >Default</a
+                >
               </div>
             </div>
             <div class="title-button-wrapper">
-              <button class="title-button" onclick="dropdownDisplay();" id="more-button">
+              <button
+                class="title-button"
+                onclick="dropdownDisplay();"
+                id="more-button"
+              >
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div class="tooltip">More</div>
               <div class="dropdown-content" tabindex="1">
-                <a href=>Rename List</a>
+                <a href="#">Rename List</a>
                 <a href="#">Check All</a>
               </div>
             </div>
@@ -89,6 +98,30 @@
         </section>
         <div id="todo-list" class="todo-list"></div>
         <!-- To-do List div generates new divs from js -->
+      </div>
+      <div id="popup-field">
+        <div class="popup-container">
+          <div class="popup-box">
+            <h2>New List</h2>
+            <div class="nl-input-box">
+              <input
+                type="text"
+                placeholder="List name"
+                required
+                id="new-list-input"
+              />
+              <p class="character-count">
+                <span id="characters">0&nbsp</span> / 200
+              </p>
+            </div>
+            <div class="nl-btn-box">
+              <button class="cancel-btn" onclick="revealPopup();">
+                Cancel
+              </button>
+              <button class="create-btn">Create</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -187,6 +220,17 @@
         localStorage.setItem("todos", JSON.stringify(todos));
       };
 
+      //Pop Up Word Count
+      {
+        let textArea = document.getElementById("new-list-input");
+        let characters = document.getElementById("characters");
+
+        textArea.addEventListener("input", function () {
+          let content = this.value;
+          characters.textContent = content.length;
+        });
+      }
+
       // Controller
       const addTodo = () => {
         const textbox = document.getElementById("todo-title");
@@ -228,7 +272,7 @@
         const dropDownShow = "dd-display";
         const dropdownContent = document.querySelector(".dropdown-content");
         dropdownContent.classList.toggle(dropDownShow);
-      }
+      };
 
       function onEdit(event) {
         const editButton = event.target;
@@ -284,6 +328,10 @@
         const collapsedClass = "sidebar-collapsed";
         const sidebar = document.querySelector(".sidebar");
         sidebar.classList.toggle(collapsedClass);
+      }
+      function revealPopup() {
+        const popUp = document.getElementById("popup-field");
+        popUp.classList.toggle("reveal-popup");
       }
 
       //View

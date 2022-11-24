@@ -302,6 +302,113 @@ header {
   outline: none;
 }
 
+/* Pop Up */
+#popup-field {
+  background-color: rgba(0, 0, 0, 0);
+  z-index: -2;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.15s;
+}
+#popup-field.reveal-popup {
+  opacity: 1;
+  z-index: 3500;
+  background-color: rgba(32, 33, 36, 0.6);
+  display: flex;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  height: 100%;
+  pointer-events: none;
+  transform: none;
+  opacity: 1;
+}
+.popup-box {
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  pointer-events: auto;
+  overflow-y: auto;
+  min-width: 280px;
+  max-height: 555px;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 12px;
+  padding-left: 24px;
+}
+.nl-input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 24px;
+  width: 400px;
+  padding-top: 12px;
+  padding-bottom: 32px;
+  overflow: hidden;
+}
+
+.nl-input-box #new-list-input {
+  font-size: 1rem;
+  padding-left: 30px;
+  border: none;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  background-color: rgb(241, 241, 241);
+  outline: none;
+  transition: 0.1s;
+}
+.nl-input-box #new-list-input:focus {
+  border-bottom: 2px solid rgb(31, 26, 143);
+  margin-bottom: -1px;
+}
+.character-count {
+  padding-top: 6px;
+  padding-right: 12px;
+  display: flex;
+  align-self: flex-end;
+  font-size: 12px;
+}
+h2::before {
+  display: inline-block;
+  width: 0;
+  height: 40px;
+  content: "";
+  vertical-align: 0;
+}
+
+.nl-btn-box {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 52px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 8px;
+  padding-bottom: 14px;
+  padding-right: 20px;
+}
+
 /* Buttons */
 .todo-item button,
 .add-bar button,
