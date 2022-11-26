@@ -127,8 +127,77 @@
 
     <script>
       //Model
+      //if localstorage has a list array, then use it.
+      //otherwise, use the default array.
+
+      let lists;
+
+      //Retrieve localStorage
+      const savedLists = JSON.parse(localStorage.getItem("lists"));
+      // Check if it's an array
+      if (Array.isArray(savedLists)) {
+        lists = savedLists;
+      } else {
+        lists = [
+          {
+            title: "List 1",
+            id: "list-id1",
+          },
+        ];
+      }
+
+      const createList = (listTitle) => {
+        const listId = "" + new Date().getTime();
+
+        lists.push({
+          title: listTitle,
+          id: listId,
+        });
+        saveLists();
+      };
+      //Deletes a todo
+      const removeList = (listIdToDelete) => {
+        lists = lists.filter((list) => {
+          //If the id of this list matches listIdToDelete, return false
+          //for everything else, return true
+          if (list.id === listIdToDelete) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+
+        saveLists();
+      };
+
+      function setEditing(listId) {
+        lists.forEach(function (list) {
+          if (list.id === ListId) {
+            list.isEditing = true;
+          }
+        });
+
+        saveLists();
+      }
+
+      function updateList(listId, newListTitle) {
+        lists.forEach(function (list) {
+          if (list.id === listId) {
+            list.title = newListTitle;
+            todo.isEditing = false;
+          }
+        });
+
+        saveLists();
+      }
+
+      const saveLists = () => {
+        localStorage.setItem("lists", JSON.stringify(lists));
+      };
+
       //if localstorage has a todos array, then use it.
       //otherwise, use the default array.
+
       let todos;
 
       //Retrieve localStorage
