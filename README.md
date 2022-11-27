@@ -13,4 +13,6 @@ https://www.youtube.com/watch?v=DqaTKBU9TZk
 https://supersimple.dev/courses/javascript-beginner-course-20201
 </p>
 
-New branch for adding the ability to create a new todo list. Need to create a unique identifier for the new todo list and link it to its array set.
+Added JS function for creating todo-lists. Need to add unique IDs to the todos arrays to link them with the todo-list divs.
+
+Need to add function to the New List button to create a new todo-list div.
