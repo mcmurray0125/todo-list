@@ -137,10 +137,18 @@
         let listElement = document.createElement("div");
         listElement.innerHTML = "test"
         listElement.className = "todo-list"
-        listElement.id = list.listId;
+        listElement.id = list.id;
 
         let listContainer = document.querySelector(".list-container")
         listContainer.appendChild(listElement);
+
+        let sidebarContainer = document.querySelector(".sidebar")
+        let sidebarTab = document.createElement('div')
+        sidebarTab.className = "sb-tab"
+        sidebarTab.id = list.id
+        sidebarTab.innerText = list.title + "number of items.";
+        sidebarContainer.appendChild(sidebarTab);
+
     });
     }
     renderList();

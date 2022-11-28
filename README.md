@@ -16,3 +16,5 @@ https://supersimple.dev/courses/javascript-beginner-course-20201
 Added JS function for creating todo-lists. Need to add unique IDs to the todos arrays to link them with the todo-list divs.
 
 Need to add function to the New List button to create a new todo-list div.
+
+working on adding sidebar elements with nested divs. sidebar Tab. sidebar title. number of items.
