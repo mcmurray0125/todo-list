@@ -140,10 +140,12 @@ const savedTodos = JSON.parse(localStorage.getItem("todos"));
       };
 
       const dropdownDisplay = () => {
-        const dropDownShow = "dd-display";
+        const ddDisplay = "dd-display";
         const dropdownContent = document.querySelector(".dropdown-content");
-        dropdownContent.classList.toggle(dropDownShow);
+        dropdownContent.classList.toggle(ddDisplay);
       };
+      
+    
 
       function onEdit(event) {
         const editButton = event.target;

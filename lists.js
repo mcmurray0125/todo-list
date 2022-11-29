@@ -142,12 +142,27 @@
         let listContainer = document.querySelector(".list-container")
         listContainer.appendChild(listElement);
 
-        let sidebarContainer = document.querySelector(".sidebar")
-        let sidebarTab = document.createElement('div')
-        sidebarTab.className = "sb-tab"
-        sidebarTab.id = list.id
-        sidebarTab.innerText = list.title + "number of items.";
-        sidebarContainer.appendChild(sidebarTab);
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarTabBox = document.createElement('div');
+
+        sidebarTabBox.className = "sb-tab-box";
+        sidebarTabBox.id = list.id;
+        sidebarTabBox.setAttribute("role", "button");
+        sidebar.appendChild(sidebarTabBox);
+
+        let sidebarTabContents = document.createElement('div');
+        sidebarTabContents.className = "sb-tab-contents";
+        sidebarTabBox.appendChild(sidebarTabContents);
+
+        let sidebarTabTitle = document.createElement('div');
+        sidebarTabTitle.className = "sb-tab-title"
+        sidebarTabTitle.innerText = list.title;
+        sidebarTabContents.appendChild(sidebarTabTitle);
+        
+        let sidebarTabItemCount = document.createElement('div');
+        sidebarTabItemCount.className = "sb-tab-item-count"
+        sidebarTabItemCount.innerText = "# of items";
+        sidebarTabContents.appendChild(sidebarTabItemCount);
 
     });
     }

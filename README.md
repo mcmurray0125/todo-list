@@ -18,3 +18,5 @@ Added JS function for creating todo-lists. Need to add unique IDs to the todos a
 Need to add function to the New List button to create a new todo-list div.
 
 working on adding sidebar elements with nested divs. sidebar Tab. sidebar title. number of items.
+
+Need to fix the tile buttons and their sub-menus so that they display the correct sub-menus.

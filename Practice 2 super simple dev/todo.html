@@ -65,7 +65,7 @@
                 >
               </div>
             </div>
-            <div class="title-button-wrapper">
+            <div class="title-button-wrapper" id="more">
               <button
                 class="title-button"
                 onclick="dropdownDisplay();"
@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div class="tooltip">More</div>
-              <div class="dropdown-content" tabindex="1">
+              <div class="dropdown-content" tabindex="1" id="more">
                 <a href="#">Rename List</a>
                 <a href="#">Check All</a>
               </div>
@@ -118,7 +118,9 @@
               <button class="cancel-btn" onclick="revealPopup();">
                 Cancel
               </button>
-              <button class="create-btn">Create</button>
+              <button class="create-btn" onclick="addList();revealPopup();">
+                Create
+              </button>
             </div>
           </div>
         </div>
