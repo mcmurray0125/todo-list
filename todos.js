@@ -139,13 +139,17 @@ const savedTodos = JSON.parse(localStorage.getItem("todos"));
         document.querySelector(".add-bar").style.marginBottom = "0px";
       };
 
-      const dropdownDisplay = () => {
-        const ddDisplay = "dd-display";
-        const dropdownContent = document.querySelector(".dropdown-content");
-        dropdownContent.classList.toggle(ddDisplay);
-      };
-      
-    
+
+      //Drop Down Sub Menu Displays      
+      const moreButton = document.getElementById("more-button")
+      const moreDropDown = document.getElementById("more-dropdown")
+
+      moreButton.addEventListener("click", function(){moreDropDown.classList.toggle("dd-display")})
+
+      const sortButton = document.getElementById("sort-button")
+      const sortDropDown = document.getElementById("sort-dropdown")
+
+      sortButton.addEventListener("click", function(){sortDropDown.classList.toggle("dd-display")})
 
       function onEdit(event) {
         const editButton = event.target;

@@ -185,6 +185,9 @@ header {
   bottom: -80px;
   right: 0px;
 }
+#more-dropdown {
+  bottom: -120px;
+}
 .dropdown-content a {
   font-size: 14px;
   color: black;

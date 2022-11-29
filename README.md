@@ -15,8 +15,8 @@ https://supersimple.dev/courses/javascript-beginner-course-20201
 
 Added JS function for creating todo-lists. Need to add unique IDs to the todos arrays to link them with the todo-list divs.
 
+Fixed Drop Down Menus.
+
 Need to add function to the New List button to create a new todo-list div.
 
-working on adding sidebar elements with nested divs. sidebar Tab. sidebar title. number of items.
-
-Need to fix the tile buttons and their sub-menus so that they display the correct sub-menus.
+Working on setting an active todo-list to be displayed. All todo-lists without the active class are display=none.

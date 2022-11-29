@@ -46,16 +46,12 @@
               </button>
               <div class="tooltip">Share</div>
             </div>
-            <div class="title-button-wrapper">
-              <button
-                class="title-button"
-                id="sort-button"
-                onclick="dropdownDisplay();"
-              >
+            <div class="title-button-wrapper" id="sort-button">
+              <button class="title-button" id="sort-button">
                 <i class="fa-solid fa-sort"></i>
               </button>
               <div class="tooltip">Sort</div>
-              <div class="dropdown-content">
+              <div class="dropdown-content" id="sort-dropdown">
                 <a
                   href="javascript:alphabetSort(); javascript:dropdownDisplay();"
                   >Alphabetical</a
@@ -65,17 +61,14 @@
                 >
               </div>
             </div>
-            <div class="title-button-wrapper" id="more">
-              <button
-                class="title-button"
-                onclick="dropdownDisplay();"
-                id="more-button"
-              >
+            <div class="title-button-wrapper" id="more-button">
+              <button class="title-button" id="more-button">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div class="tooltip">More</div>
-              <div class="dropdown-content" tabindex="1" id="more">
+              <div class="dropdown-content" tabindex="1" id="more-dropdown">
                 <a href="#">Rename List</a>
+                <a href="#">Delete List</a>
                 <a href="#">Check All</a>
               </div>
             </div>
