@@ -1,31 +1,33 @@
+let noTodoMessage = () => {
+  let listContainer = document.querySelector(".list-container");
+  let noTodoContainer = document.createElement('div');
+  noTodoContainer.className = "no-todo-container"
+  let noTodoText = document.createElement('div');
+  noTodoText.className = "no-todo-text"
+  noTodoText.innerText = "There are no todos here"
+  let noTodoImage = document.createElement('img');
+  noTodoImage.className = "no-todo-img"
+  noTodoImage.src = "/Practice 2 super simple dev/images/cat_box_image.svg" 
+
+  noTodoContainer.appendChild(noTodoImage);
+  noTodoContainer.appendChild(noTodoText);
+  listContainer.appendChild(noTodoContainer)  
+}
+
+
 let todos;
 
 //Retrieve localStorage
-const savedTodos = JSON.parse(localStorage.getItem("todos"));
+      const savedTodos = JSON.parse(localStorage.getItem("todos"));
 // Check if it's an array
 //if localstorage has a todos array, then use it.
 //otherwise, use the default array.
       if (Array.isArray(savedTodos)) {
         todos = savedTodos;
-      } else {
-        todos = [
-          {
-            title: "Get groceries",
-            dueDate: "2021-10-04",
-            id: "id1",
-          },
-          {
-            title: "Wash car",
-            dueDate: "2021-02-03",
-            id: "id2",
-          },
-          {
-            title: "Make dinner",
-            dueDate: "2021-03-04",
-            id: "id3",
-          },
-        ];
       }
+      else {
+        todos = [];
+      };
 
       //Creates a todo
       const createTodo = (title, dueDate) => {
@@ -111,12 +113,14 @@ const savedTodos = JSON.parse(localStorage.getItem("todos"));
         const dueDate = datePicker.value;
 
         createTodo(title, dueDate);
+        refresh();
         render();
       };
 
       const onDelete = (todoToDelete) => {
         return () => {
           removeTodo(todoToDelete.id);
+          refresh();
           render();
         };
       };
@@ -268,6 +272,7 @@ const savedTodos = JSON.parse(localStorage.getItem("todos"));
             deleteButton.className = "delete-button";
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
+            
           }
 
           const todoList = document.querySelector(".todo-list");
@@ -275,4 +280,8 @@ const savedTodos = JSON.parse(localStorage.getItem("todos"));
         });
       };
 
+      if ((todos.length == 0) && (lists.length != 0)) {
+        noTodoMessage();
+      }
+      
       render();

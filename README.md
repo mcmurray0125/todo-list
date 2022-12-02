@@ -15,8 +15,9 @@ https://supersimple.dev/courses/javascript-beginner-course-20201
 
 Added JS function for creating todo-lists. Need to add unique IDs to the todos arrays to link them with the todo-list divs.
 
-Fixed Drop Down Menus.
+Added function for New List button to create new todo list.
 
-Need to add function to the New List button to create a new todo-list div.
+Current Task: Convert sidebar elements to radio buttons to allow user to select an active todo-list.
+When radio button is selected, that todo-list becomes active, and then new todos are appended to that active todo-list.
 
-Working on setting an active todo-list to be displayed. All todo-lists without the active class are display=none.
+Additional functions like deleting all todos and renaming the todo-list can be applied to the active todo-list.

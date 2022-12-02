@@ -87,7 +87,18 @@ header {
   box-sizing: border-box;
   margin-left: 0px; /* -175px ot animate out of screen */
 }
-
+.sb-tab-box {
+  display: flex;
+  height: 58px;
+  cursor: pointer;
+  padding-left: 14px;
+}
+.sb-tab-contents {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25rem;
+}
 .sidebar-collapsed {
   margin-left: -175px;
 }
@@ -97,6 +108,43 @@ header {
   justify-content: center;
   height: 60px;
   margin: 0px 12px 12px;
+}
+
+/* No List Screen */
+.no-list-container {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.no-list-img {
+  padding-top: 140px;
+  margin-bottom: 2.5rem;
+  max-width: 115px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+
+/* No Todo Screen */
+.no-todo-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 178px;
+  left: 121px;
+}
+.no-todo-img {
+  padding-top: 120px;
+  margin-bottom: 2.5rem;
+  max-width: 115px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
 }
 
 /* List title */

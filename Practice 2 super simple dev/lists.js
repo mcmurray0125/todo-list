@@ -1,3 +1,41 @@
+      const noListMessage = () => {
+      let listContainer = document.querySelector(".list-container");
+      let noListContainer = document.createElement('div');
+      noListContainer.className = "no-list-container"
+      let noListText = document.createElement('div');
+      noListText.className = "no-list-text"
+      noListText.innerText = "There are no lists here"
+      let noListImage = document.createElement('img');
+      noListImage.className = "no-list-img"
+      noListImage.src = "/Practice 2 super simple dev/images/clipboard_image.png"
+
+      let listTitleContainer = document.querySelector('.list-title-container');
+      let addBar = document.querySelector('.add-bar');
+      
+      listTitleContainer.style = "display: none"
+      addBar.style = "display: none"
+      noListContainer.appendChild(noListImage);
+      noListContainer.appendChild(noListText);
+      listContainer.appendChild(noListContainer)
+    }
+
+    let noTodosMessage = () => {
+      let listContainer = document.querySelector(".list-container");
+      let noTodoContainer = document.createElement('div');
+      noTodoContainer.className = "no-todo-container"
+      let noTodoText = document.createElement('div');
+      noTodoText.className = "no-todo-text"
+      noTodoText.innerText = "There are no todos here"
+      let noTodoImage = document.createElement('img');
+      noTodoImage.className = "no-todo-img"
+      noTodoImage.src = "/Practice 2 super simple dev/images/cat_box_image.svg" 
+    
+      noTodoContainer.appendChild(noTodoImage);
+      noTodoContainer.appendChild(noTodoText);
+      listContainer.appendChild(noTodoContainer)  
+    }
+
+
       //Model
       //if localstorage has a list array, then use it.
       //otherwise, use the default array.
@@ -11,24 +49,42 @@
         lists = savedLists;
       } else {
         lists = [
-          {
+          /* {
             title: "List 1",
             id: "list-id1",
-          },
+          }, */
         ];
+        noListMessage();
       }
 
-
+      
+      const displayTitleElements = () => {
+        let listTitleContainer = document.querySelector('.list-title-container');
+        let addBar = document.querySelector('.add-bar');
+        
+        listTitleContainer.style = "display: flex"
+        addBar.style = "display: flex"
+        /* noListContainer.appendChild(noListImage);
+        noListContainer.appendChild(noListText);
+        listContainer.appendChild(noListContainer) */
+      }
+      
       //Creates a todo-list
       const createList = (listTitle) => {
         const listId = "" + new Date().getTime();
-
+        
         lists.push({
           title: listTitle,
           id: listId,
         });
         saveLists();
+        refresh();
       };
+      
+      const refresh = () => {
+        window.location.reload()
+      }
+      
       //Deletes a list
       const removeList = (listIdToDelete) => {
         lists = lists.filter((list) => {
@@ -43,6 +99,8 @@
 
         saveLists();
       };
+
+      /* function setActive() */
 
       function setEditing(listId) {
         lists.forEach(function (list) {
@@ -135,11 +193,10 @@
     const renderList = () => { 
     lists.forEach(function (list) {
         let listElement = document.createElement("div");
-        listElement.innerHTML = "test"
         listElement.className = "todo-list"
         listElement.id = list.id;
 
-        let listContainer = document.querySelector(".list-container")
+        let listContainer = document.querySelector(".list-container");
         listContainer.appendChild(listElement);
 
         let sidebar = document.querySelector(".sidebar");
