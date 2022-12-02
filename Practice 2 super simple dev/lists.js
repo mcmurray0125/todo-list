@@ -100,7 +100,6 @@
         saveLists();
       };
 
-      /* function setActive() */
 
       function setEditing(listId) {
         lists.forEach(function (list) {
@@ -143,6 +142,16 @@
         };
     };
 
+    //Set active List//
+    $(function(){
+      $('.sidebar .sb-tab-box').click(function(){
+        $(this).parent().find('.sb-tab-box').removeClass('active');
+        $(this).addClass('active');
+        console.log($('.sb-tab-box.active').attr('id'));
+      })
+    })  
+
+
     /* Need new edit list event target */
 
     /* function onEditList(event) {
@@ -173,22 +182,12 @@
     function addTodoList() {
         const newList = document.createElement("div.todo-list");
     } */
+    
+    //Default Active Class on Load//
+    window.onload = function() {
+      document.getElementsByClassName('sb-tab-box')[0].classList.add('active');
+    };
 
-
-    /* document.getElementById("todo-list").innerHTML = ""; */
-
-    /* const renderList = () => { 
-    lists.forEach(function (list) {
-        let listElement = document.createElement("div");
-        listElement.innerHTML = "test"
-        listElement.className = "todo-list"
-        listElement.id = list.listId;
-
-        let listContainer = document.querySelector(".list-container")
-        listContainer.appendChild(listElement);
-    });
-    }
-    renderList(); */
 
     const renderList = () => { 
     lists.forEach(function (list) {
@@ -220,7 +219,8 @@
         sidebarTabItemCount.className = "sb-tab-item-count"
         sidebarTabItemCount.innerText = "# of items";
         sidebarTabContents.appendChild(sidebarTabItemCount);
-
-    });
+        
+      });
     }
     renderList();
+
