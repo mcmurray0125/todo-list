@@ -21,3 +21,5 @@ Current Task: Convert sidebar elements to radio buttons to allow user to select 
 When radio button is selected, that todo-list becomes active, and then new todos are appended to that active todo-list.
 
 Additional functions like deleting all todos and renaming the todo-list can be applied to the active todo-list.
+
+Current: Organizing jQuery, editing refresh functions, edit 'no List and no Todos messages'.

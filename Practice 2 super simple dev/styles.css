@@ -303,6 +303,11 @@ header {
 /* Main Todo List */
 
 .todo-list {
+  display: none;
+  padding-left: 16px;
+}
+.todo-list.active {
+  display: block;
   padding-left: 16px;
 }
 .todo-item {

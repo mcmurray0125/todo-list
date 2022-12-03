@@ -120,7 +120,6 @@ let todos;
       const onDelete = (todoToDelete) => {
         return () => {
           removeTodo(todoToDelete.id);
-          refresh();
           render();
         };
       };
@@ -274,14 +273,25 @@ let todos;
             element.appendChild(deleteButton);
             
           }
+          
 
-          const todoList = document.querySelector(".todo-list");
-          todoList.appendChild(element);
+          $(document).ready(function(){
+            let todoList = $(".list-container").find(".todo-list.active")
+          todoList.append(element);          
+          }); 
+
+          /* let todoList = document.querySelector(".todo-list");
+          todoList.appendChild(element); */
         });
       };
 
-      if ((todos.length == 0) && (lists.length != 0)) {
+/*       if ((todos.length == 0) && (lists.length != 0)) {
         noTodoMessage();
       }
-      
+       */
       render();
+      
+      $(function () {
+        let activeList = $('.todo-list.active');
+        console.log(activeList.children().length)
+      })

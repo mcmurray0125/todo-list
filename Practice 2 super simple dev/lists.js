@@ -142,74 +142,69 @@
         };
     };
 
-    //Set active List//
-    $(function(){
-      $('.sidebar .sb-tab-box').click(function(){
-        $(this).parent().find('.sb-tab-box').removeClass('active');
-        $(this).addClass('active');
-        console.log($('.sb-tab-box.active').attr('id'));
-      })
-    })  
-
-
+    
+    
+    
+    
     /* Need new edit list event target */
-
+    
     /* function onEditList(event) {
-        const editButton = event.target;
-        const listId = editButton.dataset.listId;
-
-        setEditing(listId);
-        render();
+      const editButton = event.target;
+      const listId = editButton.dataset.listId;
+      
+      setEditing(listId);
+      render();
     } */
-
+    
     /* Need new save button after entering new list title. */
-
+    
     /* function onUpdateList(event) {
-        const updateButton = event.target;
-        const todoId = updateButton.dataset.todoId;
-
-        const textbox = document.getElementById("edit-title-" + todoId);
-        const newTitle = textbox.value;
-
-        updateTodo(todoId, newTitle, newDate);
-        render();
+      const updateButton = event.target;
+      const todoId = updateButton.dataset.todoId;
+      
+      const textbox = document.getElementById("edit-title-" + todoId);
+      const newTitle = textbox.value;
+      
+      updateTodo(todoId, newTitle, newDate);
+      render();
     } */
-
+    
     //View
-
+    
     /* document.body.onload = addTodoList;
-
+    
     function addTodoList() {
-        const newList = document.createElement("div.todo-list");
+      const newList = document.createElement("div.todo-list");
     } */
     
     //Default Active Class on Load//
     window.onload = function() {
       document.getElementsByClassName('sb-tab-box')[0].classList.add('active');
+      document.getElementsByClassName('todo-list')[0].classList.add('active');
     };
-
-
+    
+    
     const renderList = () => { 
-    lists.forEach(function (list) {
+      lists.forEach(function (list) {
         let listElement = document.createElement("div");
         listElement.className = "todo-list"
         listElement.id = list.id;
-
+        
         let listContainer = document.querySelector(".list-container");
         listContainer.appendChild(listElement);
-
+        
         let sidebar = document.querySelector(".sidebar");
         let sidebarTabBox = document.createElement('div');
-
+        
         sidebarTabBox.className = "sb-tab-box";
         sidebarTabBox.id = list.id;
         sidebarTabBox.setAttribute("role", "button");
         sidebar.appendChild(sidebarTabBox);
-
+        
         let sidebarTabContents = document.createElement('div');
         sidebarTabContents.className = "sb-tab-contents";
         sidebarTabBox.appendChild(sidebarTabContents);
-
+        
         let sidebarTabTitle = document.createElement('div');
         sidebarTabTitle.className = "sb-tab-title"
         sidebarTabTitle.innerText = list.title;
@@ -223,4 +218,25 @@
       });
     }
     renderList();
+    /* noTodosMessage(); */
+    
+    //jQuery//
+    $(function() {
+      //Set Active Side Bar//
+      $('.sidebar .sb-tab-box').click(function(){
+        $(this).parent().find('.sb-tab-box').removeClass('active');
+        $(this).addClass('active');
+
+        const activeSideBar = $('.sb-tab-box.active').attr('id');
+        $('.list-container').find('.todo-list').removeClass('active');
+        $(".list-container").find("#" + activeSideBar).addClass('active');
+      })
+
+        if ( $('.todo-list.active').children().length < 1 ) {
+          $('.no-todo-container').css("display", "flex");
+        } else {
+          $('.no-todo-container').css("display", "none");
+        }
+      })  
+    
 
