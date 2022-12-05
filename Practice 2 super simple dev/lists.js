@@ -100,15 +100,6 @@
         saveLists();
       };
 
-      function setEditing(listId) {
-        lists.forEach(function (list) {
-          if (list.id === listId) {
-            list.isEditing = true;
-          }
-        });
-
-        saveLists();
-      }
 
       function setActive(listIdA) {
         lists.forEach(function (list) {
@@ -154,8 +145,9 @@
     };
 
     
-    function onEditList(event) {
-      const sidebarTabBox = event.target;
+    function onActiveList(event) {
+      let sidebarTabBox = document.querySelector(".sb-tab-box");
+      sidebarTabBox = event.target;
       const listIdA = sidebarTabBox.dataset.listIdA;
       
       setActive(listIdA);
@@ -196,10 +188,10 @@
     } */
     
     //Default Active Class on Load//
-    window.onload = function() {
+/*     window.onload = function() {
       document.getElementsByClassName('sb-tab-box')[0].classList.add('active');
       document.getElementsByClassName('todo-list')[0].classList.add('active');
-    };
+    }; */
     
     
     const renderList = () => { 
@@ -236,12 +228,40 @@
         
       });
     }
+
     renderList();
     /* noTodosMessage(); */
 
+      
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //jQuery//
-    $(function() {
+/*     $(function() {
       //Set Active Side Bar//
       $('.sidebar .sb-tab-box').click(function(){
         $(this).parent().find('.sb-tab-box').removeClass('active');
@@ -265,7 +285,7 @@
           console.log("hello");
         }  
 
-      })      
+      })      */ 
       
 
       

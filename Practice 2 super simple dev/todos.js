@@ -273,13 +273,8 @@ let todos;
             element.appendChild(deleteButton);
           }
           
-          $(document).ready(function(){
-              if (($('.sb-tab-box.active').attr('id')) == ($('.todo-list.active').attr('id')) ) {
-                $('.todo-list').append(element);
-              }
-          });
-          /* let todoList = document.querySelector(".todo-list");
-          todoList.appendChild(element); */
+          let todoList = document.querySelector(".todo-list");
+          todoList.appendChild(element);
          
           
         });
@@ -288,7 +283,7 @@ let todos;
       render();
       
       $(function() {
-        let activeListCount = $('.todo-list.active').children().length;
+        let activeListCount = $('.todo-list').children().length;
         console.log(activeListCount);
       }) 
       
