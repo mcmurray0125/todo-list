@@ -24,9 +24,9 @@ let todos;
 //otherwise, use the default array.
       if (Array.isArray(savedTodos)) {
         todos = savedTodos;
-      }
-      else {
+      } else {
         todos = [];
+        noTodoMessage();
       };
 
       //Creates a todo
@@ -271,27 +271,24 @@ let todos;
             deleteButton.className = "delete-button";
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
-            
           }
           
-
           $(document).ready(function(){
-            let todoList = $(".list-container").find(".todo-list.active")
-          todoList.append(element);          
-          }); 
-
+              if (($('.sb-tab-box.active').attr('id')) == ($('.todo-list.active').attr('id')) ) {
+                $('.todo-list').append(element);
+              }
+          });
           /* let todoList = document.querySelector(".todo-list");
           todoList.appendChild(element); */
+         
+          
         });
       };
-
-/*       if ((todos.length == 0) && (lists.length != 0)) {
-        noTodoMessage();
-      }
-       */
+      
       render();
       
-      $(function () {
-        let activeList = $('.todo-list.active');
-        console.log(activeList.children().length)
-      })
+      $(function() {
+        let activeListCount = $('.todo-list.active').children().length;
+        console.log(activeListCount);
+      }) 
+      

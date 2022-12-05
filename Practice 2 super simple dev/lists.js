@@ -12,8 +12,8 @@
       let listTitleContainer = document.querySelector('.list-title-container');
       let addBar = document.querySelector('.add-bar');
       
-      listTitleContainer.style = "display: none"
-      addBar.style = "display: none"
+      listTitleContainer.style = "display: none";
+      addBar.style = "display: none";
       noListContainer.appendChild(noListImage);
       noListContainer.appendChild(noListText);
       listContainer.appendChild(noListContainer)
@@ -100,7 +100,6 @@
         saveLists();
       };
 
-
       function setEditing(listId) {
         lists.forEach(function (list) {
           if (list.id === listId) {
@@ -111,6 +110,18 @@
         saveLists();
       }
 
+      function setActive(listIdA) {
+        lists.forEach(function (list) {
+          if (list.id === listIdA) {
+            list.isActive = true;
+            console.log("hello fremont");
+          }
+        });
+
+        saveLists();
+      }
+
+      
       function updateList(listId, newListTitle) {
         lists.forEach(function (list) {
           if (list.id === listId) {
@@ -143,6 +154,13 @@
     };
 
     
+    function onEditList(event) {
+      const sidebarTabBox = event.target;
+      const listIdA = sidebarTabBox.dataset.listIdA;
+      
+      setActive(listIdA);
+      renderList();
+    }
     
     
     
@@ -194,10 +212,11 @@
         listContainer.appendChild(listElement);
         
         let sidebar = document.querySelector(".sidebar");
+
         let sidebarTabBox = document.createElement('div');
-        
-        sidebarTabBox.className = "sb-tab-box";
         sidebarTabBox.id = list.id;
+        sidebarTabBox.dataset.listIdA = list.id;
+        sidebarTabBox.className = "sb-tab-box";
         sidebarTabBox.setAttribute("role", "button");
         sidebar.appendChild(sidebarTabBox);
         
@@ -219,6 +238,7 @@
     }
     renderList();
     /* noTodosMessage(); */
+
     
     //jQuery//
     $(function() {
@@ -234,9 +254,31 @@
 
         if ( $('.todo-list.active').children().length < 1 ) {
           $('.no-todo-container').css("display", "flex");
+          console.log("no children in list")
         } else {
           $('.no-todo-container').css("display", "none");
+          console.log("there's childern here");
         }
-      })  
-    
 
+        let test = $('.sidebar').children().length;
+        if (test < 4 ) {
+          console.log("hello");
+        }  
+
+      })      
+      
+
+      
+      
+      //Refreshes Page when todo-list are empty//
+      /* $(function () {
+        let addTodoBtn = document.getElementById("add-todo-btn");
+        
+        addTodoBtn.addEventListener("click", function () {
+          if ($('.todo-list.active').children().length < 1) {
+            alert("im small");
+          } else {
+            alert("i'm big")
+          }
+        });
+      }) */
