@@ -1,16 +1,16 @@
       const noListMessage = () => {
-      let listContainer = document.querySelector(".list-container");
-      let noListContainer = document.createElement('div');
+      const listContainer = document.getElementById("list-container");
+      const noListContainer = document.createElement('div');
       noListContainer.className = "no-list-container"
-      let noListText = document.createElement('div');
+      const noListText = document.createElement('div');
       noListText.className = "no-list-text"
       noListText.innerText = "There are no lists here"
-      let noListImage = document.createElement('img');
+      const noListImage = document.createElement('img');
       noListImage.className = "no-list-img"
       noListImage.src = "/Practice 2 super simple dev/images/clipboard_image.png"
 
-      let listTitleContainer = document.querySelector('.list-title-container');
-      let addBar = document.querySelector('.add-bar');
+      let listTitleContainer = document.getElementById('list-title-container');
+      let addBar = document.getElementById('add-bar');
       
       listTitleContainer.style = "display: none";
       addBar.style = "display: none";
@@ -20,7 +20,7 @@
     }
 
     let noTodosMessage = () => {
-      let listContainer = document.querySelector(".list-container");
+      const listContainer = document.getElementById("list-container");
       let noTodoContainer = document.createElement('div');
       noTodoContainer.className = "no-todo-container"
       let noTodoText = document.createElement('div');
@@ -196,32 +196,32 @@
     
     const renderList = () => { 
       lists.forEach(function (list) {
-        let listElement = document.createElement("div");
+        const listElement = document.createElement("div");
         listElement.className = "todo-list"
         listElement.id = list.id;
         
-        let listContainer = document.querySelector(".list-container");
+        const listContainer = document.getElementById("list-container");
         listContainer.appendChild(listElement);
         
-        let sidebar = document.querySelector(".sidebar");
+        const sidebar = document.getElementById("sidebar");
 
-        let sidebarTabBox = document.createElement('div');
+        const sidebarTabBox = document.createElement('div');
         sidebarTabBox.id = list.id;
         sidebarTabBox.dataset.listIdA = list.id;
         sidebarTabBox.className = "sb-tab-box";
         sidebarTabBox.setAttribute("role", "button");
         sidebar.appendChild(sidebarTabBox);
         
-        let sidebarTabContents = document.createElement('div');
+        const sidebarTabContents = document.createElement('div');
         sidebarTabContents.className = "sb-tab-contents";
         sidebarTabBox.appendChild(sidebarTabContents);
         
-        let sidebarTabTitle = document.createElement('div');
+        const sidebarTabTitle = document.createElement('div');
         sidebarTabTitle.className = "sb-tab-title"
         sidebarTabTitle.innerText = list.title;
         sidebarTabContents.appendChild(sidebarTabTitle);
         
-        let sidebarTabItemCount = document.createElement('div');
+        const sidebarTabItemCount = document.createElement('div');
         sidebarTabItemCount.className = "sb-tab-item-count"
         sidebarTabItemCount.innerText = "# of items";
         sidebarTabContents.appendChild(sidebarTabItemCount);
@@ -230,7 +230,7 @@
     }
 
     renderList();
-    /* noTodosMessage(); */
+
 
       
     

@@ -22,4 +22,6 @@ When radio button is selected, that todo-list becomes active, and then new todos
 
 Additional functions like deleting all todos and renaming the todo-list can be applied to the active todo-list.
 
-Current: Organizing jQuery, editing refresh functions, edit 'no List and no Todos messages'.
+Current: finding better way to toggle active status on Todo-List and Sidebar Elements.
+
+Sidebar elements could be radio buttons to toggle is active status

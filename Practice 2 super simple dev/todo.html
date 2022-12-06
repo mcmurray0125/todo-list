@@ -25,7 +25,7 @@
       </figure>
     </header>
     <div class="container">
-      <section class="sidebar">
+      <section class="sidebar" id="sidebar">
         <div class="new-list">
           <button class="new-list-button" onclick="revealPopup();">
             <span id="plus-icon"><i class="fa-solid fa-plus"></i></span>
@@ -33,8 +33,8 @@
           </button>
         </div>
       </section>
-      <div class="list-container">
-        <div class="list-title-container">
+      <div class="list-container" id="list-container">
+        <div class="list-title-container" id="list-title-container">
           <div class="list-title-text">
             <div class="list-title">Grocery List</div>
             <div class="list-title-caption">items in list</div>
@@ -74,7 +74,7 @@
             </div>
           </div>
         </div>
-        <section class="add-bar">
+        <section class="add-bar" id="add-bar">
           <input id="date-picker" type="date" class="add-bar-item" />
           <i class="fa-solid fa-plus"></i>
           <input

@@ -1,11 +1,11 @@
-let noTodoMessage = () => {
-  let listContainer = document.querySelector(".list-container");
-  let noTodoContainer = document.createElement('div');
+const noTodoMessage = () => {
+  const listContainer = document.getElementById("list-container");
+  const noTodoContainer = document.createElement('div');
   noTodoContainer.className = "no-todo-container"
-  let noTodoText = document.createElement('div');
+  const noTodoText = document.createElement('div');
   noTodoText.className = "no-todo-text"
   noTodoText.innerText = "There are no todos here"
-  let noTodoImage = document.createElement('img');
+  const noTodoImage = document.createElement('img');
   noTodoImage.className = "no-todo-img"
   noTodoImage.src = "/Practice 2 super simple dev/images/cat_box_image.svg" 
 
@@ -95,8 +95,8 @@ let todos;
 
       //Character Count in Pop Up Dialog
       {
-        let textArea = document.getElementById("new-list-input");
-        let characters = document.getElementById("characters");
+        const textArea = document.getElementById("new-list-input");
+        const characters = document.getElementById("characters");
 
         textArea.addEventListener("input", function () {
           let content = this.value;
@@ -132,14 +132,16 @@ let todos;
       };
       //Add Item underline animation
       const focusLine = () => {
-        document.querySelector(".add-bar").style.marginBottom = "-1px";
-        document.querySelector(".add-bar").style.borderBottom =
-          "2px solid rgb(73, 64, 163)";
+        let addBar = document.getElementById("add-bar");
+        addBar.style.marginBottom = "-1px";
+        addBar.style.borderBottom = "2px solid rgb(73, 64, 163)";
       };
+      
       const focusoutLine = () => {
-        document.querySelector(".add-bar").style.borderBottom =
+        let addBar = document.getElementById("add-bar");
+        addBar.style.borderBottom =
           "1px solid rgb(128, 128, 128)";
-        document.querySelector(".add-bar").style.marginBottom = "0px";
+        addBar.style.marginBottom = "0px";
       };
 
 
@@ -206,7 +208,7 @@ let todos;
 
       function sidebarCollapse() {
         const collapsedClass = "sidebar-collapsed";
-        const sidebar = document.querySelector(".sidebar");
+        const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle(collapsedClass);
       }
       function revealPopup() {
@@ -273,7 +275,7 @@ let todos;
             element.appendChild(deleteButton);
           }
           
-          let todoList = document.querySelector(".todo-list");
+          const todoList = document.querySelector(".todo-list");
           todoList.appendChild(element);
          
           
@@ -283,7 +285,7 @@ let todos;
       render();
       
       $(function() {
-        let activeListCount = $('.todo-list').children().length;
+        const activeListCount = $('.todo-list').children().length;
         console.log(activeListCount);
       }) 
       
