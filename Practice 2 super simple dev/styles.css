@@ -78,6 +78,7 @@ header {
 }
 /* Sidebar */
 .sidebar {
+  font-family: "Nanum Gothic", sans-serif;
   display: flex;
   flex-direction: column;
   height: 800px;
@@ -86,6 +87,13 @@ header {
   transition: 0.2s;
   box-sizing: border-box;
   margin-left: 0px; /* -175px ot animate out of screen */
+}
+.sb-input {
+  display: none;
+}
+.sb-input:checked + .sb-tab-box {
+  background-color: rgb(241, 241, 241);
+  font-weight: 600;
 }
 .sb-tab-box {
   display: flex;
@@ -107,12 +115,7 @@ header {
 .sidebar-collapsed {
   margin-left: -175px;
 }
-.sb-tab-box.active {
-  background-color: rgb(241, 241, 241);
-}
-.active .sb-tab-title {
-  font-weight: 600;
-}
+
 .new-list {
   width: 100%;
   justify-content: center;

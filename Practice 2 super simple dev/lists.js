@@ -100,18 +100,6 @@
         saveLists();
       };
 
-
-      function setActive(listIdA) {
-        lists.forEach(function (list) {
-          if (list.id === listIdA) {
-            list.isActive = true;
-            console.log("hello fremont");
-          }
-        });
-
-        saveLists();
-      }
-
       
       function updateList(listId, newListTitle) {
         lists.forEach(function (list) {
@@ -145,16 +133,7 @@
     };
 
     
-    function onActiveList(event) {
-      let sidebarTabBox = document.querySelector(".sb-tab-box");
-      sidebarTabBox = event.target;
-      const listIdA = sidebarTabBox.dataset.listIdA;
-      
-      setActive(listIdA);
-      renderList();
-    }
-    
-    
+
     
     /* Need new edit list event target */
     
@@ -181,17 +160,6 @@
     
     //View
     
-    /* document.body.onload = addTodoList;
-    
-    function addTodoList() {
-      const newList = document.createElement("div.todo-list");
-    } */
-    
-    //Default Active Class on Load//
-/*     window.onload = function() {
-      document.getElementsByClassName('sb-tab-box')[0].classList.add('active');
-      document.getElementsByClassName('todo-list')[0].classList.add('active');
-    }; */
     
     
     const renderList = () => { 
@@ -202,26 +170,34 @@
         
         const listContainer = document.getElementById("list-container");
         listContainer.appendChild(listElement);
-        
-        const sidebar = document.getElementById("sidebar");
+      
 
-        const sidebarTabBox = document.createElement('div');
+
+        const sbRadio = document.getElementById("radio");
+
+        const SbInput = document.createElement("input");
+        SbInput.className = "sb-input";
+        SbInput.type = "radio";
+        SbInput.name = "sbRadio"
+        SbInput.id = list.id; 
+        sbRadio.appendChild(SbInput);
+
+        const sidebarTabBox = document.createElement('label');
         sidebarTabBox.id = list.id;
-        sidebarTabBox.dataset.listIdA = list.id;
+        sidebarTabBox.htmlFor = list.id;
         sidebarTabBox.className = "sb-tab-box";
-        sidebarTabBox.setAttribute("role", "button");
-        sidebar.appendChild(sidebarTabBox);
+        sbRadio.appendChild(sidebarTabBox);
         
         const sidebarTabContents = document.createElement('div');
         sidebarTabContents.className = "sb-tab-contents";
         sidebarTabBox.appendChild(sidebarTabContents);
         
-        const sidebarTabTitle = document.createElement('div');
+        let sidebarTabTitle = document.createElement('div');
         sidebarTabTitle.className = "sb-tab-title"
         sidebarTabTitle.innerText = list.title;
         sidebarTabContents.appendChild(sidebarTabTitle);
         
-        const sidebarTabItemCount = document.createElement('div');
+        let sidebarTabItemCount = document.createElement('div');
         sidebarTabItemCount.className = "sb-tab-item-count"
         sidebarTabItemCount.innerText = "# of items";
         sidebarTabContents.appendChild(sidebarTabItemCount);

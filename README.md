@@ -24,4 +24,4 @@ Additional functions like deleting all todos and renaming the todo-list can be a
 
 Current: finding better way to toggle active status on Todo-List and Sidebar Elements.
 
-Sidebar elements could be radio buttons to toggle is active status
+Created radio buttons in sidebar Elements. Now going to link them to list elements.
