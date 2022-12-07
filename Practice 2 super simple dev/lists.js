@@ -58,6 +58,7 @@
       }
 
       
+      
       const displayTitleElements = () => {
         let listTitleContainer = document.querySelector('.list-title-container');
         let addBar = document.querySelector('.add-bar');
@@ -72,14 +73,18 @@
       //Creates a todo-list
       const createList = (listTitle) => {
         const listId = "" + new Date().getTime();
-        
+
         lists.push({
           title: listTitle,
           id: listId,
+          isActive: true,
         });
+
+        resetActiveLists();
         saveLists();
         refresh();
       };
+
       
       const refresh = () => {
         window.location.reload()
@@ -132,7 +137,50 @@
         };
     };
 
-    
+    function toggleActive(listIdA, checked) {
+      lists.forEach(function (list) {
+        if (list.id === listIdA) {
+          list.isActive = checked;
+        } else {
+          list.isActive = false;
+        }
+      });
+
+      saveLists();
+    }
+
+    function checkList(event) {
+      const sbInput = event.target;
+
+      const listIdA = sbInput.id;
+      const checked = sbInput.checked;
+
+      toggleActive(listIdA, checked);
+      checkRadioValue();
+    }
+
+    //When a New List is created, all other lists are set to not Active //
+    const resetActiveLists = () => {
+      lists.forEach(function (list) {
+        const lastList = lists[lists.length - 1];
+        if (list != lastList) {
+          list.isActive = false;
+        }
+      })
+      saveLists();
+    }
+
+    //NOT NEEDED function, just lets me know if things are working//
+    function checkRadioValue() {
+      const radios = document.getElementsByName("sbRadio");
+      for (let radio of radios) {
+          if (radio.checked) {
+              console.log(radio.id + " is checked");
+              break;
+          }
+      }
+    }
+
 
     
     /* Need new edit list event target */
@@ -159,9 +207,7 @@
     } */
     
     //View
-    
-    
-    
+
     const renderList = () => { 
       lists.forEach(function (list) {
         const listElement = document.createElement("div");
@@ -171,16 +217,20 @@
         const listContainer = document.getElementById("list-container");
         listContainer.appendChild(listElement);
       
-
-
         const sbRadio = document.getElementById("radio");
 
-        const SbInput = document.createElement("input");
-        SbInput.className = "sb-input";
-        SbInput.type = "radio";
-        SbInput.name = "sbRadio"
-        SbInput.id = list.id; 
-        sbRadio.appendChild(SbInput);
+        const sbInput = document.createElement("input");
+        sbInput.className = "sb-input";
+        sbInput.type = "radio";
+        sbInput.name = "sbRadio"
+        sbInput.id = list.id;
+        sbInput.onchange = checkList;
+        if (list.isActive === true) {
+          sbInput.checked = true;
+        } else {
+          sbInput.checked = false;
+        }
+        sbRadio.appendChild(sbInput);
 
         const sidebarTabBox = document.createElement('label');
         sidebarTabBox.id = list.id;
@@ -201,11 +251,13 @@
         sidebarTabItemCount.className = "sb-tab-item-count"
         sidebarTabItemCount.innerText = "# of items";
         sidebarTabContents.appendChild(sidebarTabItemCount);
+
         
       });
+      
     }
-
     renderList();
+    
 
 
       
