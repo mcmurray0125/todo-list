@@ -215,16 +215,19 @@ let todos;
         const popUp = document.getElementById("popup-field");
         popUp.classList.toggle("reveal-popup");
       }
-
+      
       //View
       const render = () => {
         //reset our list
         document.querySelector(".todo-list").innerHTML = "";
-
+        
+        
         todos.forEach(function (todo) {
+        
           const element = document.createElement("div");
           element.className = "todo-item";
           element.id = todo.title.toUpperCase().slice(0, 5);
+
 
           if (todo.isEditing === true) {
             const textbox = document.createElement("input");
@@ -274,18 +277,57 @@ let todos;
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
           }
+
+          const todoListContainer = document.getElementById('list-container');
+          todoListContainer.appendChild(element);
           
-          const todoList = document.querySelector(".todo-list");
-          todoList.appendChild(element);
+
+/*           const todoList = document.querySelector(".todo-list");
+          todoList.appendChild(element); */
          
-          
+         
         });
+/*         const todoList = $(".list-container" ).find(`#${activeId}`)
+        if (element.dataset.parentId = activeId) {
+          todoList.append(element);
+        } */
+
+        
       };
+
+      //Assign active ID for todo item//
+
+      const assignActiveId = () => {
+        const todoItems = document.querySelectorAll('.todo-item');
+        const activeId = activeListValue();
+        todoItems.id = activeId;
+      }
+
+      { 
+      const todoLists = document.querySelectorAll('.todo-list');
+      const todoItems = document.querySelectorAll('.todo-item');
+
+      todoLists.forEach( todolist => {
+          todoItems.forEach (function (todoItem) {
+            if (todoItem.dataset.parentId === todolist.id); {
+            todolist.appendChild(todoItem)
+          }
+
+        })
+      });
+     }
       
       render();
       
+
+
+
+
+
       $(function() {
         const activeListCount = $('.todo-list').children().length;
         console.log(activeListCount);
       }) 
+
+      
       

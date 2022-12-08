@@ -146,14 +146,36 @@
         }
       });
 
+      const todoLists = document.querySelectorAll('.todo-list');
+      todoLists.forEach (function (todolist) {
+        if (todolist.id === listIdA) {
+          todolist.classList.add('active');
+        } else {
+          todolist.classList.remove('active');
+        }
+      }) 
+
       saveLists();
     }
+
+    //Assigns active class name to todolist//
+/*     const assignActiveClass = () => {
+      const todoLists = document.querySelectorAll('.todo-list');
+      todoLists.forEach (function (todolist) {
+        if (todolist.id === listIdA) {
+          todolist.classList.add('active');
+        } else {
+          todolist.classList.remove('active');
+        }
+      })
+    } */
 
     function checkList(event) {
       const sbInput = event.target;
 
       const listIdA = sbInput.id;
       const checked = sbInput.checked;
+      
 
       toggleActive(listIdA, checked);
       checkRadioValue();
@@ -170,13 +192,21 @@
       saveLists();
     }
 
+    function activeListValue() {
+      for (let list of lists) {
+          if (list.isActive) {
+              let activeListId = list.id
+              return activeListId;
+          }
+      }
+    }
+
     //NOT NEEDED function, just lets me know if things are working//
     function checkRadioValue() {
       const radios = document.getElementsByName("sbRadio");
       for (let radio of radios) {
           if (radio.checked) {
               console.log(radio.id + " is checked");
-              break;
           }
       }
     }
@@ -227,6 +257,7 @@
         sbInput.onchange = checkList;
         if (list.isActive === true) {
           sbInput.checked = true;
+          listElement.classList.add('active');
         } else {
           sbInput.checked = false;
         }
