@@ -39,6 +39,7 @@ let todos;
           id: id,
         });
 
+        assignActiveId();
         saveTodos();
       };
 
@@ -105,31 +106,15 @@ let todos;
       }
 
       // Controller
-      const addTodo = () => {
-        const textbox = document.getElementById("todo-title");
-        const title = textbox.value;
-
-        const datePicker = document.getElementById("date-picker");
-        const dueDate = datePicker.value;
-
-        createTodo(title, dueDate);
-        refresh();
-        render();
-      };
-
-      const onDelete = (todoToDelete) => {
-        return () => {
-          removeTodo(todoToDelete.id);
-          render();
-        };
-      };
-
+      
+      //Clears the input fields of the Add Item bad and Date Picker//
       const clearText = () => {
         const textField = document.getElementById("todo-title");
         textField.value = "";
         const datePicker = document.getElementById("date-picker");
         datePicker.value = "";
       };
+
       //Add Item underline animation
       const focusLine = () => {
         let addBar = document.getElementById("add-bar");
@@ -145,7 +130,8 @@ let todos;
       };
 
 
-      //Drop Down Sub Menu Displays      
+      //Drop Down Sub Menu Displays  
+      {
       const moreButton = document.getElementById("more-button")
       const moreDropDown = document.getElementById("more-dropdown")
 
@@ -155,7 +141,58 @@ let todos;
       const sortDropDown = document.getElementById("sort-dropdown")
 
       sortButton.addEventListener("click", function(){sortDropDown.classList.toggle("dd-display")})
+      }
 
+      function alphabetSort() {
+        var mylist = document.querySelector(".todo-list.active");
+        var divs = mylist.getElementsByTagName("div");
+        var listitems = [];
+        for (i = 0; i < divs.length; i++) {
+          listitems.push(divs.item(i));
+        }
+        listitems.sort(function (a, b) {
+          var compA = a.getAttribute("id").toUpperCase();
+          var compB = b.getAttribute("id").toUpperCase();
+          return compA < compB ? -1 : compA > compB ? 1 : 0;
+        });
+        for (i = 0; i < listitems.length; i++) {
+          mylist.appendChild(listitems[i]);
+        }
+        saveTodos();
+      }
+
+      
+      function sidebarCollapse() {
+        const collapsedClass = "sidebar-collapsed";
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle(collapsedClass);
+      }
+      function revealPopup() {
+        const popUp = document.getElementById("popup-field");
+        popUp.classList.toggle("reveal-popup");
+      }
+      
+      const addTodo = () => {
+        const textbox = document.getElementById("todo-title");
+        const title = textbox.value;
+        
+        const datePicker = document.getElementById("date-picker");
+        const dueDate = datePicker.value;
+        
+        createTodo(title, dueDate);
+/*         refresh();
+ */        render();
+      };
+      
+      const onDelete = (todoToDelete) => {
+        return () => {
+          removeTodo(todoToDelete.id);
+          render();
+        };
+      };
+      
+
+      
       function onEdit(event) {
         const editButton = event.target;
         const todoId = editButton.dataset.todoId;
@@ -188,33 +225,6 @@ let todos;
         render();
       }
 
-      function alphabetSort() {
-        var mylist = document.querySelector(".todo-list");
-        var divs = mylist.getElementsByTagName("div");
-        var listitems = [];
-        for (i = 0; i < divs.length; i++) {
-          listitems.push(divs.item(i));
-        }
-        listitems.sort(function (a, b) {
-          var compA = a.getAttribute("id").toUpperCase();
-          var compB = b.getAttribute("id").toUpperCase();
-          return compA < compB ? -1 : compA > compB ? 1 : 0;
-        });
-        for (i = 0; i < listitems.length; i++) {
-          mylist.appendChild(listitems[i]);
-        }
-        saveTodos();
-      }
-
-      function sidebarCollapse() {
-        const collapsedClass = "sidebar-collapsed";
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle(collapsedClass);
-      }
-      function revealPopup() {
-        const popUp = document.getElementById("popup-field");
-        popUp.classList.toggle("reveal-popup");
-      }
       
       //View
       const render = () => {
@@ -280,52 +290,61 @@ let todos;
 
           const todoListContainer = document.getElementById('list-container');
           todoListContainer.appendChild(element);
-          
-
-/*           const todoList = document.querySelector(".todo-list");
-          todoList.appendChild(element); */
-         
+                 
          
         });
 /*         const todoList = $(".list-container" ).find(`#${activeId}`)
         if (element.dataset.parentId = activeId) {
           todoList.append(element);
         } */
-
         
+        //Assign active ID for todo item//
       };
-
-      //Assign active ID for todo item//
-
-      const assignActiveId = () => {
-        const todoItems = document.querySelectorAll('.todo-item');
-        const activeId = activeListValue();
-        todoItems.id = activeId;
-      }
-
-      { 
-      const todoLists = document.querySelectorAll('.todo-list');
-      const todoItems = document.querySelectorAll('.todo-item');
-
-      todoLists.forEach( todolist => {
-          todoItems.forEach (function (todoItem) {
-            if (todoItem.dataset.parentId === todolist.id); {
-            todolist.appendChild(todoItem)
-          }
-
-        })
-      });
-     }
       
       render();
       
 
+      const appendItemtoList = () => {
 
+      const activeList = document.querySelector(".todo-list.active");
+      const listContainer = document.getElementById("list-container");
+      const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
+              
+      todoItems.forEach (function (todoItem) {
+        if (todoItem.dataset.parentId === activeList.id) {
+          activeList.appendChild(todoItem);
+        } else {
+          listContainer.appendChild(todoItem);
+        }
+      })
+      }
 
+      const addTodoBtn = document.getElementById("add-todo-btn");
+      addTodoBtn.addEventListener("click", function () {
+        const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
+        
+        const activeId = activeListValue();
+        
+        todoItems.forEach(function (todoItem) {
+          todoItem.dataset.parentId = activeId;
+        })
+        appendItemtoList();
+      })
 
+      const assignActiveId = () => {
+        const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
+        
+        const activeId = activeListValue();
+        
+        todoItems.forEach(function (todoItem) {
+          todoItem.dataset.parentId = activeId;
+        })
+      }     
+      
 
+      
       $(function() {
-        const activeListCount = $('.todo-list').children().length;
+        const activeListCount = $('.todo-list.active').children().length;
         console.log(activeListCount);
       }) 
 

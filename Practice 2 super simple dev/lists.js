@@ -146,6 +146,7 @@
         }
       });
 
+      //can I separate this function?//
       const todoLists = document.querySelectorAll('.todo-list');
       todoLists.forEach (function (todolist) {
         if (todolist.id === listIdA) {
