@@ -229,7 +229,7 @@ let todos;
       const render = () => {
         //reset our list
         document.querySelector(".todo-list.active").innerHTML = "";
-        
+
         
         todos.forEach(function (todo) {
         
@@ -287,7 +287,7 @@ let todos;
             element.appendChild(deleteButton);
           }
           
-          const todoList = document.querySelector('.todo-list.active');
+          const todoList = document.querySelector('.list-container');
           todoList.appendChild(element);
 
         });
@@ -295,6 +295,38 @@ let todos;
       };
       
       render();
+
+
+      let items;
+
+      //Retrieve localStorage
+      const savedItems = JSON.parse(localStorage.getItem("items"));
+// Check if it's an array
+//if localstorage has a items array, then use it.
+//otherwise, use the default array.
+      if (Array.isArray(savedItems)) {
+        items = savedItems;
+      } else {
+        items = [];
+      };
+
+      //Creates a todo
+      const createItem = (title, dueDate) => {
+        const id = "" + new Date().getTime();
+
+        items.push({
+          tag: activeListValue(),
+        });
+        
+        saveItems();
+      };
+
+
+      const saveItems = () => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+      };
+
+
 
 
       const assignActiveId = () => {
@@ -308,8 +340,11 @@ let todos;
         })
       }
 
-      const appendToList = () => {
 
+
+      //Add Items to List based on matching IDs//
+      const renderItemsToList = () => {
+        
       }
 
       
