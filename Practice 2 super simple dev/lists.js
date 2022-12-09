@@ -159,17 +159,6 @@
       saveLists();
     }
 
-    //Assigns active class name to todolist//
-/*     const assignActiveClass = () => {
-      const todoLists = document.querySelectorAll('.todo-list');
-      todoLists.forEach (function (todolist) {
-        if (todolist.id === listIdA) {
-          todolist.classList.add('active');
-        } else {
-          todolist.classList.remove('active');
-        }
-      })
-    } */
 
     function checkList(event) {
       const sbInput = event.target;

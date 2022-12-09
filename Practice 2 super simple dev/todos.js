@@ -38,8 +38,7 @@ let todos;
           dueDate: dueDate,
           id: id,
         });
-
-        assignActiveId();
+        
         saveTodos();
       };
 
@@ -229,7 +228,7 @@ let todos;
       //View
       const render = () => {
         //reset our list
-        document.querySelector(".todo-list").innerHTML = "";
+        document.querySelector(".todo-list.active").innerHTML = "";
         
         
         todos.forEach(function (todo) {
@@ -287,60 +286,34 @@ let todos;
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
           }
+          
+          const todoList = document.querySelector('.todo-list.active');
+          todoList.appendChild(element);
 
-          const todoListContainer = document.getElementById('list-container');
-          todoListContainer.appendChild(element);
-                 
-         
         });
-/*         const todoList = $(".list-container" ).find(`#${activeId}`)
-        if (element.dataset.parentId = activeId) {
-          todoList.append(element);
-        } */
-        
-        //Assign active ID for todo item//
+
       };
       
       render();
-      
 
-      const appendItemtoList = () => {
-
-      const activeList = document.querySelector(".todo-list.active");
-      const listContainer = document.getElementById("list-container");
-      const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
-              
-      todoItems.forEach (function (todoItem) {
-        if (todoItem.dataset.parentId === activeList.id) {
-          activeList.appendChild(todoItem);
-        } else {
-          listContainer.appendChild(todoItem);
-        }
-      })
-      }
-
-      const addTodoBtn = document.getElementById("add-todo-btn");
-      addTodoBtn.addEventListener("click", function () {
-        const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
-        
-        const activeId = activeListValue();
-        
-        todoItems.forEach(function (todoItem) {
-          todoItem.dataset.parentId = activeId;
-        })
-        appendItemtoList();
-      })
 
       const assignActiveId = () => {
-        const todoItems = document.getElementById("list-container").querySelectorAll(".todo-item");
-        
         const activeId = activeListValue();
-        
-        todoItems.forEach(function (todoItem) {
-          todoItem.dataset.parentId = activeId;
+        const todoItems = document.querySelectorAll('.todo-list.active .todo-item');
+
+        todoItems.forEach (function (todoItem) {
+          if (todoItem === todoItems[todoItems.length -1]) {
+            todoItem.dataset.parentId = activeId;
+          }
         })
-      }     
+      }
+
+      const appendToList = () => {
+
+      }
+
       
+
 
       
       $(function() {
