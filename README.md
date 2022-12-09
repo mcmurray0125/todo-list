@@ -1,7 +1,5 @@
-<h1>Status</h1>
+<h1>itemArray Branch</h1>
 
-New List can be creeated and each new list gets assigned a unique ID.
+created an array of todo items in order to store and fetch their IDs.
 
-SideBar elements are radio buttons and can be used to change which todo-list is active.
-
-Need to create an array for the todo-items in order to save their IDs and pair them with the active-todo-list.
+Their IDs are used to pair them with a todo list and toggle them active/not active.
