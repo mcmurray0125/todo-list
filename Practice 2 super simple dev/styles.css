@@ -237,14 +237,18 @@ header {
 
 /* Dropdown Menus */
 .dropdown-content {
-  display: none;
+  display: inline-block;
   position: absolute;
   background-color: white;
   min-width: 147px;
+  opacity: 0;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 2231;
+  z-index: -200;
   bottom: -80px;
   right: 0px;
+  transition-property: opacity;
+  transition-duration: 0.15s;
+
 }
 #more-dropdown {
   bottom: -120px;
@@ -262,8 +266,10 @@ header {
   background-color: rgb(241, 241, 241);
 }
 
-.dd-display {
+.dropdown-content.dd-display {
   display: inline-block;
+  z-index: 3000;
+  opacity: 100;
 }
 
 /* Add Todo Bar */
@@ -306,7 +312,7 @@ header {
 /* Main Todo List */
 
 .todo-list {
-  display: block;
+  display: none;
   padding-left: 16px;
 }
 .todo-list.active {

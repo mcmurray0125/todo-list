@@ -37,6 +37,7 @@ let todos;
           title: title,
           dueDate: dueDate,
           id: id,
+          listTag: activeListValue(),
         });
         
         saveTodos();
@@ -227,10 +228,13 @@ let todos;
       
       //View
       const render = () => {
-        //reset our list
-        document.querySelector(".todo-list.active").innerHTML = "";
+        //reset todo-list elements to allow new items to populate//
 
-        
+        const listEls = document.querySelectorAll(".todo-list");
+        listEls.forEach(function (listEl) {
+          listEl.innerHTML = ""
+        })
+
         todos.forEach(function (todo) {
         
           const element = document.createElement("div");
@@ -287,67 +291,19 @@ let todos;
             element.appendChild(deleteButton);
           }
           
-          const todoList = document.querySelector('.list-container');
-          todoList.appendChild(element);
-
+        
+          //if the todo-item's listTag === the ID of the list, append the item to that list//
+          listEls.forEach(function (listEl) {
+            if (todo.listTag === listEl.id) {
+              listEl.appendChild(element);
+            }
+          })
+          
         });
-
+        
       };
       
       render();
-
-
-      let items;
-
-      //Retrieve localStorage
-      const savedItems = JSON.parse(localStorage.getItem("items"));
-// Check if it's an array
-//if localstorage has a items array, then use it.
-//otherwise, use the default array.
-      if (Array.isArray(savedItems)) {
-        items = savedItems;
-      } else {
-        items = [];
-      };
-
-      //Creates a todo
-      const createItem = (title, dueDate) => {
-        const id = "" + new Date().getTime();
-
-        items.push({
-          tag: activeListValue(),
-        });
-        
-        saveItems();
-      };
-
-
-      const saveItems = () => {
-        localStorage.setItem("todos", JSON.stringify(todos));
-      };
-
-
-
-
-      const assignActiveId = () => {
-        const activeId = activeListValue();
-        const todoItems = document.querySelectorAll('.todo-list.active .todo-item');
-
-        todoItems.forEach (function (todoItem) {
-          if (todoItem === todoItems[todoItems.length -1]) {
-            todoItem.dataset.parentId = activeId;
-          }
-        })
-      }
-
-
-
-      //Add Items to List based on matching IDs//
-      const renderItemsToList = () => {
-        
-      }
-
-      
 
 
       
