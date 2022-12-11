@@ -1,19 +1,3 @@
-const noTodoMessage = () => {
-  const listContainer = document.getElementById("list-container");
-  const noTodoContainer = document.createElement('div');
-  noTodoContainer.className = "no-todo-container"
-  const noTodoText = document.createElement('div');
-  noTodoText.className = "no-todo-text"
-  noTodoText.innerText = "There are no todos here"
-  const noTodoImage = document.createElement('img');
-  noTodoImage.className = "no-todo-img"
-  noTodoImage.src = "/Practice 2 super simple dev/images/cat_box_image.svg" 
-
-  noTodoContainer.appendChild(noTodoImage);
-  noTodoContainer.appendChild(noTodoText);
-  listContainer.appendChild(noTodoContainer)  
-}
-
 
 let todos;
 
@@ -26,7 +10,6 @@ let todos;
         todos = savedTodos;
       } else {
         todos = [];
-        noTodoMessage();
       };
 
       //Creates a todo
@@ -43,6 +26,15 @@ let todos;
         saveTodos();
       };
 
+      const checkItemCount = () => {
+        if (document.querySelector(".todo-list.active").children.length > 0) {
+          document.querySelector(".no-todo-container").style.visibility = "hidden";
+        } else {
+          document.querySelector(".no-todo-container").style.visibility = "visible";
+        }
+      }
+
+
       //Deletes a todo
       const removeTodo = (idToDelete) => {
         todos = todos.filter((todo) => {
@@ -54,7 +46,6 @@ let todos;
             return true;
           }
         });
-
         saveTodos();
       };
 
@@ -161,6 +152,7 @@ let todos;
         saveTodos();
       }
 
+
       
       function sidebarCollapse() {
         const collapsedClass = "sidebar-collapsed";
@@ -225,22 +217,24 @@ let todos;
         render();
       }
 
+
+
       
       //View
       const render = () => {
         //reset todo-list elements to allow new items to populate//
-
         const listEls = document.querySelectorAll(".todo-list");
+
         listEls.forEach(function (listEl) {
           listEl.innerHTML = ""
         })
 
+        
         todos.forEach(function (todo) {
         
           const element = document.createElement("div");
           element.className = "todo-item";
           element.id = todo.title.toUpperCase().slice(0, 5);
-
 
           if (todo.isEditing === true) {
             const textbox = document.createElement("input");
@@ -290,21 +284,24 @@ let todos;
             deleteButton.onclick = onDelete(todo);
             element.appendChild(deleteButton);
           }
+            
           
-        
           //if the todo-item's listTag === the ID of the list, append the item to that list//
           listEls.forEach(function (listEl) {
             if (todo.listTag === listEl.id) {
               listEl.appendChild(element);
+              checkItemCount();
+            }  else {
+              checkItemCount();
             }
-          })
-          
-        });
-        
+          })  
+        });      
+        checkItemCount();
       };
       
       render();
 
+      document.querySelector(".sb-tab-box").addEventListener("click", checkItemCount())
 
       
       $(function() {

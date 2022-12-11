@@ -169,6 +169,7 @@
 
       toggleActive(listIdA, checked);
       checkRadioValue();
+      checkItemCount();
     }
 
     //When a New List is created, all other lists are set to not Active //
@@ -201,7 +202,6 @@
       }
     }
 
-
     
     /* Need new edit list event target */
     
@@ -225,6 +225,7 @@
       updateTodo(todoId, newTitle, newDate);
       render();
     } */
+
     
     //View
 
@@ -272,16 +273,18 @@
         sidebarTabItemCount.className = "sb-tab-item-count"
         sidebarTabItemCount.innerText = "# of items";
         sidebarTabContents.appendChild(sidebarTabItemCount);
-
+        
+        
         
       });
       
     }
+
     renderList();
+
     
 
 
-      
     
 
 

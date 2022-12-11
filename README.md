@@ -1,6 +1,6 @@
 <h1>itemArray Branch</h1>
 
-Linked todo items with corresponding todo-lists. Can Now switch between lists.
+Revised code so that the No Todos Message displays when the todo list is empty.
 
 <h2>To-Do:</h2>
 
