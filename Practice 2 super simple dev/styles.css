@@ -89,12 +89,14 @@ header {
   margin-left: 0px; /* -175px ot animate out of screen */
 }
 .sb-input {
+  /* visibility: hidden; */
   display: none;
 }
 .sb-input:checked + .sb-tab-box {
   background-color: rgb(241, 241, 241);
   font-weight: 600;
 }
+
 .sb-tab-box {
   display: flex;
   height: 58px;
@@ -377,7 +379,8 @@ header {
 }
 
 /* Pop Up */
-#popup-field {
+#popup-field,
+#popup-field-rename {
   background-color: rgba(0, 0, 0, 0);
   z-index: -2;
   display: flex;
@@ -391,7 +394,8 @@ header {
   opacity: 0;
   transition: all 0.15s;
 }
-#popup-field.reveal-popup {
+#popup-field.reveal-popup,
+#popup-field-rename.reveal-popup {
   opacity: 1;
   z-index: 3500;
   background-color: rgba(32, 33, 36, 0.6);
@@ -441,7 +445,8 @@ h2 {
   overflow: hidden;
 }
 
-.nl-input-box #new-list-input {
+.nl-input-box #new-list-input,
+.nl-input-box #rename-list-input {
   font-size: 1rem;
   padding-left: 30px;
   border: none;

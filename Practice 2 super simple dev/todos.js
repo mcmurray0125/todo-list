@@ -26,6 +26,7 @@ let todos;
         saveTodos();
       };
 
+      //If todo list has children, hide the error message. else display it.//
       const checkItemCount = () => {
         if (document.querySelector(".todo-list.active").children.length > 0) {
           document.querySelector(".no-todo-container").style.visibility = "hidden";
@@ -152,14 +153,13 @@ let todos;
         saveTodos();
       }
 
-
-      
       function sidebarCollapse() {
         const collapsedClass = "sidebar-collapsed";
         const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle(collapsedClass);
       }
-      function revealPopup() {
+      
+      function toggleNewListPopup() {
         const popUp = document.getElementById("popup-field");
         popUp.classList.toggle("reveal-popup");
       }
@@ -187,7 +187,7 @@ let todos;
       
       function onEdit(event) {
         const editButton = event.target;
-        const todoId = editButton.dataset.todoId;
+        const todoId = editButton.dataset.todoId || todoTitle.dataset.todoId;
 
         setEditing(todoId);
         render();
@@ -254,7 +254,6 @@ let todos;
             updateButton.onclick = onUpdate;
             element.appendChild(updateButton);
           } else {
-            // element.innerText = todo.title + " " + todo.dueDate;
             element.innerHTML =
               `<p class= 'todo-title'>${todo.title}</p>` +
               `<p class = 'todo-due-date'>${todo.dueDate}</p>`;

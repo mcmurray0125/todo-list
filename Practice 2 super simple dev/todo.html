@@ -27,12 +27,12 @@
     <div class="container">
       <section class="sidebar" id="sidebar">
         <div class="new-list">
-          <button class="new-list-button" onclick="revealPopup();">
+          <button class="new-list-button" onclick="toggleNewListPopup();">
             <span id="plus-icon"><i class="fa-solid fa-plus"></i></span>
             <span>&nbsp New List</span>
           </button>
         </div>
-        <div class="radio" id="radio"></div>
+        <form class="radio" id="radio"></form>
       </section>
       <div class="list-container" id="list-container">
         <div class="list-title-container" id="list-title-container">
@@ -63,7 +63,7 @@
               </button>
               <div class="tooltip">More</div>
               <div class="dropdown-content" tabindex="1" id="more-dropdown">
-                <a href="#">Rename List</a>
+                <a href="javascript:toggleRenameListPopup();">Rename List</a>
                 <a href="#">Delete List</a>
                 <a href="#">Check All</a>
               </div>
@@ -116,14 +116,44 @@
               </p>
             </div>
             <div class="nl-btn-box">
-              <button class="cancel-btn" onclick="revealPopup();">
+              <button class="cancel-btn" onclick="toggleNewListPopup();">
                 Cancel
               </button>
               <button
                 class="create-btn"
-                onclick="revealPopup();addList();resetActiveLists();"
+                onclick="toggleNewListPopup();addList();resetActiveLists();"
               >
                 Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="popup-field-rename">
+        <div class="popup-container">
+          <div class="popup-box">
+            <h2>Rename List</h2>
+            <div class="nl-input-box">
+              <input
+                type="text"
+                placeholder="New list name"
+                required
+                id="rename-list-input"
+              />
+              <p class="character-count">
+                <span id="characters">0&nbsp</span> / 200
+              </p>
+            </div>
+            <div class="nl-btn-box">
+              <button class="cancel-btn" onclick="toggleRenameListPopup();">
+                Cancel
+              </button>
+              <button
+                class="create-btn"
+                onclick="toggleRenameListPopup();renameList();"
+                id="save-btn"
+              >
+                Save
               </button>
             </div>
           </div>

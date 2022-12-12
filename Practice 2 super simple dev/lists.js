@@ -129,6 +129,23 @@
         createList(listTitle);
         renderList();
     };
+    const renameList = () => {
+        const textbox = document.getElementById("rename-list-input");
+        const newListTitle = textbox.value;
+
+        updateList(newListTitle);
+        renderList();
+    };
+
+    function updateList(newListTitle) {
+      lists.forEach(function (list) {
+        if (list.isActive === true) {
+          list.title = newListTitle;
+        }
+      });
+
+      saveLists();
+    }
 
     const onDeleteList = (listIdToDelete) => {
         return () => {
@@ -146,6 +163,8 @@
         }
       });
 
+
+
       //can I separate this function?//
       const todoLists = document.querySelectorAll('.todo-list');
       todoLists.forEach (function (todolist) {
@@ -159,17 +178,21 @@
       saveLists();
     }
 
+    function changeListTitle(listTitle) {
+      document.querySelector(".list-title").innerText = listTitle;
+    }
 
     function checkList(event) {
       const sbInput = event.target;
 
       const listIdA = sbInput.id;
       const checked = sbInput.checked;
-      
+      const listTitle = sbInput.title
 
       toggleActive(listIdA, checked);
       checkRadioValue();
       checkItemCount();
+      changeListTitle(listTitle);
     }
 
     //When a New List is created, all other lists are set to not Active //
@@ -191,6 +214,23 @@
           }
       }
     }
+
+    function toggleRenameListPopup() {
+      const popUp = document.getElementById("popup-field-rename");
+      popUp.classList.toggle("reveal-popup");
+    }
+
+    //Using Return Key on Sidebar Elements//
+    function sidebarEnterKey () {
+      document.querySelectorAll(".sb-tab-box").forEach(function(tabBox) {
+        tabBox.addEventListener("keyup", function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById(event.target.id).click();
+            }
+        });
+    });
+    }
+
 
     //NOT NEEDED function, just lets me know if things are working//
     function checkRadioValue() {
@@ -230,6 +270,9 @@
     //View
 
     const renderList = () => { 
+
+      document.querySelector(".radio").innerHTML = "";
+
       lists.forEach(function (list) {
         const listElement = document.createElement("div");
         listElement.className = "todo-list"
@@ -243,11 +286,14 @@
         const sbInput = document.createElement("input");
         sbInput.className = "sb-input";
         sbInput.type = "radio";
+        sbInput.tabIndex = 0;
         sbInput.name = "sbRadio"
+        sbInput.title = list.title;
         sbInput.id = list.id;
         sbInput.onchange = checkList;
         if (list.isActive === true) {
           sbInput.checked = true;
+          document.querySelector(".list-title").innerText = list.title;
           listElement.classList.add('active');
         } else {
           sbInput.checked = false;
@@ -256,6 +302,8 @@
 
         const sidebarTabBox = document.createElement('label');
         sidebarTabBox.id = list.id;
+        sidebarTabBox.role = "button";
+        sidebarTabBox.tabIndex = 0;
         sidebarTabBox.htmlFor = list.id;
         sidebarTabBox.className = "sb-tab-box";
         sbRadio.appendChild(sidebarTabBox);
@@ -278,79 +326,37 @@
         
       });
       
+      sidebarEnterKey();
     }
-
+    
+    
     renderList();
 
+
+    //Accessibility Functions//
+    //Using return key on Add Item text input and Date Picker//
+    document.getElementById("todo-title").addEventListener("keyup", function(event) {
+      if (event.key === 'Enter') {
+          document.getElementById("add-todo-btn").click();
+      }
+  });
+    document.getElementById("rename-list-input").addEventListener("keyup", function(event) {
+      if (event.key === 'Enter') {
+          document.getElementById("save-btn").click();
+      }
+  });
+
+    document.getElementById("date-picker").addEventListener("keyup", function(event) {
+      if (event.key === 'Enter') {
+          document.getElementById("add-todo-btn").click();
+      }
+  });
+  
+
+  
+
+
+
     
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //jQuery//
-/*     $(function() {
-      //Set Active Side Bar//
-      $('.sidebar .sb-tab-box').click(function(){
-        $(this).parent().find('.sb-tab-box').removeClass('active');
-        $(this).addClass('active');
-
-        const activeSideBar = $('.sb-tab-box.active').attr('id');
-        $('.list-container').find('.todo-list').removeClass('active');
-        $(".list-container").find("#" + activeSideBar).addClass('active');
-      })
-
-        if ( $('.todo-list.active').children().length < 1 ) {
-          $('.no-todo-container').css("display", "flex");
-          console.log("no children in list")
-        } else {
-          $('.no-todo-container').css("display", "none");
-          console.log("there's childern here");
-        }
-
-        let test = $('.sidebar').children().length;
-        if (test < 4 ) {
-          console.log("hello");
-        }  
-
-      })      */ 
-      
-
-      
-      
-      //Refreshes Page when todo-list are empty//
-      /* $(function () {
-        let addTodoBtn = document.getElementById("add-todo-btn");
-        
-        addTodoBtn.addEventListener("click", function () {
-          if ($('.todo-list.active').children().length < 1) {
-            alert("im small");
-          } else {
-            alert("i'm big")
-          }
-        });
-      }) */
