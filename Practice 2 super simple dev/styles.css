@@ -13,7 +13,12 @@ body {
   background-color: white;
   overflow: hidden;
 }
-
+h2 {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 12px;
+  padding-left: 24px;
+}
 p {
   margin: 0px 0px;
 }
@@ -86,6 +91,8 @@ header {
   padding: 16px 0px;
   transition: 0.2s;
   box-sizing: border-box;
+  min-width: 150px;
+  width: 288px;
   margin-left: 0px; /* -175px ot animate out of screen */
 }
 .sb-input {
@@ -115,7 +122,7 @@ header {
   line-height: 1.25rem;
 }
 .sidebar-collapsed {
-  margin-left: -175px;
+  margin-left: -300px;
 }
 
 .new-list {
@@ -125,26 +132,9 @@ header {
   margin: 0px 12px 0px;
 }
 
-/* No List Screen */
+/* No List and No Todo Messages */
+.no-todo-container,
 .no-list-container {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-}
-.no-list-img {
-  padding-top: 140px;
-  margin-bottom: 2.5rem;
-  max-width: 115px;
-  max-height: 200px;
-  width: auto;
-  height: auto;
-}
-
-/* No Todo Screen */
-.no-todo-container {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -153,7 +143,8 @@ header {
   top: 178px;
   left: 121px;
 }
-.no-todo-img {
+.no-todo-img,
+.no-list-img {
   padding-top: 120px;
   margin-bottom: 2.5rem;
   max-width: 115px;
@@ -427,12 +418,6 @@ header {
   overflow-y: auto;
 }
 
-h2 {
-  font-weight: 600;
-  font-size: 1rem;
-  padding-bottom: 12px;
-  padding-left: 24px;
-}
 .nl-input-box {
   display: flex;
   flex-direction: column;
@@ -491,7 +476,8 @@ h2::before {
 /* Buttons */
 .todo-item button,
 .add-bar button,
-.new-list-button {
+.new-list-button,
+.nl-btn-box button {
   font-family: "Nanub Gothic", sans-serif;
   font-weight: 200;
   font-size: 14px;
@@ -503,8 +489,9 @@ h2::before {
   border-radius: 16px;
   background-color: rgb(25, 84, 112);
   align-self: center;
-  line-height: 27px;
+  text-align: center;
   transition: 0.15s;
+  cursor: pointer;
 }
 
 .todo-item .update-button,
@@ -532,6 +519,22 @@ input[type="date"]:hover,
   margin: 0px;
   border-radius: 30px;
   box-shadow: 0 2px 4px rgba(67, 64, 65, 0.5);
+}
+.create-btn {
+  pointer-events: none;
+  opacity: 0.25;
+}
+.create-btn.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.save-btn {
+  pointer-events: none;
+  opacity: 0.25;
+}
+.save-btn.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* .add-bar button {

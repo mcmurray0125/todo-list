@@ -217,6 +217,13 @@ let todos;
         render();
       }
 
+      function deleteTodosWithList() {
+        let filteredTodos = todos.filter(todo => todo.listTag !== activeListValue());
+
+        todos = filteredTodos;
+        saveTodos();
+      }
+
 
 
       
@@ -235,6 +242,7 @@ let todos;
           const element = document.createElement("div");
           element.className = "todo-item";
           element.id = todo.title.toUpperCase().slice(0, 5);
+          
 
           if (todo.isEditing === true) {
             const textbox = document.createElement("input");
@@ -307,6 +315,12 @@ let todos;
         const activeListCount = $('.todo-list.active').children().length;
         console.log(activeListCount);
       }) 
+
+
+
+
+          
+      
 
       
       

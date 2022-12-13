@@ -64,7 +64,11 @@
               <div class="tooltip">More</div>
               <div class="dropdown-content" tabindex="1" id="more-dropdown">
                 <a href="javascript:toggleRenameListPopup();">Rename List</a>
-                <a href="#">Delete List</a>
+                <a
+                  href="javascript:deleteTodosWithList();onDeleteList();"
+                  id="delete-list-btn"
+                  >Delete List</a
+                >
                 <a href="#">Check All</a>
               </div>
             </div>
@@ -89,13 +93,21 @@
             Add Todo
           </button>
         </section>
-        <!-- <div id="todo-list" class="todo-list"></div> -->
-        <!-- To-do List div generates new divs from js -->
+        <section id="lists-wrapper"></section>
+        <!-- To-do Items appended to "lists-wrapper" in JS -->
+      </div>
+      <div class="no-list-container">
+        <img
+          src="/Practice 2 super simple dev/images/clipboard_image.png"
+          alt="No list created yet"
+          class="no-list-img"
+        />
+        <div class="no-list-text">There are no lists here</div>
       </div>
       <div class="no-todo-container">
         <img
           src="/Practice 2 super simple dev/images/cat_box_image.svg"
-          alt="Mr. Meowser doesn't see any items here..."
+          alt="no list items here..."
           class="no-todo-img"
         />
         <div class="no-todo-text">There are no todos here</div>
@@ -121,7 +133,8 @@
               </button>
               <button
                 class="create-btn"
-                onclick="toggleNewListPopup();addList();resetActiveLists();"
+                onclick="toggleNewListPopup();addList();"
+                id="create-btn"
               >
                 Create
               </button>
@@ -149,7 +162,7 @@
                 Cancel
               </button>
               <button
-                class="create-btn"
+                class="save-btn"
                 onclick="toggleRenameListPopup();renameList();"
                 id="save-btn"
               >

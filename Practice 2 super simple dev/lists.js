@@ -54,7 +54,7 @@
             id: "list-id1",
           }, */
         ];
-        noListMessage();
+
       }
 
       
@@ -82,7 +82,6 @@
 
         resetActiveLists();
         saveLists();
-        refresh();
       };
 
       
@@ -105,10 +104,13 @@
         saveLists();
       };
 
+      const saveLists = () => {
+        localStorage.setItem("lists", JSON.stringify(lists));
+      };
       
-      function updateList(listId, newListTitle) {
+      function updateList(listIdA, newListTitle) {
         lists.forEach(function (list) {
-          if (list.id === listId) {
+          if (list.id === listIdA) {
             list.title = newListTitle;
             todo.isEditing = false;
           }
@@ -117,9 +119,6 @@
         saveLists();
       }
 
-      const saveLists = () => {
-        localStorage.setItem("lists", JSON.stringify(lists));
-      };
 
     // Controller
     const addList = () => {
@@ -128,6 +127,7 @@
 
         createList(listTitle);
         renderList();
+        render();
     };
     const renameList = () => {
         const textbox = document.getElementById("rename-list-input");
@@ -135,6 +135,7 @@
 
         updateList(newListTitle);
         renderList();
+        render();
     };
 
     function updateList(newListTitle) {
@@ -145,14 +146,7 @@
       });
 
       saveLists();
-    }
-
-    const onDeleteList = (listIdToDelete) => {
-        return () => {
-        removeList(listIdToDelete.id);
-        renderList();
-        };
-    };
+    }    
 
     function toggleActive(listIdA, checked) {
       lists.forEach(function (list) {
@@ -162,8 +156,6 @@
           list.isActive = false;
         }
       });
-
-
 
       //can I separate this function?//
       const todoLists = document.querySelectorAll('.todo-list');
@@ -205,15 +197,37 @@
       })
       saveLists();
     }
-
+    
     function activeListValue() {
       for (let list of lists) {
-          if (list.isActive) {
-              let activeListId = list.id
-              return activeListId;
-          }
+        if (list.isActive) {
+          let activeListId = list.id
+          return activeListId;
+        }
       }
     }
+    
+    const resetActiveListsDelete = () => {
+      const firstList = lists[0];
+      firstList.isActive = true;
+
+      saveLists();
+    }
+    
+    function onDeleteList() {
+      // Find the index of the array object with isActive === true
+      const listToDelete = lists.findIndex(list => list.isActive === true);
+
+        lists.splice(listToDelete);
+              
+      saveLists();
+      resetActiveListsDelete();
+      renderList();
+      render();
+      
+  }
+
+
 
     function toggleRenameListPopup() {
       const popUp = document.getElementById("popup-field-rename");
@@ -272,14 +286,15 @@
     const renderList = () => { 
 
       document.querySelector(".radio").innerHTML = "";
+      document.getElementById("lists-wrapper").innerHTML = "";
 
       lists.forEach(function (list) {
         const listElement = document.createElement("div");
         listElement.className = "todo-list"
         listElement.id = list.id;
         
-        const listContainer = document.getElementById("list-container");
-        listContainer.appendChild(listElement);
+        const listsWrapper = document.getElementById("lists-wrapper");
+        listsWrapper.appendChild(listElement);
       
         const sbRadio = document.getElementById("radio");
 
@@ -335,14 +350,53 @@
 
     //Accessibility Functions//
     //Using return key on Add Item text input and Date Picker//
+
+    //Adding active class to Pop Up Save Buttons when text input field has characters//
+
+    function checkNewListTitle() {
+      const newListInput = document.getElementById("new-list-input");
+      const newListInputValue = newListInput.value;
+      
+      const createButton = document.getElementById("create-btn");
+      
+      if (newListInputValue.length < 1) {
+        createButton.classList.remove("active")
+      } else {
+        createButton.classList.add("active")
+      }
+    }
+    
+          
+    function checkRenameListTitle() {
+      const renameListInput = document.getElementById("rename-list-input");
+      
+      const renameListInputValue = renameListInput.value;
+      
+      const saveButton = document.getElementById("save-btn");
+      
+      if (renameListInputValue.length < 1) {
+        saveButton.classList.remove("active")
+      } else {
+        saveButton.classList.add("active")
+      }
+    }
+
     document.getElementById("todo-title").addEventListener("keyup", function(event) {
       if (event.key === 'Enter') {
           document.getElementById("add-todo-btn").click();
       }
   });
     document.getElementById("rename-list-input").addEventListener("keyup", function(event) {
+      checkRenameListTitle();
       if (event.key === 'Enter') {
           document.getElementById("save-btn").click();
+      }
+  });
+
+    document.getElementById("new-list-input").addEventListener("keyup", function(event) {
+      checkNewListTitle();
+      if (event.key === 'Enter') {
+          document.getElementById("create-btn").click();
       }
   });
 
@@ -353,7 +407,9 @@
   });
   
 
-  
+
+        
+
 
 
 
