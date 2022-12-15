@@ -96,7 +96,7 @@
         <section id="lists-wrapper"></section>
         <!-- To-do Items appended to "lists-wrapper" in JS -->
       </div>
-      <div class="no-list-container">
+      <div class="no-list-container" id="no-list-container">
         <img
           src="/Practice 2 super simple dev/images/clipboard_image.png"
           alt="No list created yet"
@@ -104,13 +104,22 @@
         />
         <div class="no-list-text">There are no lists here</div>
       </div>
-      <div class="no-todo-container">
+      <div class="no-todo-container" id="no-todo-container">
         <img
           src="/Practice 2 super simple dev/images/cat_box_image.svg"
           alt="no list items here..."
           class="no-todo-img"
         />
         <div class="no-todo-text">There are no todos here</div>
+      </div>
+      <div class="list-created notification">
+        <p>List Created</p>
+      </div>
+      <div class="list-renamed notification">
+        <p>List Renamed</p>
+      </div>
+      <div class="list-deleted notification">
+        <p>List Deleted</p>
       </div>
       <div id="popup-field">
         <div class="popup-container">

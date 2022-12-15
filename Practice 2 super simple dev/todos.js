@@ -28,10 +28,10 @@ let todos;
 
       //If todo list has children, hide the error message. else display it.//
       const checkItemCount = () => {
-        if (document.querySelector(".todo-list.active").children.length > 0) {
-          document.querySelector(".no-todo-container").style.visibility = "hidden";
+        if (document.querySelector(".todo-list.active").children.length < 1) {
+          document.querySelector(".no-todo-container").classList.add("display");
         } else {
-          document.querySelector(".no-todo-container").style.visibility = "visible";
+          document.querySelector(".no-todo-container").classList.remove("display");
         }
       }
 
@@ -172,14 +172,14 @@ let todos;
         const dueDate = datePicker.value;
         
         createTodo(title, dueDate);
-/*         refresh();
- */        render();
+        render();
       };
       
       const onDelete = (todoToDelete) => {
         return () => {
           removeTodo(todoToDelete.id);
           render();
+          checkItemCount();
         };
       };
       
@@ -235,80 +235,78 @@ let todos;
         listEls.forEach(function (listEl) {
           listEl.innerHTML = ""
         })
-
         
         todos.forEach(function (todo) {
-        
+                  
           const element = document.createElement("div");
           element.className = "todo-item";
           element.id = todo.title.toUpperCase().slice(0, 5);
           
 
-          if (todo.isEditing === true) {
-            const textbox = document.createElement("input");
-            textbox.type = "text";
-            textbox.id = "edit-title-" + todo.id;
-            element.appendChild(textbox);
+            if (todo.isEditing === true) {
+              const textbox = document.createElement("input");
+              textbox.type = "text";
+              textbox.id = "edit-title-" + todo.id;
+              element.appendChild(textbox);
 
-            const datePicker = document.createElement("input");
-            datePicker.type = "date";
-            datePicker.id = "edit-date-" + todo.id;
-            element.appendChild(datePicker);
+              const datePicker = document.createElement("input");
+              datePicker.type = "date";
+              datePicker.id = "edit-date-" + todo.id;
+              element.appendChild(datePicker);
 
-            const updateButton = document.createElement("button");
-            updateButton.innerText = "Update";
-            updateButton.dataset.todoId = todo.id;
-            updateButton.className = "update-button";
-            updateButton.onclick = onUpdate;
-            element.appendChild(updateButton);
-          } else {
-            element.innerHTML =
-              `<p class= 'todo-title'>${todo.title}</p>` +
-              `<p class = 'todo-due-date'>${todo.dueDate}</p>`;
-
-            const editButton = document.createElement("button");
-            editButton.className = "edit-button";
-            editButton.innerText = "Edit";
-            editButton.onclick = onEdit;
-            editButton.dataset.todoId = todo.id;
-            element.appendChild(editButton);
-
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.onchange = checkTodo;
-            checkbox.dataset.todoId = todo.id;
-            if (todo.isDone === true) {
-              checkbox.checked = true;
+              const updateButton = document.createElement("button");
+              updateButton.innerText = "Update";
+              updateButton.dataset.todoId = todo.id;
+              updateButton.className = "update-button";
+              updateButton.onclick = onUpdate;
+              element.appendChild(updateButton);
             } else {
-              checkbox.checked = false;
-            }
-            element.prepend(checkbox);
+              element.innerHTML =
+                `<p class= 'todo-title'>${todo.title}</p>` +
+                `<p class = 'todo-due-date'>${todo.dueDate}</p>`;
 
-            const deleteButton = document.createElement("button");
-            // deleteButton.innerText = "Delete";
-            deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>";
-            deleteButton.className = "delete-button";
-            deleteButton.onclick = onDelete(todo);
-            element.appendChild(deleteButton);
-          }
-            
-          
-          //if the todo-item's listTag === the ID of the list, append the item to that list//
-          listEls.forEach(function (listEl) {
-            if (todo.listTag === listEl.id) {
-              listEl.appendChild(element);
-              checkItemCount();
-            }  else {
-              checkItemCount();
+              const editButton = document.createElement("button");
+              editButton.className = "edit-button";
+              editButton.innerText = "Edit";
+              editButton.onclick = onEdit;
+              editButton.dataset.todoId = todo.id;
+              element.appendChild(editButton);
+
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.onchange = checkTodo;
+              checkbox.dataset.todoId = todo.id;
+              if (todo.isDone === true) {
+                checkbox.checked = true;
+              } else {
+                checkbox.checked = false;
+              }
+              element.prepend(checkbox);
+
+              const deleteButton = document.createElement("button");
+              // deleteButton.innerText = "Delete";
+              deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>";
+              deleteButton.className = "delete-button";
+              deleteButton.onclick = onDelete(todo);
+              element.appendChild(deleteButton);
             }
-          })  
+            
+            //if the todo-item's listTag === the ID of the list, append the item to that list//
+            listEls.forEach(function (listEl) {
+              if (todo.listTag === listEl.id) {
+                listEl.appendChild(element);
+                checkItemCount();
+              }  else {
+                checkItemCount();
+              }
+            })
+          
         });      
-        checkItemCount();
       };
       
       render();
 
-      document.querySelector(".sb-tab-box").addEventListener("click", checkItemCount())
+/*       document.querySelector(".sb-tab-box").addEventListener("click", checkItemCount()) */
 
       
       $(function() {

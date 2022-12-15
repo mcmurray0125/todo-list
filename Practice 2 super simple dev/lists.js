@@ -1,23 +1,3 @@
-      const noListMessage = () => {
-      const listContainer = document.getElementById("list-container");
-      const noListContainer = document.createElement('div');
-      noListContainer.className = "no-list-container"
-      const noListText = document.createElement('div');
-      noListText.className = "no-list-text"
-      noListText.innerText = "There are no lists here"
-      const noListImage = document.createElement('img');
-      noListImage.className = "no-list-img"
-      noListImage.src = "/Practice 2 super simple dev/images/clipboard_image.png"
-
-      let listTitleContainer = document.getElementById('list-title-container');
-      let addBar = document.getElementById('add-bar');
-      
-      listTitleContainer.style = "display: none";
-      addBar.style = "display: none";
-      noListContainer.appendChild(noListImage);
-      noListContainer.appendChild(noListText);
-      listContainer.appendChild(noListContainer)
-    }
 
     let noTodosMessage = () => {
       const listContainer = document.getElementById("list-container");
@@ -59,16 +39,6 @@
 
       
       
-      const displayTitleElements = () => {
-        let listTitleContainer = document.querySelector('.list-title-container');
-        let addBar = document.querySelector('.add-bar');
-        
-        listTitleContainer.style = "display: flex"
-        addBar.style = "display: flex"
-        /* noListContainer.appendChild(noListImage);
-        noListContainer.appendChild(noListText);
-        listContainer.appendChild(noListContainer) */
-      }
       
       //Creates a todo-list
       const createList = (listTitle) => {
@@ -90,7 +60,7 @@
       }
       
       //Deletes a list
-      const removeList = (listIdToDelete) => {
+/*       const removeList = (listIdToDelete) => {
         lists = lists.filter((list) => {
           //If the id of this list matches listIdToDelete, return false
           //for everything else, return true
@@ -102,7 +72,7 @@
         });
 
         saveLists();
-      };
+      }; */
 
       const saveLists = () => {
         localStorage.setItem("lists", JSON.stringify(lists));
@@ -128,6 +98,7 @@
         createList(listTitle);
         renderList();
         render();
+        checkItemCount();
     };
     const renameList = () => {
         const textbox = document.getElementById("rename-list-input");
@@ -215,26 +186,37 @@
     }
     
     function onDeleteList() {
-      // Find the index of the array object with isActive === true
-      const listToDelete = lists.findIndex(list => list.isActive === true);
+      if (lists.length > 1) {
+        // Find the index of the array object with isActive === true
+        const listToDelete = lists.findIndex(list => list.isActive === true);
+  
+          lists.splice(listToDelete,1);
+          saveLists();
+          resetActiveListsDelete();
+          renderList();
+          render();
+          checkItemCount();
+      } else {
+        const listToDelete = lists.findIndex(list => list.isActive === true);
 
-        lists.splice(listToDelete);
+        document.querySelector(".no-todo-container").classList.remove("display");
+        lists.splice(listToDelete,1);
+        saveLists();
+        renderList();
+        render();
+      }
+
               
-      saveLists();
-      resetActiveListsDelete();
-      renderList();
-      render();
       
   }
 
-
-
+  //Toggles the display for the pop up-box when user Renames a list//
     function toggleRenameListPopup() {
       const popUp = document.getElementById("popup-field-rename");
       popUp.classList.toggle("reveal-popup");
     }
 
-    //Using Return Key on Sidebar Elements//
+    //Using Return Key to navigate Sidebar Elements//
     function sidebarEnterKey () {
       document.querySelectorAll(".sb-tab-box").forEach(function(tabBox) {
         tabBox.addEventListener("keyup", function(event) {
@@ -246,7 +228,7 @@
     }
 
 
-    //NOT NEEDED function, just lets me know if things are working//
+    //NOT NEEDED function//
     function checkRadioValue() {
       const radios = document.getElementsByName("sbRadio");
       for (let radio of radios) {
@@ -257,90 +239,78 @@
     }
 
     
-    /* Need new edit list event target */
-    
-    /* function onEditList(event) {
-      const editButton = event.target;
-      const listId = editButton.dataset.listId;
-      
-      setEditing(listId);
-      render();
-    } */
-    
-    /* Need new save button after entering new list title. */
-    
-    /* function onUpdateList(event) {
-      const updateButton = event.target;
-      const todoId = updateButton.dataset.todoId;
-      
-      const textbox = document.getElementById("edit-title-" + todoId);
-      const newTitle = textbox.value;
-      
-      updateTodo(todoId, newTitle, newDate);
-      render();
-    } */
-
-    
     //View
 
     const renderList = () => { 
-
-      document.querySelector(".radio").innerHTML = "";
-      document.getElementById("lists-wrapper").innerHTML = "";
-
-      lists.forEach(function (list) {
-        const listElement = document.createElement("div");
-        listElement.className = "todo-list"
-        listElement.id = list.id;
-        
-        const listsWrapper = document.getElementById("lists-wrapper");
-        listsWrapper.appendChild(listElement);
+      const noListContainer = document.querySelector(".no-list-container");
+      const addBar = document.getElementById("add-bar");
+      const listTitleContainer = document.getElementById("list-title-container");
       
-        const sbRadio = document.getElementById("radio");
+      if (lists.length === 0) {
+        document.querySelector(".radio").innerHTML = "";
+        noListContainer.classList.add("display");
+        addBar.classList.add("hidden");
+        listTitleContainer.classList.add("hidden")
+      } else {
+        noListContainer.classList.remove("display");
+        addBar.classList.remove("hidden");
+        listTitleContainer.classList.remove("hidden")
 
-        const sbInput = document.createElement("input");
-        sbInput.className = "sb-input";
-        sbInput.type = "radio";
-        sbInput.tabIndex = 0;
-        sbInput.name = "sbRadio"
-        sbInput.title = list.title;
-        sbInput.id = list.id;
-        sbInput.onchange = checkList;
-        if (list.isActive === true) {
-          sbInput.checked = true;
-          document.querySelector(".list-title").innerText = list.title;
-          listElement.classList.add('active');
-        } else {
-          sbInput.checked = false;
+      
+        document.querySelector(".radio").innerHTML = "";
+        document.getElementById("lists-wrapper").innerHTML = "";
+
+        lists.forEach(function (list) {
+          const listElement = document.createElement("div");
+          listElement.className = "todo-list"
+          listElement.id = list.id;
+          
+          const listsWrapper = document.getElementById("lists-wrapper");
+          listsWrapper.appendChild(listElement);
+        
+          const sbRadio = document.getElementById("radio");
+
+          const sbInput = document.createElement("input");
+          sbInput.className = "sb-input";
+          sbInput.type = "radio";
+          sbInput.tabIndex = 0;
+          sbInput.name = "sbRadio"
+          sbInput.title = list.title;
+          sbInput.id = list.id;
+          sbInput.onchange = checkList;
+          if (list.isActive === true) {
+            sbInput.checked = true;
+            document.querySelector(".list-title").innerText = list.title;
+            listElement.classList.add('active');
+          } else {
+            sbInput.checked = false;
+          }
+          sbRadio.appendChild(sbInput);
+
+          const sidebarTabBox = document.createElement('label');
+          sidebarTabBox.id = list.id;
+          sidebarTabBox.role = "button";
+          sidebarTabBox.tabIndex = 0;
+          sidebarTabBox.htmlFor = list.id;
+          sidebarTabBox.className = "sb-tab-box";
+          sbRadio.appendChild(sidebarTabBox);
+          
+          const sidebarTabContents = document.createElement('div');
+          sidebarTabContents.className = "sb-tab-contents";
+          sidebarTabBox.appendChild(sidebarTabContents);
+          
+          let sidebarTabTitle = document.createElement('div');
+          sidebarTabTitle.className = "sb-tab-title"
+          sidebarTabTitle.innerText = list.title;
+          sidebarTabContents.appendChild(sidebarTabTitle);
+          
+          let sidebarTabItemCount = document.createElement('div');
+          sidebarTabItemCount.className = "sb-tab-item-count"
+          sidebarTabItemCount.innerText = "# of items";
+          sidebarTabContents.appendChild(sidebarTabItemCount);
+
+          });
         }
-        sbRadio.appendChild(sbInput);
-
-        const sidebarTabBox = document.createElement('label');
-        sidebarTabBox.id = list.id;
-        sidebarTabBox.role = "button";
-        sidebarTabBox.tabIndex = 0;
-        sidebarTabBox.htmlFor = list.id;
-        sidebarTabBox.className = "sb-tab-box";
-        sbRadio.appendChild(sidebarTabBox);
-        
-        const sidebarTabContents = document.createElement('div');
-        sidebarTabContents.className = "sb-tab-contents";
-        sidebarTabBox.appendChild(sidebarTabContents);
-        
-        let sidebarTabTitle = document.createElement('div');
-        sidebarTabTitle.className = "sb-tab-title"
-        sidebarTabTitle.innerText = list.title;
-        sidebarTabContents.appendChild(sidebarTabTitle);
-        
-        let sidebarTabItemCount = document.createElement('div');
-        sidebarTabItemCount.className = "sb-tab-item-count"
-        sidebarTabItemCount.innerText = "# of items";
-        sidebarTabContents.appendChild(sidebarTabItemCount);
-        
-        
-        
-      });
-      
       sidebarEnterKey();
     }
     
@@ -405,8 +375,47 @@
           document.getElementById("add-todo-btn").click();
       }
   });
-  
 
+// User Action Notifications //  
+const createButton = document.querySelector('button.create-btn');
+const listCreatedNotification = document.querySelector('div.list-created');
+
+createButton.addEventListener('click', function() {
+  setTimeout(function() {
+
+    listCreatedNotification.classList.add('display');
+    
+    setTimeout(function() {
+      listCreatedNotification.classList.remove('display');
+    }, 5000);
+  }, 1000);
+  });
+const saveButton = document.querySelector('button.save-btn');
+const listRenamedNotification = document.querySelector('div.list-renamed');
+
+saveButton.addEventListener('click', function() {
+  setTimeout(function() {
+
+    listRenamedNotification.classList.add('display');
+    
+    setTimeout(function() {
+      listRenamedNotification.classList.remove('display');
+    }, 5000);
+  }, 1000);
+  });
+const deleteListButton = document.getElementById("delete-list-btn");
+const listDeletedNotification = document.querySelector('div.list-deleted');
+
+deleteListButton.addEventListener('click', function() {
+  setTimeout(function() {
+
+    listDeletedNotification.classList.add('display');
+    
+    setTimeout(function() {
+      listDeletedNotification.classList.remove('display');
+    }, 5000);
+  }, 1000);
+  });
 
         
 
