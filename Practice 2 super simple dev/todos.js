@@ -86,7 +86,7 @@ let todos;
         localStorage.setItem("todos", JSON.stringify(todos));
       };
 
-      //Character Count in Pop Up Dialog
+      // Character Count in Pop Up Text Inputs // 
       {
         const textArea = document.getElementById("new-list-input");
         const characters = document.getElementById("characters");
@@ -95,16 +95,32 @@ let todos;
           let content = this.value;
           characters.textContent = content.length;
         });
+        
+        const renameTextArea = document.getElementById("rename-list-input");
+        const renameCharacters = document.getElementById("rename-characters");
+
+        renameTextArea.addEventListener("input", function () {
+          let renameContent = this.value;
+          renameCharacters.textContent = renameContent.length;
+        });
       }
 
       // Controller
       
       //Clears the input fields of the Add Item bad and Date Picker//
-      const clearText = () => {
+      const clearAddBarInput = () => {
         const textField = document.getElementById("todo-title");
         textField.value = "";
         const datePicker = document.getElementById("date-picker");
         datePicker.value = "";
+      };
+
+      const clearNewRenameListInput = () => {
+        const newListTextbox = document.getElementById("new-list-input")
+        newListTextbox.value = "";
+
+        const renameListTextbox = document.getElementById("rename-list-input")
+        renameListTextbox.value = "";
       };
 
       //Add Item underline animation

@@ -381,6 +381,7 @@ const createButton = document.querySelector('button.create-btn');
 const listCreatedNotification = document.querySelector('div.list-created');
 
 createButton.addEventListener('click', function() {
+  
   setTimeout(function() {
 
     listCreatedNotification.classList.add('display');

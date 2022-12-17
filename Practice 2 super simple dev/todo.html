@@ -87,7 +87,7 @@
           />
           <button
             id="add-todo-btn"
-            onclick="addTodo();clearText();"
+            onclick="addTodo();clearAddBarInput();"
             class="add-bar-item"
           >
             Add Todo
@@ -142,7 +142,7 @@
               </button>
               <button
                 class="create-btn"
-                onclick="toggleNewListPopup();addList();"
+                onclick="toggleNewListPopup();addList();clearNewRenameListInput();"
                 id="create-btn"
               >
                 Create
@@ -158,12 +158,12 @@
             <div class="nl-input-box">
               <input
                 type="text"
-                placeholder="New list name"
+                placeholder="List name"
                 required
                 id="rename-list-input"
               />
               <p class="character-count">
-                <span id="characters">0&nbsp</span> / 200
+                <span id="rename-characters">0&nbsp</span> / 200
               </p>
             </div>
             <div class="nl-btn-box">
@@ -172,7 +172,7 @@
               </button>
               <button
                 class="save-btn"
-                onclick="toggleRenameListPopup();renameList();"
+                onclick="toggleRenameListPopup();renameList();clearNewRenameListInput();"
                 id="save-btn"
               >
                 Save

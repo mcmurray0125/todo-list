@@ -143,10 +143,10 @@ header {
   top: 112px;
   left: 121px;
 }
-.no-list-container.display{
+.no-list-container.display {
   top: 100px;
 }
-.no-todo-container.display{
+.no-todo-container.display {
   top: 185px;
 }
 .no-todo-container,
@@ -178,7 +178,7 @@ header {
 }
 .list-title-container {
   display: flex;
-  padding-left: 16px;
+  margin-left: 16px;
 }
 .list-title-text {
   display: flex;
@@ -513,9 +513,9 @@ h2::before {
   position: absolute;
 }
 .notification p {
-font-size: 14px;
-color: white;
-line-height: 3.5;
+  font-size: 14px;
+  color: white;
+  line-height: 3.5;
 }
 
 /* Buttons */
@@ -588,3 +588,17 @@ input[type="date"]:hover,
   min-width: 80px;
   margin-right: -17px;
 } */
+
+/* Media Queries */
+
+@media screen and (max-width: 575px) {
+  .add-bar #date-picker {
+    min-width: 65px;
+  }
+  .todo-item .todo-due-date {
+    font-size: 12px;
+  }
+  .todo-item button {
+    min-width: 40px;
+  }
+}

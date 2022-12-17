@@ -11,11 +11,15 @@ After learning the JS basics, I watched a JS walkthrough video that showed me ho
 
 <h2>Tasks:</h2>
 
-When lists = [], the noListMessage should be displayed, and the addBar should be display: none.
+Uniformity across internet browsers.
 
-Add status update in bottom left corner of page. Display for 3 seconds.
-(status update on New List Created, List Title Updated, List Deleted...)
+Media Queries for small screen sizes.
 
 CSS styling while editing a todo.
 
 Look into dark theme option.
+
+<h2>Updated:</h2>
+When creating or renaming a list, the input field is cleared when user clicks Save or Create button.
+
+Characters counter now works on the Rename List text input. Before, only the New List input hada character counter.
