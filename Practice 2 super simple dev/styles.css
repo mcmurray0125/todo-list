@@ -112,6 +112,10 @@ header {
   border-radius: 0 30px 30px 0;
   align-items: center;
 }
+.sb-tab-item-count {
+  font-weight: 100;
+  font-size: 14px;
+}
 .sb-tab-box:hover {
   background-color: rgb(250, 250, 250);
 }
@@ -276,7 +280,7 @@ header {
   background-color: rgb(241, 241, 241);
 }
 
-.dropdown-content.dd-display {
+.dropdown-content.display {
   display: inline-block;
   z-index: 3000;
   opacity: 100;

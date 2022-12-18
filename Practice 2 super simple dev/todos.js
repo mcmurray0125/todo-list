@@ -139,7 +139,7 @@ let todos;
 
 
       //Drop Down Sub Menu Displays  
-      {
+/*       {
       const moreButton = document.getElementById("more-button")
       const moreDropDown = document.getElementById("more-dropdown")
 
@@ -150,7 +150,7 @@ let todos;
 
       sortButton.addEventListener("click", function(){sortDropDown.classList.toggle("dd-display")})
       }
-
+ */
       function alphabetSort() {
         var mylist = document.querySelector(".todo-list.active");
         var divs = mylist.getElementsByTagName("div");
@@ -247,7 +247,11 @@ let todos;
       const render = () => {
         //reset todo-list elements to allow new items to populate//
         const listEls = document.querySelectorAll(".todo-list");
+        let sbTabItemCounts = document.querySelectorAll(".sb-tab-item-count");
 
+        sbTabItemCounts.forEach(function (sbTabItemCount) {
+          sbTabItemCount.innerText = "0 items"
+        })
         listEls.forEach(function (listEl) {
           listEl.innerHTML = ""
         })
@@ -309,11 +313,21 @@ let todos;
             
             //if the todo-item's listTag === the ID of the list, append the item to that list//
             listEls.forEach(function (listEl) {
+              
               if (todo.listTag === listEl.id) {
                 listEl.appendChild(element);
                 checkItemCount();
               }  else {
                 checkItemCount();
+              }
+              const listElChildren = listEl.children;
+              const listElChildrenCount = listElChildren.length;
+              const sbTabBox = document.querySelector(`[for='${listEl.id}']`);
+              const sbTabItemCount = sbTabBox.querySelector('.sb-tab-item-count');
+              if (listElChildrenCount === 1) {
+                sbTabItemCount.innerText = listElChildrenCount + " item";
+              } else {
+                sbTabItemCount.innerText = listElChildrenCount + " items";
               }
             })
           
@@ -330,6 +344,36 @@ let todos;
         console.log(activeListCount);
       }) 
 
+
+/*       const titleButtons = document.querySelectorAll('.title-button');
+
+      titleButtons.forEach((titleButton) => {
+        titleButton.addEventListener('click', (event) => {
+          // Get the dropdown-content element within the clicked title-button
+          const dropdownContent = titleButton.querySelector('.dropdown-content');
+
+          // Toggle the display class on the dropdown-content element
+          dropdownContent.classList.toggle('display');
+
+          // Remove the display class from all other dropdown-content elements
+          const otherDropdownContents = document.querySelectorAll('.dropdown-content:not(.display)');
+          otherDropdownContents.forEach((otherDropdownContent) => {
+            otherDropdownContent.classList.remove('display');
+          });
+        });
+      }); */
+
+      $(function() {
+        $(".title-button").on("click", function(e) {
+          $(".dropdown-content").addClass("display");
+          e.stopPropagation()
+        });
+        $(document).on("click", function(e) {
+          if ($(e.target).is(".dropdown-content") === false) {
+            $(".dropdown-content").removeClass("display");
+          }
+        });
+      });
 
 
 
