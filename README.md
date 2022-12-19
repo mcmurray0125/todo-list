@@ -13,13 +13,9 @@ After learning the JS basics, I watched a JS walkthrough video that showed me ho
 
 Uniformity across internet browsers.
 
-Media Queries for small screen sizes.
-
 CSS styling while editing a todo.
 
 Look into dark theme option.
 
 <h2>Updated:</h2>
-When creating or renaming a list, the input field is cleared when user clicks Save or Create button.
-
-Characters counter now works on the Rename List text input. Before, only the New List input hada character counter.
+The Dropdown menus for the title buttons (sort, more,...) are fixed so that only one dropdown menu can be seen at a time.

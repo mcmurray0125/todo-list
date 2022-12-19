@@ -145,6 +145,20 @@
       document.querySelector(".list-title").innerText = listTitle;
     }
 
+    function changeListTitleCaption(listIdA) {
+      // Find the div element with the class of sb-tab-box and a for attribute with the value of listIdA
+      const labelElement = document.querySelector(`label.sb-tab-box[for='${listIdA}']`);
+      // Find the sb-tab-item-count element within the label element
+      const sbTabItemCountElement = labelElement.querySelector('.sb-tab-item-count');
+      // Get the inner text of the sb-tab-item-count element
+      const sbTabItemCountText = sbTabItemCountElement.innerText;
+      // Find the .list-title-caption div
+      const listTitleCaption = document.querySelector('.list-title-caption');
+      // Set the inner text of the .list-title-caption div to the inner text of the sb-tab-item-count element
+      listTitleCaption.innerText = sbTabItemCountText;
+    }
+    
+
     function checkList(event) {
       const sbInput = event.target;
 
@@ -156,6 +170,7 @@
       checkRadioValue();
       checkItemCount();
       changeListTitle(listTitle);
+      changeListTitleCaption(listIdA);
     }
 
     //When a New List is created, all other lists are set to not Active //
@@ -195,6 +210,7 @@
           resetActiveListsDelete();
           renderList();
           render();
+          changeListTitleCaption(activeListValue());
           checkItemCount();
       } else {
         const listToDelete = lists.findIndex(list => list.isActive === true);
@@ -237,6 +253,7 @@
           }
       }
     }
+
 
     
     //View
@@ -314,9 +331,7 @@
       sidebarEnterKey();
     }
     
-    
     renderList();
-
 
     //Accessibility Functions//
     //Using return key on Add Item text input and Date Picker//
@@ -376,6 +391,7 @@
       }
   });
 
+  
 // User Action Notifications //  
 const createButton = document.querySelector('button.create-btn');
 const listCreatedNotification = document.querySelector('div.list-created');
@@ -418,11 +434,8 @@ deleteListButton.addEventListener('click', function() {
   }, 1000);
   });
 
-        
-
-
-
-
-    
-
-
+  window.onload = function() {
+    checkItemCount();
+    changeListTitleCaption(activeListValue());
+  };
+  

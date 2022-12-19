@@ -21,7 +21,7 @@
         <h1>Michael's To-Do List</h1>
       </div>
       <figure class="profile-picture">
-        <img src="images/MM-Profile Pic.JPG" alt="Profile Picture" />
+        <img src="/images/MM-Profile Pic.JPG" alt="Profile Picture" />
       </figure>
     </header>
     <div class="container">
@@ -48,21 +48,25 @@
               <div class="tooltip">Share</div>
             </div>
             <div class="title-button-wrapper" id="sort-button">
-              <button class="title-button" id="sort-button">
-                <i class="fa-solid fa-sort"></i>
+              <button class="title-button" id="sort-button" tag="sort">
+                <i class="fa-solid fa-sort" tag="sort"></i>
               </button>
-              <div class="tooltip">Sort</div>
-              <div class="dropdown-content" id="sort-dropdown">
+              <div class="dropdown-content" id="sort-dropdown" tag="sort">
                 <a href="javascript:alphabetSort();">Alphabetical</a>
                 <a href="javascript:render();">Default</a>
               </div>
+              <div class="tooltip">Sort</div>
             </div>
             <div class="title-button-wrapper" id="more-button">
-              <button class="title-button" id="more-button">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
+              <button class="title-button" id="more-button" tag="more">
+                <i class="fa-solid fa-ellipsis-vertical" tag="more"></i>
               </button>
-              <div class="tooltip">More</div>
-              <div class="dropdown-content" tabindex="1" id="more-dropdown">
+              <div
+                class="dropdown-content"
+                tabindex="1"
+                id="more-dropdown"
+                tag="more"
+              >
                 <a href="javascript:toggleRenameListPopup();">Rename List</a>
                 <a
                   href="javascript:deleteTodosWithList();onDeleteList();"
@@ -71,6 +75,7 @@
                 >
                 <a href="#">Check All</a>
               </div>
+              <div class="tooltip">More</div>
             </div>
           </div>
         </div>
@@ -98,7 +103,7 @@
       </div>
       <div class="no-list-container" id="no-list-container">
         <img
-          src="/Practice 2 super simple dev/images/clipboard_image.png"
+          src="/images/clipboard_image.png"
           alt="No list created yet"
           class="no-list-img"
         />
@@ -106,7 +111,7 @@
       </div>
       <div class="no-todo-container" id="no-todo-container">
         <img
-          src="/Practice 2 super simple dev/images/cat_box_image.svg"
+          src="/images/cat_box_image.svg"
           alt="no list items here..."
           class="no-todo-img"
         />
@@ -184,7 +189,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/Practice 2 super simple dev/lists.js"></script>
-    <script src="/Practice 2 super simple dev/todos.js"></script>
+    <script src="/lists.js"></script>
+    <script src="/todos.js"></script>
   </body>
 </html>

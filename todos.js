@@ -196,6 +196,7 @@ let todos;
           removeTodo(todoToDelete.id);
           render();
           checkItemCount();
+          changeListTitleCaption(activeListValue());
         };
       };
       
@@ -266,6 +267,7 @@ let todos;
             if (todo.isEditing === true) {
               const textbox = document.createElement("input");
               textbox.type = "text";
+              textbox.placeholder = todo.title;
               textbox.id = "edit-title-" + todo.id;
               element.appendChild(textbox);
 
@@ -280,6 +282,7 @@ let todos;
               updateButton.className = "update-button";
               updateButton.onclick = onUpdate;
               element.appendChild(updateButton);
+
             } else {
               element.innerHTML =
                 `<p class= 'todo-title'>${todo.title}</p>` +
@@ -324,10 +327,14 @@ let todos;
               const listElChildrenCount = listElChildren.length;
               const sbTabBox = document.querySelector(`[for='${listEl.id}']`);
               const sbTabItemCount = sbTabBox.querySelector('.sb-tab-item-count');
+              const listTitleCaption = document.querySelector(".list-title-caption");
               if (listElChildrenCount === 1) {
                 sbTabItemCount.innerText = listElChildrenCount + " item";
+                listTitleCaption.innerText = listElChildrenCount + " item";
+
               } else {
                 sbTabItemCount.innerText = listElChildrenCount + " items";
+                listTitleCaption.innerText = listElChildrenCount + " items";
               }
             })
           
@@ -336,7 +343,6 @@ let todos;
       
       render();
 
-/*       document.querySelector(".sb-tab-box").addEventListener("click", checkItemCount()) */
 
       
       $(function() {
@@ -345,36 +351,61 @@ let todos;
       }) 
 
 
-/*       const titleButtons = document.querySelectorAll('.title-button');
-
-      titleButtons.forEach((titleButton) => {
-        titleButton.addEventListener('click', (event) => {
-          // Get the dropdown-content element within the clicked title-button
-          const dropdownContent = titleButton.querySelector('.dropdown-content');
-
-          // Toggle the display class on the dropdown-content element
-          dropdownContent.classList.toggle('display');
-
-          // Remove the display class from all other dropdown-content elements
-          const otherDropdownContents = document.querySelectorAll('.dropdown-content:not(.display)');
-          otherDropdownContents.forEach((otherDropdownContent) => {
-            otherDropdownContent.classList.remove('display');
-          });
+      function toggleDropdown(event) {
+        // Get the clicked button
+        const button = event.target;
+      
+        // Find the dropdown element that has the same tag as the clicked button
+        const dropdown = document.querySelector(`div[tag=${button.getAttribute('tag')}]`);
+      
+        // Hide all dropdowns except for the selected one
+        const dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(el => {
+          if (el === dropdown) {
+            el.classList.toggle('display');
+          } else {
+            el.classList.remove('display');
+          }
         });
-      }); */
+      }
+      
+    
+      const titleButtons = document.querySelectorAll('.title-button');
+      titleButtons.forEach(button => button.addEventListener('click', toggleDropdown));
+      
 
-      $(function() {
-        $(".title-button").on("click", function(e) {
-          $(".dropdown-content").addClass("display");
-          e.stopPropagation()
-        });
-        $(document).on("click", function(e) {
-          if ($(e.target).is(".dropdown-content") === false) {
-            $(".dropdown-content").removeClass("display");
+      document.addEventListener('click', event => {
+        // Check if the click originated from a title button
+        if (!event.target.matches('.title-button')) {
+          // If not, hide all dropdowns
+          const dropdowns = document.querySelectorAll('.dropdown-content');
+          dropdowns.forEach(el => el.classList.remove('display'));
+        }
+      });
+
+
+      const target = document.querySelector('.todo-list.active');
+
+      const observer = new MutationObserver(function() {
+        // reattach the event listener to the updated element
+        $(".todo-list.active input[type='text']").keyup(function(event) {
+          if (event.keyCode === 13) {
+              $(".update-button").click();
           }
         });
       });
 
+      // start observing the target element for changes
+      observer.observe(target, { childList: true, subtree: true });
+
+
+      $(".todo-list.active input[type='text']").keyup(function(event) {
+        if (event.keyCode === 13) {
+            $(".update-button").click();
+        }
+      });
+      
+      
 
 
           

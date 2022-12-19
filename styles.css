@@ -542,7 +542,9 @@ h2::before {
   transition: 0.15s;
   cursor: pointer;
 }
-
+.title-button i {
+  pointer-events: none;
+}
 .todo-item .update-button,
 .add-bar button {
   min-width: 62px;
@@ -595,7 +597,10 @@ input[type="date"]:hover,
 
 /* Media Queries */
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 450px) {
+  .sidebar-collapsed {
+    margin-left: -180px;
+  }
   .add-bar #date-picker {
     min-width: 65px;
   }
