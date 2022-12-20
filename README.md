@@ -9,13 +9,15 @@ While learning new languages, I am constantly surpised at how much we can do wit
 
 After learning the JS basics, I watched a JS walkthrough video that showed me how to build the basic skeleton of the todo-list web app. At the end of the video, I thought "This is ok, but I want mine to look like that! (looking at Google's Shopping List web app)" So, that was task from that day on. I spent the next month creating my Google Shopping List inspired Todo-list, adding as much functionalty as I could.
 
-<h2>Tasks:</h2>
+<h2>Updated:</h2>
+Fixed the title-caption counter. When a list would be renamed, the title counter would stop working.
 
-Uniformity across internet browsers.
+Set pop-up field width and heights to 100vh and vw to prevent display bugs on phones.
+
+<h2>Recommended Tasks:</h2>
 
 CSS styling while editing a todo.
 
-Look into dark theme option.
+Increase height of Add item input field to make tapping it on phones easier.
 
-<h2>Updated:</h2>
-The Dropdown menus for the title buttons (sort, more,...) are fixed so that only one dropdown menu can be seen at a time.
+Look into dark theme option.

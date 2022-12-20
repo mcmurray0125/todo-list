@@ -59,21 +59,6 @@
         window.location.reload()
       }
       
-      //Deletes a list
-/*       const removeList = (listIdToDelete) => {
-        lists = lists.filter((list) => {
-          //If the id of this list matches listIdToDelete, return false
-          //for everything else, return true
-          if (list.id === listIdToDelete) {
-            return false;
-          } else {
-            return true;
-          }
-        });
-
-        saveLists();
-      }; */
-
       const saveLists = () => {
         localStorage.setItem("lists", JSON.stringify(lists));
       };
@@ -107,6 +92,8 @@
         updateList(newListTitle);
         renderList();
         render();
+        changeListTitleCaption(activeListValue());
+        checkItemCount();
     };
 
     function updateList(newListTitle) {

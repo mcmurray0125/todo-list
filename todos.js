@@ -189,6 +189,8 @@ let todos;
         
         createTodo(title, dueDate);
         render();
+        checkItemCount();
+        changeListTitleCaption(activeListValue());
       };
       
       const onDelete = (todoToDelete) => {
