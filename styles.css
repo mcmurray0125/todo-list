@@ -5,6 +5,13 @@
   padding: 0px;
   font-family: "Nanum Gothic", sans-serif;
 }
+input[type="checkbox"] {
+  /* Set the size of the checkbox */
+  width: 20px;
+  height: 20px;
+  /* Set the margins around the checkbox */
+  margin-top: 16px;
+}
 
 body {
   font-family: "Nanum Gothic", sans-serif;
@@ -29,6 +36,7 @@ header {
   padding: 8px;
   box-shadow: 0 2px 4px rgba(67, 64, 65, 0.5);
   overflow: auto;
+  z-index: 4500;
 }
 .header-container {
   display: flex;
@@ -86,7 +94,7 @@ header {
   font-family: "Nanum Gothic", sans-serif;
   display: flex;
   flex-direction: column;
-  height: 800px;
+  max-height: 100%;
   z-index: 100;
   padding: 16px 0px;
   transition: 0.2s;
@@ -140,19 +148,17 @@ header {
 .no-todo-container.display,
 .no-list-container.display {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 112px;
-  left: 121px;
+  top: 170px;
+  left: 1075px;
 }
 .no-list-container.display {
   top: 100px;
 }
-.no-todo-container.display {
-  top: 185px;
-}
+
 .no-todo-container,
 .no-list-container {
   display: none;
@@ -413,7 +419,7 @@ header {
 #popup-field.reveal-popup,
 #popup-field-rename.reveal-popup {
   opacity: 1;
-  z-index: 3500;
+  z-index: 3600;
   background-color: rgba(32, 33, 36, 0.6);
   display: flex;
 }
@@ -425,6 +431,7 @@ header {
   justify-content: space-around;
   box-sizing: border-box;
   height: 100%;
+  max-width: 95%;
   pointer-events: none;
   transform: none;
   opacity: 1;
@@ -597,17 +604,153 @@ input[type="date"]:hover,
 
 /* Media Queries */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
+  .list-container {
+    position: fixed;
+    max-height: 100%;
+    padding: 12px 0px 12px 0px;
+  }
+  header {
+    position: relative;
+    z-index: 4500;
+  }
+  .list-title-container {
+    margin-left: 6px;
+  }
+  .add-bar {
+    margin: 6px;
+    padding: 0px;
+  }
+  .add-bar button {
+    margin-right: 0px;
+  }
+  .sidebar {
+    height: 100vh;
+    z-index: 3000;
+    background-color: rgba(209, 209, 209, 0.94);
+  }
   .sidebar-collapsed {
-    margin-left: -180px;
+    margin-left: -450px;
+  }
+  .sb-tab-box {
+    margin-right: 0.5px;
   }
   .add-bar #date-picker {
     min-width: 65px;
+  }
+  .todo-item {
+    padding-left: 0px;
+  }
+  .todo-item [type="checkbox"] {
+    margin-left: 14px;
   }
   .todo-item .todo-due-date {
     font-size: 12px;
   }
   .todo-item button {
     min-width: 40px;
+    margin: 0px 6px 0px 6px;
+  }
+  .no-todo-container.display,
+  .no-list-container.display {
+    left: 120px;
+  }
+  .nl-input-box {
+    max-width: 100%;
+    margin: 0px;
+  }
+  .nl-input-box #new-list-input,
+  .nl-input-box #rename-list-input {
+    width: 90%;
+    padding-left: 12px;
+  }
+  .notification.display {
+    visibility: visible;
+    display: block;
+    position: fixed;
+    width: 100%;
+    border-radius: 2px;
+    height: 50px;
+    padding-left: 25px;
+    left: 0px;
+    bottom: 22px;
+    background-color: rgb(8, 30, 40);
+  }
+  .notification {
+    visibility: hidden;
+    display: none;
+    position: fixed;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 649px) {
+  .no-todo-container.display {
+    top: 170px;
+    left: 260px;
+  }
+  .no-list-container.display {
+    left: 260px;
+  }
+}
+@media screen and (min-width: 650px) and (max-width: 1300px) {
+  .no-todo-container.display {
+    top: 170px;
+    left: 450px;
+  }
+  .no-list-container.display {
+    left: 450px;
+  }
+}
+@media screen and (max-height: 450px) {
+  .list-container {
+    position: fixed;
+    padding: 12px 0px 12px 0px;
+  }
+  .no-todo-container.display {
+    top: 98px;
+    left: 432px;
+    pointer-events: none;
+  }
+  .no-list-container.display {
+    top: 0px;
+    left: 386px;
+    pointer-events: none;
+  }
+  header {
+    position: relative;
+    z-index: 4500;
+  }
+  #lists-wrapper {
+    height: 100%;
+  }
+  .list-container {
+    position: fixed;
+    padding: 12px 0px 12px 0px;
+    overflow: scroll;
+  }
+  .sidebar {
+    height: 100vh;
+    z-index: 3000;
+    background-color: rgba(209, 209, 209, 0.94);
+  }
+  .notification.display {
+    visibility: visible;
+    display: block;
+    position: fixed;
+    width: 340px;
+    border-radius: 2px;
+    height: 50px;
+    padding-left: 25px;
+    right: 14px;
+    bottom: 14px;
+    background-color: rgb(8, 30, 40);
+    z-index: 5000;
+  }
+  .notification {
+    visibility: hidden;
+    display: none;
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
   }
 }
