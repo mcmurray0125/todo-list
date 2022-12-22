@@ -217,6 +217,9 @@
     function toggleRenameListPopup() {
       const popUp = document.getElementById("popup-field-rename");
       popUp.classList.toggle("reveal-popup");
+      const renameListPopupBox = document.querySelector(".rl-popup-box")
+      renameListPopupBox.classList.toggle("active");
+
     }
 
     //Using Return Key to navigate Sidebar Elements//

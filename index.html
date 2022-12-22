@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Michael's Todo App</title>
-  </head>
-  <link
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-  />
-  <link rel="stylesheet" href="styles.css" />
+    >
+    <link rel="stylesheet" href="styles.css" >
+  </head>
 
   <body>
     <header>
@@ -21,7 +21,7 @@
         <h1>Michael's To-Do List</h1>
       </div>
       <figure class="profile-picture">
-        <img src="/images/MM-Profile Pic.JPG" alt="Profile Picture" />
+        <img src="/js-basics/images/mm-profile-pic.JPG" alt="profile-picture" >
       </figure>
     </header>
     <div class="container">
@@ -29,7 +29,7 @@
         <div class="new-list">
           <button class="new-list-button" onclick="toggleNewListPopup();">
             <span id="plus-icon"><i class="fa-solid fa-plus"></i></span>
-            <span>&nbsp New List</span>
+            <span>&nbsp;New List</span>
           </button>
         </div>
         <form class="radio" id="radio"></form>
@@ -41,31 +41,31 @@
             <div class="list-title-caption">items in list</div>
           </div>
           <div class="list-title-buttons">
-            <div class="title-button-wrapper">
+            <div class="title-button-wrapper" id="share-button-wrapper">
               <button class="title-button" id="share-button">
                 <i class="fa-solid fa-user-plus"></i>
               </button>
               <div class="tooltip">Share</div>
             </div>
-            <div class="title-button-wrapper" id="sort-button">
-              <button class="title-button" id="sort-button" tag="sort">
-                <i class="fa-solid fa-sort" tag="sort"></i>
+            <div class="title-button-wrapper" id="sort-button-wrapper">
+              <button class="title-button" id="sort-button" data-type="sort">
+                <i class="fa-solid fa-sort"></i>
               </button>
-              <div class="dropdown-content" id="sort-dropdown" tag="sort">
+              <div class="dropdown-content" id="sort-dropdown" data-type="sort">
                 <a href="javascript:alphabetSort();">Alphabetical</a>
                 <a href="javascript:render();">Default</a>
               </div>
               <div class="tooltip">Sort</div>
             </div>
-            <div class="title-button-wrapper" id="more-button">
-              <button class="title-button" id="more-button" tag="more">
-                <i class="fa-solid fa-ellipsis-vertical" tag="more"></i>
+            <div class="title-button-wrapper" id="more-button-wrapper">
+              <button class="title-button" id="more-button" data-type="more">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div
                 class="dropdown-content"
                 tabindex="1"
                 id="more-dropdown"
-                tag="more"
+                data-type="more"
               >
                 <a href="javascript:toggleRenameListPopup();">Rename List</a>
                 <a
@@ -80,7 +80,7 @@
           </div>
         </div>
         <section class="add-bar" id="add-bar">
-          <input id="date-picker" type="date" class="add-bar-item" />
+          <input id="date-picker" type="date" class="add-bar-item" >
           <i class="fa-solid fa-plus"></i>
           <input
             id="todo-title"
@@ -89,7 +89,7 @@
             placeholder="Add item"
             onfocusin="focusLine();"
             onfocusout="focusoutLine();"
-          />
+          >
           <button
             id="add-todo-btn"
             onclick="addTodo();clearAddBarInput();"
@@ -103,18 +103,18 @@
       </div>
       <div class="no-list-container" id="no-list-container">
         <img
-          src="/images/clipboard_image.png"
+          src="/js-basics/images/clipboard_image.png"
           alt="No list created yet"
           class="no-list-img"
-        />
+        >
         <div class="no-list-text">There are no lists here</div>
       </div>
       <div class="no-todo-container" id="no-todo-container">
         <img
-          src="/images/cat_box_image.svg"
+          src="/js-basics/images/cat_box_image.svg"
           alt="no list items here..."
           class="no-todo-img"
-        />
+        >
         <div class="no-todo-text">There are no todos here</div>
       </div>
       <div class="list-created notification">
@@ -128,7 +128,7 @@
       </div>
       <div id="popup-field">
         <div class="popup-container">
-          <div class="popup-box">
+          <div class="nl-popup-box">
             <h2>New List</h2>
             <div class="nl-input-box">
               <input
@@ -136,9 +136,9 @@
                 placeholder="List name"
                 required
                 id="new-list-input"
-              />
+              >
               <p class="character-count">
-                <span id="characters">0&nbsp</span> / 200
+                <span id="characters">0&nbsp;</span> / 200
               </p>
             </div>
             <div class="nl-btn-box">
@@ -158,17 +158,17 @@
       </div>
       <div id="popup-field-rename">
         <div class="popup-container">
-          <div class="popup-box">
+          <div class="rl-popup-box">
             <h2>Rename List</h2>
-            <div class="nl-input-box">
+            <div class="rl-input-box">
               <input
                 type="text"
                 placeholder="List name"
                 required
                 id="rename-list-input"
-              />
+              >
               <p class="character-count">
-                <span id="rename-characters">0&nbsp</span> / 200
+                <span id="rename-characters">0&nbsp;</span> / 200
               </p>
             </div>
             <div class="nl-btn-box">
@@ -189,7 +189,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/lists.js"></script>
-    <script src="/todos.js"></script>
+    <script src="/js-basics/lists.js"></script>
+    <script src="/js-basics/todos.js"></script>
   </body>
 </html>

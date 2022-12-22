@@ -178,6 +178,9 @@ let todos;
       function toggleNewListPopup() {
         const popUp = document.getElementById("popup-field");
         popUp.classList.toggle("reveal-popup");
+        const newListPopupBox = document.querySelector(".nl-popup-box")
+        newListPopupBox.classList.toggle("active");
+        
       }
       
       const addTodo = () => {
@@ -358,7 +361,7 @@ let todos;
         const button = event.target;
       
         // Find the dropdown element that has the same tag as the clicked button
-        const dropdown = document.querySelector(`div[tag=${button.getAttribute('tag')}]`);
+        const dropdown = document.querySelector(`div[data-type=${button.getAttribute('data-type')}]`);
       
         // Hide all dropdowns except for the selected one
         const dropdowns = document.querySelectorAll('.dropdown-content');

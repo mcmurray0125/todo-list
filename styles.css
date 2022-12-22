@@ -403,6 +403,7 @@ header {
 /* Pop Up */
 #popup-field,
 #popup-field-rename {
+  visibility: hidden;
   background-color: rgba(0, 0, 0, 0);
   z-index: -2;
   display: flex;
@@ -418,6 +419,7 @@ header {
 }
 #popup-field.reveal-popup,
 #popup-field-rename.reveal-popup {
+  visibility: visible;
   opacity: 1;
   z-index: 3600;
   background-color: rgba(32, 33, 36, 0.6);
@@ -432,17 +434,32 @@ header {
   box-sizing: border-box;
   height: 100%;
   max-width: 95%;
-  pointer-events: none;
+  pointer-events: all;
   transform: none;
   opacity: 1;
 }
-.popup-box {
+.nl-popup-box,
+.rl-popup-box {
   background-color: white;
   position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  pointer-events: auto;
+  pointer-events: none;
+  overflow-y: auto;
+  min-width: 280px;
+  max-height: 555px;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+.nl-popup-box.active,
+.rl-popup-box.active {
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  pointer-events: all;
   overflow-y: auto;
   min-width: 280px;
   max-height: 555px;
@@ -450,7 +467,8 @@ header {
   overflow-y: auto;
 }
 
-.nl-input-box {
+.nl-input-box,
+.rl-input-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -462,8 +480,8 @@ header {
   overflow: hidden;
 }
 
-.nl-input-box #new-list-input,
-.nl-input-box #rename-list-input {
+.nl-input-box input,
+.rl-input-box input {
   font-size: 1rem;
   padding-left: 30px;
   border: none;
