@@ -43,7 +43,7 @@
     <a href="https://github.com/mcmurray0125/js-basics"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#usage">View Demo</a>
+    <a href="#video-demos-">View Demos</a>
     ·
     <a href="https://github.com/mcmurray0125/js-basics/issues">Report Bug</a>
     ·
@@ -66,8 +66,8 @@
       <ul>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#video-demos-">Video Demos</a></li>
+    <li><a href="#roadmap-">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -129,33 +129,47 @@ Visit a live version of the todo-list webpage here:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- USAGE EXAMPLES -->
 
-## Usage
+## Video Demos 🎥
 
-See the videos below for examples of the projects features.
+<details open>
+  <summary>Creating a List and Adding Todo's:</summary>
+  
+  https://user-images.githubusercontent.com/116777356/209297414-ffdd4b46-a576-4bf0-b387-b1c88528724d.mp4
+  
+  
+</details>
 
-Creating a List and Adding Todo's:
+<details>
+  <summary>Editing and Deleting Todo's:</summary>
+  
+  https://user-images.githubusercontent.com/116777356/209297444-286c7b9b-3c5b-4030-bc37-0d479ea4f0a9.mp4
+  
+  
+</details>
 
-https://user-images.githubusercontent.com/116777356/209297414-ffdd4b46-a576-4bf0-b387-b1c88528724d.mp4
+<details>
+  <summary>Renaming and Deleting List:</summary>
+  
+  https://user-images.githubusercontent.com/116777356/209297468-6e8182ba-a788-4345-a56b-b631b0f36fa1.mp4
+  
+  
+</details>
 
+<details>
+  <summary>Sorting Todo's and Toggling Sidebar:</summary>
+  
+  https://user-images.githubusercontent.com/116777356/209297490-c931001c-61be-4e81-abf9-8b641d367317.mp4
+  
+  
+</details>
 
-Editing and Deleting Todo's:
-
-https://user-images.githubusercontent.com/116777356/209297444-286c7b9b-3c5b-4030-bc37-0d479ea4f0a9.mp4
-
-
-Renaming and Deleting List:
-
-https://user-images.githubusercontent.com/116777356/209297468-6e8182ba-a788-4345-a56b-b631b0f36fa1.mp4
-
-
-Sorting Todo's and Toggling Sidebar:
-
-https://user-images.githubusercontent.com/116777356/209297490-c931001c-61be-4e81-abf9-8b641d367317.mp4
-
-
-Accessible Tab Key Navigation:
-
-https://user-images.githubusercontent.com/116777356/209297504-1143d2c9-554d-4ce5-9dfd-a62c092c7dd7.mp4
+<details>
+  <summary>Accessible Tab Key Navigation:</summary>
+  
+  https://user-images.githubusercontent.com/116777356/209297504-1143d2c9-554d-4ce5-9dfd-a62c092c7dd7.mp4
+  
+  
+</details>
 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
@@ -164,7 +178,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 
-## Roadmap
+## Roadmap &#128506;
 
 - [x] Created notification messages for user actions (Creating list, Deleting list)
 - [x] Optimized Sidebar for small displays
