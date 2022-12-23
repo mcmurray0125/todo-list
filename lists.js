@@ -83,6 +83,7 @@
         createList(listTitle);
         renderList();
         render();
+        changeListTitleCaption(activeListValue());
         checkItemCount();
     };
     const renameList = () => {
@@ -359,6 +360,11 @@
     document.getElementById("todo-title").addEventListener("keyup", function(event) {
       if (event.key === 'Enter') {
           document.getElementById("add-todo-btn").click();
+      }
+  });
+    document.querySelector(".header-icon").addEventListener("keyup", function(event) {
+      if (event.key === 'Enter') {
+          document.querySelector(".header-icon").click();
       }
   });
     document.getElementById("rename-list-input").addEventListener("keyup", function(event) {

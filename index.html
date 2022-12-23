@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Michael's Todo App</title>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    >
-    <link rel="stylesheet" href="styles.css" >
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <header>
       <div class="header-container">
-        <div class="header-icon" role="button" onclick="sidebarCollapse();">
+        <div
+          class="header-icon"
+          role="button"
+          tabindex="0"
+          onclick="sidebarCollapse();"
+        >
           <i class="fa-solid fa-bars"></i>
         </div>
         <h1>Michael's To-Do List</h1>
       </div>
       <figure class="profile-picture">
-        <img src="/js-basics/images/mm-profile-pic.JPG" alt="profile-picture" >
+        <img src="/images/mm-profile-pic.JPG" alt="profile-picture" />
       </figure>
     </header>
     <div class="container">
@@ -80,7 +85,7 @@
           </div>
         </div>
         <section class="add-bar" id="add-bar">
-          <input id="date-picker" type="date" class="add-bar-item" >
+          <input id="date-picker" type="date" class="add-bar-item" />
           <i class="fa-solid fa-plus"></i>
           <input
             id="todo-title"
@@ -89,7 +94,7 @@
             placeholder="Add item"
             onfocusin="focusLine();"
             onfocusout="focusoutLine();"
-          >
+          />
           <button
             id="add-todo-btn"
             onclick="addTodo();clearAddBarInput();"
@@ -103,18 +108,18 @@
       </div>
       <div class="no-list-container" id="no-list-container">
         <img
-          src="/js-basics/images/clipboard_image.png"
+          src="/images/clipboard_image.png"
           alt="No list created yet"
           class="no-list-img"
-        >
+        />
         <div class="no-list-text">There are no lists here</div>
       </div>
       <div class="no-todo-container" id="no-todo-container">
         <img
-          src="/js-basics/images/cat_box_image.svg"
+          src="/images/cat_box_image.svg"
           alt="no list items here..."
           class="no-todo-img"
-        >
+        />
         <div class="no-todo-text">There are no todos here</div>
       </div>
       <div class="list-created notification">
@@ -136,7 +141,8 @@
                 placeholder="List name"
                 required
                 id="new-list-input"
-              >
+                tabindex="0"
+              />
               <p class="character-count">
                 <span id="characters">0&nbsp;</span> / 200
               </p>
@@ -166,7 +172,8 @@
                 placeholder="List name"
                 required
                 id="rename-list-input"
-              >
+                tabindex="0"
+              />
               <p class="character-count">
                 <span id="rename-characters">0&nbsp;</span> / 200
               </p>
@@ -189,7 +196,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/js-basics/lists.js"></script>
-    <script src="/js-basics/todos.js"></script>
+    <script src="/lists.js"></script>
+    <script src="/todos.js"></script>
   </body>
 </html>
