@@ -134,7 +134,7 @@ Visit a live version of the todo-list webpage here:
 See the videos below for examples of the projects features.
 
 Creating a List and Adding Todo's:
-githubusercontent
+add-list-add-todo.mp4
 
 Editing and Deleting Todo's:
 githubusercontent
