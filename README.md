@@ -134,19 +134,29 @@ Visit a live version of the todo-list webpage here:
 See the videos below for examples of the projects features.
 
 Creating a List and Adding Todo's:
-githubusercontent
+
+https://user-images.githubusercontent.com/116777356/209295860-e26d4c7b-7041-44ae-9ef0-84a4850819db.mp4
+
 
 Editing and Deleting Todo's:
-githubusercontent
+
+https://user-images.githubusercontent.com/116777356/209296063-16417ae2-94a0-49ba-b424-91cf15b9f14a.mp4
+
 
 Renaming and Deleting List:
-githubusercontent
+
+https://user-images.githubusercontent.com/116777356/209296107-14d56ac5-5702-4c70-a8ab-080b66fa1896.mp4
+
 
 Sorting Todo's and Toggling Sidebar:
-githubusercontent
+
+https://user-images.githubusercontent.com/116777356/209296128-70ba5ed1-acc8-45d4-a613-76393cbf03eb.mp4
+
 
 Accessible Tab Key Navigation:
-githubusercontent
+
+https://user-images.githubusercontent.com/116777356/209296158-23e1fd09-667e-4d5d-a9fc-375ac63feb3f.mp4
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
