@@ -432,8 +432,8 @@ header {
   align-items: center;
   justify-content: space-around;
   box-sizing: border-box;
-  height: 100%;
-  max-width: 95%;
+  height: 100vh;
+  max-width: 95vh;
   pointer-events: all;
   transform: none;
   opacity: 1;

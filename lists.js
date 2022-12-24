@@ -1,21 +1,3 @@
-
-    let noTodosMessage = () => {
-      const listContainer = document.getElementById("list-container");
-      let noTodoContainer = document.createElement('div');
-      noTodoContainer.className = "no-todo-container"
-      let noTodoText = document.createElement('div');
-      noTodoText.className = "no-todo-text"
-      noTodoText.innerText = "There are no todos here"
-      let noTodoImage = document.createElement('img');
-      noTodoImage.className = "no-todo-img"
-      noTodoImage.src = "/Practice 2 super simple dev/images/cat_box_image.svg" 
-    
-      noTodoContainer.appendChild(noTodoImage);
-      noTodoContainer.appendChild(noTodoText);
-      listContainer.appendChild(noTodoContainer)  
-    }
-
-
       //Model
       //if localstorage has a list array, then use it.
       //otherwise, use the default array.
@@ -37,10 +19,7 @@
 
       }
 
-      
-      
-      
-      //Creates a todo-list
+      //PUSHES A LIST TO ARRAY
       const createList = (listTitle) => {
         const listId = "" + new Date().getTime();
 
@@ -54,11 +33,6 @@
         saveLists();
       };
 
-      
-      const refresh = () => {
-        window.location.reload()
-      }
-      
       const saveLists = () => {
         localStorage.setItem("lists", JSON.stringify(lists));
       };
@@ -210,11 +184,9 @@
         render();
       }
 
-              
-      
   }
 
-  //Toggles the display for the pop up-box when user Renames a list//
+    //Toggles the display for the pop up-box when user Renames a list//
     function toggleRenameListPopup() {
       const popUp = document.getElementById("popup-field-rename");
       popUp.classList.toggle("reveal-popup");
@@ -222,29 +194,6 @@
       renameListPopupBox.classList.toggle("active");
 
     }
-
-    //Using Return Key to navigate Sidebar Elements//
-    function sidebarEnterKey () {
-      document.querySelectorAll(".sb-tab-box").forEach(function(tabBox) {
-        tabBox.addEventListener("keyup", function(event) {
-            if (event.key === 'Enter') {
-                document.getElementById(event.target.id).click();
-            }
-        });
-    });
-    }
-
-
-    //NOT NEEDED function//
-    function checkRadioValue() {
-      const radios = document.getElementsByName("sbRadio");
-      for (let radio of radios) {
-          if (radio.checked) {
-              console.log(radio.id + " is checked");
-          }
-      }
-    }
-
 
     
     //View
@@ -345,9 +294,7 @@
           
     function checkRenameListTitle() {
       const renameListInput = document.getElementById("rename-list-input");
-      
       const renameListInputValue = renameListInput.value;
-      
       const saveButton = document.getElementById("save-btn");
       
       if (renameListInputValue.length < 1) {
@@ -392,46 +339,45 @@
 const createButton = document.querySelector('button.create-btn');
 const listCreatedNotification = document.querySelector('div.list-created');
 
-createButton.addEventListener('click', function() {
-  
+  //When list is created, display the message
+  createButton.addEventListener('click', function() {
   setTimeout(function() {
-
-    listCreatedNotification.classList.add('display');
-    
+    listCreatedNotification.classList.add('display');  
     setTimeout(function() {
       listCreatedNotification.classList.remove('display');
     }, 5000);
   }, 1000);
   });
+
+  //When LIST is RENAMED, display the MESSAGE
 const saveButton = document.querySelector('button.save-btn');
 const listRenamedNotification = document.querySelector('div.list-renamed');
 
-saveButton.addEventListener('click', function() {
-  setTimeout(function() {
-
-    listRenamedNotification.classList.add('display');
-    
+  saveButton.addEventListener('click', function() {
     setTimeout(function() {
-      listRenamedNotification.classList.remove('display');
-    }, 5000);
-  }, 1000);
-  });
+
+      listRenamedNotification.classList.add('display');
+      
+      setTimeout(function() {
+        listRenamedNotification.classList.remove('display');
+      }, 5000);
+    }, 1000);
+    });
+
+  //When LIST is DELETED, display the MESSAGE
 const deleteListButton = document.getElementById("delete-list-btn");
 const listDeletedNotification = document.querySelector('div.list-deleted');
 
-deleteListButton.addEventListener('click', function() {
-  setTimeout(function() {
-
-    listDeletedNotification.classList.add('display');
-    
+  deleteListButton.addEventListener('click', function() {
     setTimeout(function() {
-      listDeletedNotification.classList.remove('display');
-    }, 5000);
-  }, 1000);
-  });
 
-  window.onload = function() {
-    checkItemCount();
-    changeListTitleCaption(activeListValue());
-  };
+      listDeletedNotification.classList.add('display');
+      
+      setTimeout(function() {
+        listDeletedNotification.classList.remove('display');
+      }, 5000);
+    }, 1000);
+    });
+
+
   
