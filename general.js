@@ -3,6 +3,14 @@ window.onload = function() {
   changeListTitleCaption(activeListValue());
 };
 
+//When create list btn is clicked, scroll to top of window.
+document.querySelectorAll('.popup-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  })
+})
+
 //NOT NEEDED function//
 function checkRadioValue() {
     const radios = document.getElementsByName("sbRadio");

@@ -15,8 +15,9 @@ input[type="checkbox"] {
 
 body {
   font-family: "Nanum Gothic", sans-serif;
+  position: relative;
   color: rgb(58, 58, 58);
-  height: 100%;
+  min-height: 100vh;
   background-color: white;
   overflow: hidden;
 }
@@ -419,6 +420,8 @@ header {
 }
 #popup-field.reveal-popup,
 #popup-field-rename.reveal-popup {
+  width: 100vw;
+  height: 100vh;
   visibility: visible;
   opacity: 1;
   z-index: 3600;
@@ -432,7 +435,7 @@ header {
   align-items: center;
   justify-content: space-around;
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   max-width: 95vh;
   pointer-events: all;
   transform: none;
@@ -525,6 +528,7 @@ h2::before {
 
 /* Corner Notifications */
 .notification.display {
+  z-index: 4000;
   visibility: visible;
   display: block;
   position: absolute;
