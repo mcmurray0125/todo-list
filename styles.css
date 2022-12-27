@@ -677,12 +677,17 @@ input[type="date"]:hover,
   .no-list-container.display {
     left: 120px;
   }
-  .nl-input-box {
+  .nl-popup-box,
+  .rl-popup-box {
+    max-width: 95vw;
+  }
+  .nl-input-box,
+  .rl-input-box {
     max-width: 100%;
     margin: 0px;
   }
   .nl-input-box #new-list-input,
-  .nl-input-box #rename-list-input {
+  .rl-input-box #rename-list-input {
     width: 90%;
     padding-left: 12px;
   }
@@ -725,8 +730,14 @@ input[type="date"]:hover,
 }
 @media screen and (max-height: 450px) {
   .list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
     position: fixed;
     padding: 12px 0px 12px 0px;
+    overflow: scroll;
   }
   .no-todo-container.display {
     top: 98px;
