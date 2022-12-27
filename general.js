@@ -39,6 +39,9 @@ const focusLine = () => {
     addBar.style.borderBottom = "1px solid rgb(128, 128, 128)";
     addBar.style.marginBottom = "0px";
   };
+  
+document.getElementById("todo-title").addEventListener("focusin", focusLine);
+document.getElementById("todo-title").addEventListener("focusout", focusoutLine);
 
 //USING RETURN KEY TO NAVIGATE SIDEAR//
 function sidebarEnterKey () {
