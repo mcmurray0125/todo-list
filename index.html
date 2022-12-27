@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael's Todo App</title>
+    <title>Todo App</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -23,7 +23,7 @@
         >
           <i class="fa-solid fa-bars"></i>
         </div>
-        <h1>Michael's To-Do List</h1>
+        <h1>M+M To-Do List</h1>
       </div>
       <figure class="profile-picture">
         <img src="/images/mm-profile-pic.JPG" alt="profile-picture" />
@@ -148,11 +148,14 @@
               </p>
             </div>
             <div class="nl-btn-box">
-              <button class="cancel-btn" onclick="toggleNewListPopup();">
+              <button
+                class="cancel-btn popup-btn"
+                onclick="toggleNewListPopup();"
+              >
                 Cancel
               </button>
               <button
-                class="create-btn"
+                class="create-btn popup-btn"
                 onclick="toggleNewListPopup();addList();clearNewRenameListInput();"
                 id="create-btn"
               >
@@ -179,11 +182,14 @@
               </p>
             </div>
             <div class="nl-btn-box">
-              <button class="cancel-btn" onclick="toggleRenameListPopup();">
+              <button
+                class="cancel-btn popup-btn"
+                onclick="toggleRenameListPopup();"
+              >
                 Cancel
               </button>
               <button
-                class="save-btn"
+                class="save-btn popup-btn"
                 onclick="toggleRenameListPopup();renameList();clearNewRenameListInput();"
                 id="save-btn"
               >
@@ -196,6 +202,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/general.js"></script>
     <script src="/lists.js"></script>
     <script src="/todos.js"></script>
   </body>

@@ -25,7 +25,7 @@ const createTodo = (title, dueDate) => {
   saveTodos();
 };
 
-//If todo list has children, hide the error message. else display it.//
+//If todo list has children, hide the no-todos message. else display it.//
 const checkItemCount = () => {
   if (document.querySelector(".todo-list.active").children.length < 1) {
     document.querySelector(".no-todo-container").classList.add("display");
@@ -84,25 +84,6 @@ const saveTodos = () => {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
-// Character Count in Pop Up Text Inputs //
-{
-  const textArea = document.getElementById("new-list-input");
-  const characters = document.getElementById("characters");
-
-  textArea.addEventListener("input", function () {
-    let content = this.value;
-    characters.textContent = content.length;
-  });
-
-  const renameTextArea = document.getElementById("rename-list-input");
-  const renameCharacters = document.getElementById("rename-characters");
-
-  renameTextArea.addEventListener("input", function () {
-    let renameContent = this.value;
-    renameCharacters.textContent = renameContent.length;
-  });
-}
-
 // Controller
 
 //Clears the input fields of the Add Item bad and Date Picker//
@@ -120,57 +101,6 @@ const clearNewRenameListInput = () => {
   const renameListTextbox = document.getElementById("rename-list-input");
   renameListTextbox.value = "";
 };
-
-//Add Item underline animation
-const focusLine = () => {
-  let addBar = document.getElementById("add-bar");
-  addBar.style.marginBottom = "-1px";
-  addBar.style.borderBottom = "2px solid rgb(73, 64, 163)";
-};
-
-const focusoutLine = () => {
-  let addBar = document.getElementById("add-bar");
-  addBar.style.borderBottom = "1px solid rgb(128, 128, 128)";
-  addBar.style.marginBottom = "0px";
-};
-
-//Drop Down Sub Menu Displays
-/*       {
-      const moreButton = document.getElementById("more-button")
-      const moreDropDown = document.getElementById("more-dropdown")
-
-      moreButton.addEventListener("click", function(){moreDropDown.classList.toggle("dd-display")})
-
-      const sortButton = document.getElementById("sort-button")
-      const sortDropDown = document.getElementById("sort-dropdown")
-
-      sortButton.addEventListener("click", function(){sortDropDown.classList.toggle("dd-display")})
-      }
- */
-function alphabetSort() {
-  var mylist = document.querySelector(".todo-list.active");
-  var divs = mylist.getElementsByTagName("div");
-  var listitems = [];
-  for (i = 0; i < divs.length; i++) {
-    listitems.push(divs.item(i));
-  }
-  listitems.sort(function (a, b) {
-    var compA = a.getAttribute("id").toUpperCase();
-    var compB = b.getAttribute("id").toUpperCase();
-    return compA < compB ? -1 : compA > compB ? 1 : 0;
-  });
-  for (i = 0; i < listitems.length; i++) {
-    mylist.appendChild(listitems[i]);
-  }
-  saveTodos();
-  changeListTitleCaption(activeListValue());
-}
-
-function sidebarCollapse() {
-  const collapsedClass = "sidebar-collapsed";
-  const sidebar = document.getElementById("sidebar");
-  sidebar.classList.toggle(collapsedClass);
-}
 
 function toggleNewListPopup() {
   const popUp = document.getElementById("popup-field");
@@ -258,30 +188,30 @@ const render = () => {
   });
 
   todos.forEach(function (todo) {
-    const element = document.createElement("div");
-    element.className = "todo-item";
-    element.id = todo.title.toUpperCase().slice(0, 5);
+    const todoItem = document.createElement("div");
+    todoItem.className = "todo-item";
+    todoItem.id = todo.title.toUpperCase().slice(0, 5);
 
     if (todo.isEditing === true) {
       const textbox = document.createElement("input");
       textbox.type = "text";
       textbox.placeholder = todo.title;
       textbox.id = "edit-title-" + todo.id;
-      element.appendChild(textbox);
+      todoItem.appendChild(textbox);
 
       const datePicker = document.createElement("input");
       datePicker.type = "date";
       datePicker.id = "edit-date-" + todo.id;
-      element.appendChild(datePicker);
+      todoItem.appendChild(datePicker);
 
       const updateButton = document.createElement("button");
       updateButton.innerText = "Update";
       updateButton.dataset.todoId = todo.id;
       updateButton.className = "update-button";
       updateButton.onclick = onUpdate;
-      element.appendChild(updateButton);
+      todoItem.appendChild(updateButton);
     } else {
-      element.innerHTML =
+      todoItem.innerHTML =
         `<p class= 'todo-title'>${todo.title}</p>` +
         `<p class = 'todo-due-date'>${todo.dueDate}</p>`;
 
@@ -290,7 +220,7 @@ const render = () => {
       editButton.innerText = "Edit";
       editButton.onclick = onEdit;
       editButton.dataset.todoId = todo.id;
-      element.appendChild(editButton);
+      todoItem.appendChild(editButton);
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -301,20 +231,20 @@ const render = () => {
       } else {
         checkbox.checked = false;
       }
-      element.prepend(checkbox);
+      todoItem.prepend(checkbox);
 
       const deleteButton = document.createElement("button");
       // deleteButton.innerText = "Delete";
       deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>";
       deleteButton.className = "delete-button";
       deleteButton.onclick = onDelete(todo);
-      element.appendChild(deleteButton);
+      todoItem.appendChild(deleteButton);
     }
 
     //if the todo-item's listTag === the ID of the list, append the item to that list//
     listEls.forEach(function (listEl) {
       if (todo.listTag === listEl.id) {
-        listEl.appendChild(element);
+        listEl.appendChild(todoItem);
         checkItemCount();
       } else {
         checkItemCount();
@@ -343,42 +273,8 @@ $(function () {
   console.log(activeListCount);
 });
 
-function toggleDropdown(event) {
-  // Get the clicked button
-  const button = event.target;
-
-  // Find the dropdown element that has the same tag as the clicked button
-  const dropdown = document.querySelector(
-    `div[data-type=${button.getAttribute("data-type")}]`
-  );
-
-  // Hide all dropdowns except for the selected one
-  const dropdowns = document.querySelectorAll(".dropdown-content");
-  dropdowns.forEach((el) => {
-    if (el === dropdown) {
-      el.classList.toggle("display");
-    } else {
-      el.classList.remove("display");
-    }
-  });
-}
-
-const titleButtons = document.querySelectorAll(".title-button");
-titleButtons.forEach((button) =>
-  button.addEventListener("click", toggleDropdown)
-);
-
-document.addEventListener("click", (event) => {
-  // Check if the click originated from a title button
-  if (!event.target.matches(".title-button")) {
-    // If not, hide all dropdowns
-    const dropdowns = document.querySelectorAll(".dropdown-content");
-    dropdowns.forEach((el) => el.classList.remove("display"));
-  }
-});
-
+//When editing a todo, if return key is pressed, update button is clicked
 const target = document.querySelector(".todo-list.active");
-
 const observer = new MutationObserver(function () {
   // reattach the event listener to the updated element
   $(".todo-list.active input[type='text']").keyup(function (event) {
@@ -391,8 +287,8 @@ const observer = new MutationObserver(function () {
 // start observing the target element for changes
 observer.observe(target, { childList: true, subtree: true });
 
-$(".todo-list.active input[type='text']").keyup(function (event) {
+/* $(".todo-list.active input[type='text']").keyup(function (event) {
   if (event.keyCode === 13) {
     $(".update-button").click();
   }
-});
+}); */

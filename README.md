@@ -171,7 +171,6 @@ Visit a live version of the todo-list webpage here:
   
 </details>
 
-
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -184,6 +183,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Optimized Sidebar for small displays
 - [ ] Increase textbox input height for the Add Todo bar
 - [ ] Create a dark theme and a theme toggle button
+- [ ] Make list overflow scrollable on mobile devices.
 - [ ] Multi-language Support
 
 See the [open issues](https://github.com/mcmurray0125/js-basics/issues) for a full list of proposed features (and known issues).
@@ -279,3 +279,5 @@ Here are some resources that I have found helpful:
 [html-url]: https://w3.org/html/
 [css.org]: https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff&style=for-the-badge
 [css-url]: https://www.w3.org/Style/CSS/Overview.en.html
+
+<!-- This README.md file contains code written by another person. View the source code of the original creator here: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt -->
