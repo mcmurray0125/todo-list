@@ -31,7 +31,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/mcmurray0125/js-basics">
+  <a href="https://github.com/mcmurray0125/todo-list">
     <img src="images/gradient-clipboard.png" alt="Logo" width="75px" height="75px">
   </a>
 
@@ -40,14 +40,14 @@
   <p align="center">
     Inspired by <a href ="https://shoppinglist.google.com/">Google Shopping List</a> Web App
     <br />
-    <a href="https://github.com/mcmurray0125/js-basics"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/mcmurray0125/todo-list"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#video-demos-">View Demos</a>
     ·
-    <a href="https://github.com/mcmurray0125/js-basics/issues">Report Bug</a>
+    <a href="https://github.com/mcmurray0125/todo-list/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mcmurray0125/js-basics/issues">Request Feature</a>
+    <a href="https://github.com/mcmurray0125/todo-list/issues">Request Feature</a>
   </p>
 </div>
 
@@ -79,7 +79,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/mcmurray0125/js-basics)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/mcmurray0125/todo-list)
 
 Welcome! You are looking at my first in depth JavaScript project. After spending many weeks creating mini projects with HTML, CSS, JavaScript, I felt ready to create a more complex project. I focused on the basics of Javascript first, studying arrays and other data structures, looping methods, filtering, conditionals, and more.
 
@@ -186,7 +186,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Make list overflow scrollable on mobile devices.
 - [ ] Multi-language Support
 
-See the [open issues](https://github.com/mcmurray0125/js-basics/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/mcmurray0125/todo-list/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -221,7 +221,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Michael Murray - [@LinkedIn](https://www.linkedin.com/in/michaelchristophermurray/) - mcmurray0125@gmail.com
 
-Project Link: [https://github.com/mcmurray0125/js-basics](https://github.com/mcmurray0125/js-basics)
+Project Link: [https://github.com/mcmurray0125/todo-list](https://github.com/mcmurray0125/todo-list)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -244,15 +244,15 @@ Here are some resources that I have found helpful:
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/mcmurray0125/js-basics.svg?style=for-the-badge
-[contributors-url]: https://github.com/mcmurray0125/js-basics/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/mcmurray0125/js-basics.svg?style=for-the-badge
-[forks-url]: https://github.com/mcmurray0125/js-basics/network/members
-[stars-shield]: https://img.shields.io/github/stars/mcmurray0125/js-basics.svg?style=for-the-badge
-[stars-url]: https://github.com/mcmurray0125/js-basics/stargazers
-[issues-shield]: https://img.shields.io/github/issues/mcmurray0125/js-basics.svg?style=for-the-badge
-[issues-url]: https://github.com/mcmurray0125/js-basics/issues
-[license-shield]: https://img.shields.io/github/license/mcmurray0125/js-basics.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/mcmurray0125/todo-list.svg?style=for-the-badge
+[contributors-url]: https://github.com/mcmurray0125/todo-list/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mcmurray0125/todo-list.svg?style=for-the-badge
+[forks-url]: https://github.com/mcmurray0125/todo-list/network/members
+[stars-shield]: https://img.shields.io/github/stars/mcmurray0125/todo-list.svg?style=for-the-badge
+[stars-url]: https://github.com/mcmurray0125/todo-list/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mcmurray0125/todo-list.svg?style=for-the-badge
+[issues-url]: https://github.com/mcmurray0125/todo-list/issues
+[license-shield]: https://img.shields.io/github/license/mcmurray0125/todo-list.svg?style=for-the-badge
 [license-url]: https://github.com/mcmurray0125/todo-list/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/michaelchristophermurray
