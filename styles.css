@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   /* Set the size of the checkbox */
   width: 20px;
   height: 20px;
@@ -14,12 +14,12 @@ input[type="checkbox"] {
 }
 
 body {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   position: relative;
   color: rgb(58, 58, 58);
   min-height: 100vh;
   background-color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 h2 {
   font-weight: 600;
@@ -92,7 +92,7 @@ header {
 }
 /* Sidebar */
 .sidebar {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -381,13 +381,13 @@ header {
 }
 
 /* Editing + Updating Todos */
-.todo-item input[type="date"] {
+.todo-item input[type='date'] {
   order: -1;
   height: 25px;
   margin-left: 0px;
   align-self: center;
 }
-.todo-item input[type="text"] {
+.todo-item input[type='text'] {
   font-size: 20px;
   border: none;
   padding-left: 14px;
@@ -397,7 +397,7 @@ header {
   margin-left: 39px;
   width: 100%;
 }
-.todo-item input[type="text"]:focus {
+.todo-item input[type='text']:focus {
   outline: none;
 }
 
@@ -510,7 +510,7 @@ h2::before {
   display: inline-block;
   width: 0;
   height: 40px;
-  content: "";
+  content: '';
   vertical-align: 0;
 }
 
@@ -556,7 +556,7 @@ h2::before {
 .add-bar button,
 .new-list-button,
 .nl-btn-box button {
-  font-family: "Nanub Gothic", sans-serif;
+  font-family: 'Nanub Gothic', sans-serif;
   font-weight: 200;
   font-size: 14px;
   color: white;
@@ -586,7 +586,7 @@ h2::before {
   transform: scale(95%);
 }
 .todo-item button:hover,
-input[type="date"]:hover,
+input[type='date']:hover,
 .add-bar button:hover,
 .new-list-button {
   cursor: pointer;
@@ -663,7 +663,7 @@ input[type="date"]:hover,
   .todo-item {
     padding-left: 0px;
   }
-  .todo-item [type="checkbox"] {
+  .todo-item [type='checkbox'] {
     margin-left: 14px;
   }
   .todo-item .todo-due-date {
@@ -732,12 +732,9 @@ input[type="date"]:hover,
   .list-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     width: 100%;
     box-sizing: border-box;
-    position: fixed;
-    padding: 12px 0px 12px 0px;
-    overflow: scroll;
+    padding: 12px 0px;
   }
   .no-todo-container.display {
     top: 98px;
@@ -757,9 +754,7 @@ input[type="date"]:hover,
     height: 100%;
   }
   .list-container {
-    position: fixed;
     padding: 12px 0px 12px 0px;
-    overflow: scroll;
   }
   .sidebar {
     height: 100vh;
@@ -785,5 +780,9 @@ input[type="date"]:hover,
     position: fixed;
     right: 14px;
     bottom: 14px;
+  }
+  .container {
+    justify-content: center;
+    height: 80vh;
   }
 }
