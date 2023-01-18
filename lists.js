@@ -10,13 +10,7 @@
       if (Array.isArray(savedLists)) {
         lists = savedLists;
       } else {
-        lists = [
-          /* {
-            title: "List 1",
-            id: "list-id1",
-          }, */
-        ];
-
+        lists = [];
       }
 
       //PUSHES A LIST TO ARRAY
