@@ -102,14 +102,14 @@
     }
 
     function changeListTitleCaption(listIdA) {
-      // Find the div element with the class of sb-tab-box and a for attribute with the value of listIdA
-      const labelElement = document.querySelector(`label.sb-tab-box[for='${listIdA}']`);
+      // Find the sb-tab-box element with a for attribute of listIdA
+      let labelElement = document.querySelector(`label.sb-tab-box[for='${listIdA}']`);
       // Find the sb-tab-item-count element within the label element
-      const sbTabItemCountElement = labelElement.querySelector('.sb-tab-item-count');
+      let sbTabItemCountElement = labelElement.querySelector('.sb-tab-item-count');
       // Get the inner text of the sb-tab-item-count element
-      const sbTabItemCountText = sbTabItemCountElement.innerText;
+      let sbTabItemCountText = sbTabItemCountElement.innerText;
       // Find the .list-title-caption div
-      const listTitleCaption = document.querySelector('.list-title-caption');
+      let listTitleCaption = document.querySelector('.list-title-caption');
       // Set the inner text of the .list-title-caption div to the inner text of the sb-tab-item-count element
       listTitleCaption.innerText = sbTabItemCountText;
     }

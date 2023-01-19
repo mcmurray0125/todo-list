@@ -153,11 +153,9 @@ header {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 170px;
-  left: 1075px;
-}
-.no-list-container.display {
-  top: 100px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 .no-todo-container,
@@ -166,7 +164,6 @@ header {
 }
 .no-todo-img,
 .no-list-img {
-  padding-top: 120px;
   margin-bottom: 2.5rem;
   max-width: 115px;
   max-height: 200px;
@@ -673,10 +670,6 @@ input[type="date"]:hover,
     min-width: 40px;
     margin: 0px 6px 0px 6px;
   }
-  .no-todo-container.display,
-  .no-list-container.display {
-    left: 120px;
-  }
   .nl-popup-box,
   .rl-popup-box {
     max-width: 95vw;
@@ -710,24 +703,6 @@ input[type="date"]:hover,
   }
 }
 
-@media screen and (min-width: 451px) and (max-width: 649px) {
-  .no-todo-container.display {
-    top: 170px;
-    left: 260px;
-  }
-  .no-list-container.display {
-    left: 260px;
-  }
-}
-@media screen and (min-width: 650px) and (max-width: 1300px) {
-  .no-todo-container.display {
-    top: 170px;
-    left: 450px;
-  }
-  .no-list-container.display {
-    left: 450px;
-  }
-}
 @media screen and (max-height: 450px) {
   .list-container {
     display: flex;
@@ -738,16 +713,6 @@ input[type="date"]:hover,
     position: fixed;
     padding: 12px 0px 12px 0px;
     overflow: scroll;
-  }
-  .no-todo-container.display {
-    top: 98px;
-    left: 432px;
-    pointer-events: none;
-  }
-  .no-list-container.display {
-    top: 0px;
-    left: 386px;
-    pointer-events: none;
   }
   header {
     position: relative;
