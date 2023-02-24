@@ -81,7 +81,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://github.com/mcmurray0125/todo-list)
 
-Welcome! You are looking at my first in depth JavaScript project. After spending many weeks creating mini projects with HTML, CSS, JavaScript, I felt ready to create a more complex project. I focused on the basics of Javascript first, studying arrays and other data structures, looping methods, filtering, conditionals, and more.
+Welcome! After spending many weeks creating mini projects with HTML, CSS, JavaScript, I felt ready to create a more complex project. I focused on the basics of Javascript first, studying arrays and other data structures, looping methods, filtering, conditionals, and more.
 
 My todo list is inspired by the <a href ="https://shoppinglist.google.com/">Google Shopping List</a>, and I used it as a reference for page layout and overall functionality.
 
