@@ -27,7 +27,7 @@ const createTodo = (title, dueDate) => {
 
 //If todo list has children, hide the no-todos message. else display it.//
 const checkItemCount = () => {
-  if (document.querySelector(".todo-list.active").children.length < 1) {
+  if (document.querySelector(".todo-list") && document.querySelector(".todo-list.active").children.length < 1) {
     document.querySelector(".no-todo-container").classList.add("display");
   } else {
     document.querySelector(".no-todo-container").classList.remove("display");
@@ -268,10 +268,6 @@ const render = () => {
 
 render();
 
-$(function () {
-  const activeListCount = $(".todo-list.active").children().length;
-  console.log(activeListCount);
-});
 
 //When editing a todo, if return key is pressed, update button is clicked
 const target = document.querySelector(".todo-list.active");
@@ -285,7 +281,9 @@ const observer = new MutationObserver(function () {
 });
 
 // start observing the target element for changes
-observer.observe(target, { childList: true, subtree: true });
+if (document.querySelector(".todo-list.active")) {
+  observer.observe(target, { childList: true, subtree: true });
+}
 
 /* $(".todo-list.active input[type='text']").keyup(function (event) {
   if (event.keyCode === 13) {

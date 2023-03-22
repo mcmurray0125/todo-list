@@ -102,16 +102,18 @@
     }
 
     function changeListTitleCaption(listIdA) {
-      // Find the sb-tab-box element with a for attribute of listIdA
-      let labelElement = document.querySelector(`label.sb-tab-box[for='${listIdA}']`);
-      // Find the sb-tab-item-count element within the label element
-      let sbTabItemCountElement = labelElement.querySelector('.sb-tab-item-count');
-      // Get the inner text of the sb-tab-item-count element
-      let sbTabItemCountText = sbTabItemCountElement.innerText;
-      // Find the .list-title-caption div
-      let listTitleCaption = document.querySelector('.list-title-caption');
-      // Set the inner text of the .list-title-caption div to the inner text of the sb-tab-item-count element
-      listTitleCaption.innerText = sbTabItemCountText;
+      if (document.querySelector(`label.sb-tab-box[for='${listIdA}']`)) {
+        // Find the sb-tab-box element with a for attribute of listIdA
+        let labelElement = document.querySelector(`label.sb-tab-box[for='${listIdA}']`);
+        // Find the sb-tab-item-count element within the label element
+        let sbTabItemCountElement = labelElement.querySelector('.sb-tab-item-count');
+        // Get the inner text of the sb-tab-item-count element
+        let sbTabItemCountText = sbTabItemCountElement.innerText;
+        // Find the .list-title-caption div
+        let listTitleCaption = document.querySelector('.list-title-caption');
+        // Set the inner text of the .list-title-caption div to the inner text of the sb-tab-item-count element
+        listTitleCaption.innerText = sbTabItemCountText;
+      }
     }
     
 
